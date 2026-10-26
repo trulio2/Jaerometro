@@ -10,6 +10,7 @@ import {
 } from 'recharts'
 import type { DashboardChart } from '@/types'
 import { formatAxisValue, formatSeriesValue } from './chartFormat'
+import ExpandButton from './ExpandButton'
 
 type ChartRow = Record<string, string | number | null>
 
@@ -40,7 +41,13 @@ function toRows(chart: DashboardChart): ChartRow[] {
   })
 }
 
-export default function LineChartPanel({ chart }: { chart: DashboardChart }) {
+export default function LineChartPanel({
+  chart,
+  onExpand
+}: {
+  chart: DashboardChart
+  onExpand?: () => void
+}) {
   const primary = chart.series[0]
   const hasRight = chart.series.some((series) => series.axis === 'right')
 
@@ -51,6 +58,7 @@ export default function LineChartPanel({ chart }: { chart: DashboardChart }) {
           <h2>{chart.title}</h2>
           <p>{chart.subtitle}</p>
         </div>
+        {onExpand && <ExpandButton title={chart.title} onClick={onExpand} />}
       </header>
 
       <div className="chart-body" role="img" aria-label={chart.title}>

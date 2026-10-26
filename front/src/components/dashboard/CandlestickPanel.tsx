@@ -9,6 +9,7 @@ import {
 } from 'lightweight-charts'
 import type { DashboardChart } from '@/types'
 import { formatSeriesValue } from './chartFormat'
+import ExpandButton from './ExpandButton'
 import {
   movingAverage,
   rollingCandles,
@@ -33,7 +34,13 @@ function toTime(date: string): Time {
   return (date.length === 7 ? `${date}-01` : date) as Time
 }
 
-export default function CandlestickPanel({ chart }: { chart: DashboardChart }) {
+export default function CandlestickPanel({
+  chart,
+  onExpand
+}: {
+  chart: DashboardChart
+  onExpand?: () => void
+}) {
   const containerRef = useRef<HTMLDivElement>(null)
   const chartRef = useRef<IChartApi | null>(null)
   const [timeframe, setTimeframe] = useState<CandleTimeframe>('1M')
@@ -72,7 +79,7 @@ export default function CandlestickPanel({ chart }: { chart: DashboardChart }) {
       },
       rightPriceScale: {
         borderColor: '#1e2c38',
-        scaleMargins: { top: 0.2, bottom: 0.08 }
+        scaleMargins: { top: 0.08, bottom: 0.08 }
       },
       timeScale: {
         borderColor: '#1e2c38',
@@ -210,12 +217,62 @@ export default function CandlestickPanel({ chart }: { chart: DashboardChart }) {
 
   return (
     <section className="panel chart-panel candle-panel">
-      <div className="candle-overlay">
-        <div className="candle-overlay-title">
+      <header className="candle-head">
+        <div className="candle-title">
           <span className="candle-symbol">{series?.label ?? chart.title}</span>
           {average.length > 0 && (
             <span className="candle-average">MM12</span>
           )}
+        </div>
+        <div className="candle-toolbar">
+          <div
+            className="candle-timeframes"
+            role="group"
+            aria-label="Intervalo das velas"
+          >
+            {timeframes.map((option) => (
+              <button
+                key={option}
+                type="button"
+                className="candle-btn"
+                aria-pressed={timeframe === option}
+                title={
+                  option === '1M'
+                    ? 'Velas mensais'
+                    : 'Cada vela representa os últimos 12 meses'
+                }
+                onClick={() => setTimeframe(option)}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="candle-btn"
+            aria-label="Diminuir zoom"
+            onClick={() => zoom(1 / ZOOM_STEP)}
+          >
+            −
+          </button>
+          <button
+            type="button"
+            className="candle-btn"
+            aria-label="Aumentar zoom"
+            onClick={() => zoom(ZOOM_STEP)}
+          >
+            +
+          </button>
+          <button
+            type="button"
+            className="candle-btn"
+            aria-label="Restaurar visualização"
+            title="Restaurar visualização"
+            onClick={reset}
+          >
+            ⟲
+          </button>
+          {onExpand && <ExpandButton title={chart.title} onClick={onExpand} />}
         </div>
         {series && shown && (
           <div className="candle-ohlc">
@@ -225,57 +282,7 @@ export default function CandlestickPanel({ chart }: { chart: DashboardChart }) {
             <span>F {formatSeriesValue(shown.close, series)}</span>
           </div>
         )}
-      </div>
-
-      <div className="candle-toolbar">
-        <div
-          className="candle-timeframes"
-          role="group"
-          aria-label="Intervalo das velas"
-        >
-          {timeframes.map((option) => (
-            <button
-              key={option}
-              type="button"
-              className="candle-btn"
-              aria-pressed={timeframe === option}
-              title={
-                option === '1M'
-                  ? 'Velas mensais'
-                  : 'Cada vela representa os últimos 12 meses'
-              }
-              onClick={() => setTimeframe(option)}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-        <button
-          type="button"
-          className="candle-btn"
-          aria-label="Diminuir zoom"
-          onClick={() => zoom(1 / ZOOM_STEP)}
-        >
-          −
-        </button>
-        <button
-          type="button"
-          className="candle-btn"
-          aria-label="Aumentar zoom"
-          onClick={() => zoom(ZOOM_STEP)}
-        >
-          +
-        </button>
-        <button
-          type="button"
-          className="candle-btn"
-          aria-label="Restaurar visualização"
-          title="Restaurar visualização"
-          onClick={reset}
-        >
-          ⟲
-        </button>
-      </div>
+      </header>
 
       <div
         ref={containerRef}

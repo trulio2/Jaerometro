@@ -15,6 +15,22 @@ export function formatAsOf(value: string): string {
   })
 }
 
+export function formatQuote(
+  value: number,
+  {
+    decimals,
+    prefix = '',
+    suffix = ''
+  }: { decimals: number; prefix?: string; suffix?: string }
+): string {
+  const number = value.toLocaleString('pt-BR', {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals
+  })
+
+  return `${prefix}${number}${suffix}`
+}
+
 export function formatSignedPercent(value: number): string {
   const formatted = Math.abs(value).toLocaleString('pt-BR', {
     minimumFractionDigits: 2,

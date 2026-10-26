@@ -1,11 +1,16 @@
-import { NavLink, Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const links = [
-  { to: '/', label: 'Home', end: true },
+  { to: '/', label: 'Home' },
   { to: '/changelog', label: 'Changelog' }
 ]
 
 export default function Navbar() {
+  const { pathname } = useLocation()
+  // Every route except the changelog is a dashboard tab under Home.
+  const isLinkActive = (to: string) =>
+    to === '/' ? !pathname.startsWith('/changelog') : pathname.startsWith(to)
+
   return (
     <nav className="navbar" aria-label="Primary">
       <Link to="/" className="navbar-brand">
@@ -14,15 +19,13 @@ export default function Navbar() {
       <ul className="navbar-links">
         {links.map((link) => (
           <li key={link.to}>
-            <NavLink
+            <Link
               to={link.to}
-              end={link.end}
-              className={({ isActive }) =>
-                `navbar-link${isActive ? ' active' : ''}`
-              }
+              className={`navbar-link${isLinkActive(link.to) ? ' active' : ''}`}
+              aria-current={isLinkActive(link.to) ? 'page' : undefined}
             >
               {link.label}
-            </NavLink>
+            </Link>
           </li>
         ))}
       </ul>

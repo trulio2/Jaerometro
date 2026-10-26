@@ -1,62 +1,175 @@
+import type { CSSProperties } from 'react'
+import {
+  Navigate,
+  NavLink,
+  useParams,
+  useSearchParams
+} from 'react-router-dom'
 import {
   AlertsPanel,
-  BarChartPanel,
-  CandlestickPanel,
-  DashboardHeader,
-  LineChartPanel,
-  MetricGrid,
-  NewsPanel
+  ChartDialog,
+  ChartPanel,
+  MetricTile,
+  NewsPanel,
+  TickerStrip
 } from '@/components/dashboard'
 import { useDashboard, useRealtimeQuotes } from '@/modules/services'
-import type { DashboardSection } from '@/types'
+import type {
+  DashboardChart,
+  DashboardSection,
+  DashboardSnapshot
+} from '@/types'
 import './Home.css'
 
-const sectionOrder: DashboardSection[] = [
-  'market',
-  'fiscal',
-  'monetary',
-  'future'
+type DashboardTab = 'overview' | DashboardSection | 'news'
+
+const tabs: { id: DashboardTab; path: string; label: string }[] = [
+  { id: 'overview', path: '', label: 'Visão geral' },
+  { id: 'market', path: 'mercado', label: 'Mercado' },
+  { id: 'fiscal', path: 'fiscal', label: 'Fiscal' },
+  { id: 'monetary', path: 'monetario', label: 'Monetário' },
+  { id: 'future', path: 'futuro', label: 'Futuro' },
+  { id: 'news', path: 'noticias', label: 'Notícias' }
 ]
 
-const sectionLabel: Record<DashboardSection, string> = {
-  market: 'MERCADO E CÂMBIO',
-  fiscal: 'FISCAL E DÍVIDA',
-  monetary: 'MONETÁRIO E INFLAÇÃO',
-  future: 'EXPECTATIVAS FUTURAS'
+// The most crisis-relevant readings, shown together on the first screen.
+const overviewMetricIds = [
+  'debt',
+  'ipca',
+  'selic',
+  'real-rate',
+  'flow',
+  'interest'
+]
+const overviewChartIds = [
+  'usd-12m',
+  'debt-12m',
+  'real-rate-12m',
+  'ipca-12m'
+]
+
+function gridStyle(count: number): CSSProperties {
+  const cols = count <= 3 ? count : count === 4 ? 2 : 3
+
+  return {
+    '--cols': cols,
+    '--rows': Math.ceil(count / cols)
+  } as CSSProperties
+}
+
+function pick<T extends { id: string }>(items: T[], ids: string[]): T[] {
+  return ids.flatMap((id) => items.find((item) => item.id === id) ?? [])
+}
+
+function tabCount(snapshot: DashboardSnapshot, tab: DashboardTab): number {
+  if (tab === 'overview') return 0
+  if (tab === 'news') return snapshot.news?.length ?? 0
+  return snapshot.charts.filter((chart) => chart.section === tab).length
+}
+
+function DashboardTabs({ snapshot }: { snapshot: DashboardSnapshot }) {
+  const activeAlerts = snapshot.alerts.filter(
+    (alert) => alert.severity !== 'info'
+  ).length
+
+  return (
+    <nav className="dashboard-tabs" aria-label="Seções do painel">
+      <ul>
+        {tabs.map((tab) => {
+          const count = tabCount(snapshot, tab.id)
+
+          return (
+            <li key={tab.id}>
+              <NavLink
+                to={`/${tab.path}`}
+                end
+                className={({ isActive }) =>
+                  `dashboard-tab${isActive ? ' active' : ''}`
+                }
+              >
+                {tab.label}
+                {count > 0 && <span className="tab-count">{count}</span>}
+              </NavLink>
+            </li>
+          )
+        })}
+      </ul>
+
+      <div className="dashboard-tabs-meta">
+        {activeAlerts > 0 && (
+          <NavLink to="/" className="tabs-alerts">
+            {String(activeAlerts).padStart(2, '0')} alertas
+          </NavLink>
+        )}
+        <span className="dashboard-credit">
+          Gráficos por{' '}
+          <a
+            href="https://www.tradingview.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            TradingView
+          </a>
+        </span>
+      </div>
+    </nav>
+  )
+}
+
+function ChartGrid({
+  charts,
+  onExpand
+}: {
+  charts: DashboardChart[]
+  onExpand: (id: string) => void
+}) {
+  return (
+    <div className="chart-grid" style={gridStyle(charts.length)}>
+      {charts.map((chart) => (
+        <ChartPanel
+          key={chart.id}
+          chart={chart}
+          onExpand={() => onExpand(chart.id)}
+        />
+      ))}
+    </div>
+  )
 }
 
 function DashboardSkeleton() {
   return (
     <div className="dashboard">
-      <div className="dashboard-header panel skeleton skeleton-header" />
-      <div className="dashboard-layout">
-        <div className="dashboard-main">
-          <div className="dashboard-metrics">
-            {Array.from({ length: 12 }, (_, index) => (
-              <div
-                key={index}
-                className="metric-card panel skeleton skeleton-card"
-              />
-            ))}
-          </div>
-          <div className="dashboard-charts">
-            <div className="panel skeleton skeleton-chart" />
-            <div className="panel skeleton skeleton-chart" />
-          </div>
+      <div className="ticker panel skeleton skeleton-ticker" />
+      <div className="skeleton-tabs" />
+      <div className="overview">
+        <div className="overview-metrics">
+          {overviewMetricIds.map((id) => (
+            <div key={id} className="metric-tile panel skeleton" />
+          ))}
         </div>
-        <div className="panel skeleton skeleton-alerts" />
+        <div className="chart-grid" style={gridStyle(4)}>
+          {overviewChartIds.map((id) => (
+            <div key={id} className="panel skeleton skeleton-chart" />
+          ))}
+        </div>
+        <div className="overview-side panel skeleton" />
       </div>
     </div>
   )
 }
 
 function Home() {
+  const { tab: tabPath = '' } = useParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const { snapshot, status, error, refresh } = useDashboard()
   const {
     quotes: liveQuotes,
     btc,
     impostometro: liveImpostometro
   } = useRealtimeQuotes()
+  const tab = tabs.find((item) => item.path === tabPath)
+
+  if (!tab) return <Navigate to="/" replace />
 
   if (!snapshot) {
     if (status === 'error') {
@@ -74,64 +187,64 @@ function Home() {
     return <DashboardSkeleton />
   }
 
+  const expandedChart = snapshot.charts.find(
+    (chart) => chart.id === searchParams.get('chart')
+  )
+
+  const expand = (id: string) =>
+    setSearchParams({ chart: id }, { replace: true })
+
+  const collapse = () =>
+    setSearchParams(
+      (params) => {
+        params.delete('chart')
+        return params
+      },
+      { replace: true }
+    )
+
   return (
     <div className="dashboard">
-      <DashboardHeader generatedAt={snapshot.generatedAt} />
+      <TickerStrip
+        generatedAt={snapshot.generatedAt}
+        metrics={snapshot.metrics}
+        liveQuotes={liveQuotes}
+        btc={btc}
+        impostometro={liveImpostometro ?? snapshot.impostometro}
+      />
 
-      <div className="dashboard-layout">
-        <div className="dashboard-main">
-          <MetricGrid
-            metrics={snapshot.metrics}
-            impostometro={liveImpostometro ?? snapshot.impostometro}
-            liveQuotes={liveQuotes}
-            btc={btc}
+      <DashboardTabs snapshot={snapshot} />
+
+      {tab.id === 'overview' ? (
+        <div className="overview">
+          <section className="overview-metrics" aria-label="Indicadores">
+            {pick(snapshot.metrics, overviewMetricIds).map((metric) => (
+              <MetricTile key={metric.id} metric={metric} />
+            ))}
+          </section>
+
+          <ChartGrid
+            charts={pick(snapshot.charts, overviewChartIds)}
+            onExpand={expand}
           />
 
-          {sectionOrder.map((section) => {
-            const charts = snapshot.charts.filter(
-              (chart) => chart.section === section
-            )
-
-            if (!charts.length) return null
-
-            return (
-              <section key={section} className="dashboard-section">
-                <header className="section-heading">
-                  <h2>{sectionLabel[section]}</h2>
-                  <span>{String(charts.length).padStart(2, '0')} painéis</span>
-                </header>
-
-                <div className="dashboard-charts">
-                  {charts.map((chart) =>
-                    chart.kind === 'line' ? (
-                      <LineChartPanel key={chart.id} chart={chart} />
-                    ) : chart.kind === 'candle' ? (
-                      <CandlestickPanel key={chart.id} chart={chart} />
-                    ) : (
-                      <BarChartPanel key={chart.id} chart={chart} />
-                    )
-                  )}
-                </div>
-              </section>
-            )
-          })}
-
-          <NewsPanel news={snapshot.news ?? []} />
-
-          <footer className="dashboard-footer">
-            Gráficos por{' '}
-            <a
-              href="https://www.tradingview.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              TradingView
-            </a>
-          </footer>
+          <div className="overview-side">
+            <AlertsPanel alerts={snapshot.alerts} />
+            <NewsPanel news={snapshot.news ?? []} limit={3} compact />
+          </div>
         </div>
+      ) : tab.id === 'news' ? (
+        <NewsPanel news={snapshot.news ?? []} />
+      ) : (
+        <ChartGrid
+          charts={snapshot.charts.filter((chart) => chart.section === tab.id)}
+          onExpand={expand}
+        />
+      )}
 
-        <AlertsPanel alerts={snapshot.alerts} />
-      </div>
+      {expandedChart && (
+        <ChartDialog chart={expandedChart} onClose={collapse} />
+      )}
     </div>
   )
 }

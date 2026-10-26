@@ -10,6 +10,7 @@ import {
 } from 'recharts'
 import type { DashboardChart, Severity } from '@/types'
 import { formatAxisValue, formatSeriesValue } from './chartFormat'
+import ExpandButton from './ExpandButton'
 
 const barColor: Record<Severity, string> = {
   normal: '#2de2e6',
@@ -17,7 +18,13 @@ const barColor: Record<Severity, string> = {
   critical: '#ff4d5e'
 }
 
-export default function BarChartPanel({ chart }: { chart: DashboardChart }) {
+export default function BarChartPanel({
+  chart,
+  onExpand
+}: {
+  chart: DashboardChart
+  onExpand?: () => void
+}) {
   const series = chart.series[0]
   const points = series?.points ?? []
 
@@ -28,6 +35,7 @@ export default function BarChartPanel({ chart }: { chart: DashboardChart }) {
           <h2>{chart.title}</h2>
           <p>{chart.subtitle}</p>
         </div>
+        {onExpand && <ExpandButton title={chart.title} onClick={onExpand} />}
       </header>
 
       <div className="chart-body" role="img" aria-label={chart.title}>

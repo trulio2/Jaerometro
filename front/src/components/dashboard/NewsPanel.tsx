@@ -9,18 +9,28 @@ function formatPublished(value: string): string {
   })
 }
 
-export default function NewsPanel({ news }: { news: DashboardNews[] }) {
+export default function NewsPanel({
+  news,
+  limit,
+  compact = false
+}: {
+  news: DashboardNews[]
+  limit?: number
+  compact?: boolean
+}) {
   if (!news.length) return null
 
+  const items = limit ? news.slice(0, limit) : news
+
   return (
-    <section className="dashboard-section">
+    <section className={`news-panel${compact ? ' news-compact' : ''}`}>
       <header className="section-heading">
         <h2>NOTÍCIAS CRUCIAIS</h2>
-        <span>{String(news.length).padStart(2, '0')} itens</span>
+        <span>{String(items.length).padStart(2, '0')} itens</span>
       </header>
 
       <div className="news-grid">
-        {news.map((item) => (
+        {items.map((item) => (
           <a
             key={item.id}
             className="panel news-card"
