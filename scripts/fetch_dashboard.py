@@ -5,6 +5,7 @@ import io
 import json
 import os
 import re
+import tempfile
 import time
 import unicodedata
 import xml.etree.ElementTree as ET
@@ -13,6 +14,7 @@ from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import quote, urljoin
 
+import certifi
 import openpyxl
 import requests
 
@@ -334,6 +336,23 @@ def janjometro_value():
     return STORE.latest("janjometro", fetch, default="")
 
 
+# impostometro.com.br does not always send its intermediate certificate (GitHub's
+# runners get the bare leaf), so its requests are verified against certifi's
+# roots plus that public intermediate rather than failing or skipping checks.
+INTERMEDIATE_CERTS = Path(__file__).resolve().parent / "certs" / "sectigo-rsa-dv-ca.pem"
+
+
+def ca_bundle_with_intermediates() -> str:
+    bundle = Path(tempfile.gettempdir()) / "jaerometro-ca-bundle.pem"
+    bundle.write_text(
+        Path(certifi.where()).read_text(encoding="utf-8")
+        + "\n"
+        + INTERMEDIATE_CERTS.read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
+    return str(bundle)
+
+
 def fetch_impostometro():
     start = f"01/01/{NOW.year}"
     end = NOW.strftime("%d/%m/%Y")
@@ -348,6 +367,7 @@ def fetch_impostometro():
         params={"dataInicial": start, "dataFinal": end},
         headers=headers,
         timeout=TIMEOUT,
+        verify=ca_bundle_with_intermediates(),
     )
     response.raise_for_status()
     data = response.json()
