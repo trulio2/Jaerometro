@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T22:19:48.151133Z",
+  "generatedAt": "2026-10-26T22:24:21.768375Z",
   "metrics": [
     {
       "id": "debt",
@@ -125,7 +125,7 @@
       "severity": "normal",
       "icon": "currency",
       "source": "Janjômetro API",
-      "updatedAt": "2026-10-26T22:19:48.151133Z"
+      "updatedAt": "2026-10-26T22:24:21.768375Z"
     },
     {
       "id": "interest",
@@ -3665,11 +3665,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 79862.6016,
+              "value": 79867.8438,
               "open": 80039.6875,
               "high": 80612.2422,
               "low": 79343.6562,
-              "close": 79862.6016
+              "close": 79867.8438
             }
           ]
         }
@@ -4548,11 +4548,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 439300.2126,
+              "value": 439329.0484,
               "open": 416838.6885,
               "high": 443423.7607,
               "low": 394322.1026,
-              "close": 439300.2126
+              "close": 439329.0484
             }
           ]
         }
@@ -6327,42 +6327,42 @@
       "severity": "critical",
       "title": "Dívida Pública em Zona de Risco",
       "message": "Dívida bruta do governo geral em 82,87% do PIB. Acima da barreira de 80%, com trajetória de alta.",
-      "at": "2026-10-26T22:19:48.151133Z"
+      "at": "2026-10-26T22:24:21.768375Z"
     },
     {
       "id": "alert-2",
       "severity": "warning",
       "title": "Juro Real Elevado",
       "message": "Juro real ex-post em 8,77%. Custo de carregamento da dívida pressiona o resultado fiscal.",
-      "at": "2026-10-26T22:19:48.151133Z"
+      "at": "2026-10-26T22:24:21.768375Z"
     },
     {
       "id": "alert-3",
       "severity": "warning",
       "title": "Saída Líquida de Capital",
       "message": "Fluxo financeiro externo negativo em US$ 5,2 bi no mês. Pressão sobre o câmbio.",
-      "at": "2026-10-26T22:19:48.151133Z"
+      "at": "2026-10-26T22:24:21.768375Z"
     },
     {
       "id": "alert-4",
       "severity": "warning",
       "title": "Inflação Acima da Meta",
       "message": "IPCA acumulado em 12 meses em 4,58%. Risco de reprecificação da curva de juros.",
-      "at": "2026-10-26T22:19:48.151133Z"
+      "at": "2026-10-26T22:24:21.768375Z"
     },
     {
       "id": "alert-5",
       "severity": "warning",
       "title": "Estresse no Mercado Acionário",
       "message": "EWZ -8,32% e IBOVESPA -5,22% no mês. Piora na percepção de risco.",
-      "at": "2026-10-26T22:19:48.151133Z"
+      "at": "2026-10-26T22:24:21.768375Z"
     },
     {
       "id": "alert-6",
       "severity": "info",
       "title": "Sistema Iniciado",
       "message": "Monitoramento macro-financeiro carregado a partir da base pública.",
-      "at": "2026-10-26T22:19:48.151133Z"
+      "at": "2026-10-26T22:24:21.768375Z"
     }
   ],
   "news": [
@@ -6413,87 +6413,87 @@
   "sources": {
     "bcb-13762": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:49Z"
+      "updatedAt": "2026-10-26T22:24:22Z"
     },
     "bcb-3698": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:49Z"
+      "updatedAt": "2026-10-26T22:24:23Z"
     },
     "bcb-433": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:50Z"
+      "updatedAt": "2026-10-26T22:24:44Z"
     },
     "bcb-13522": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:51Z"
+      "updatedAt": "2026-10-26T22:24:45Z"
     },
     "bcb-432": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:51Z"
+      "updatedAt": "2026-10-26T22:24:46Z"
     },
     "bcb-13961": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:52Z"
+      "updatedAt": "2026-10-26T22:24:46Z"
     },
     "bcb-4616": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:52Z"
+      "updatedAt": "2026-10-26T22:24:47Z"
     },
     "bcb-1788": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:53Z"
+      "updatedAt": "2026-10-26T22:24:48Z"
     },
     "bcb-4380": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:53Z"
+      "updatedAt": "2026-10-26T22:24:49Z"
     },
     "bcb-5793": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:54Z"
+      "updatedAt": "2026-10-26T22:24:49Z"
     },
     "bcb-7326": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:55Z"
+      "updatedAt": "2026-10-26T22:24:50Z"
     },
     "rfb-revenue": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:58Z"
+      "updatedAt": "2026-10-26T22:24:53Z"
     },
     "yahoo-EWZ": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:58Z"
+      "updatedAt": "2026-10-26T22:24:53Z"
     },
     "yahoo-BVSP": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:58Z"
+      "updatedAt": "2026-10-26T22:24:53Z"
     },
     "yahoo-BTC-USD": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:19:58Z"
+      "updatedAt": "2026-10-26T22:24:53Z"
     },
     "bcb-1": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:20:13Z"
+      "updatedAt": "2026-10-26T22:24:53Z"
     },
     "focus-ipca": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:20:14Z"
+      "updatedAt": "2026-10-26T22:24:55Z"
     },
     "focus-pib-total": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:20:15Z"
+      "updatedAt": "2026-10-26T22:24:56Z"
     },
     "b3-DI1F32": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:20:15Z"
+      "updatedAt": "2026-10-26T22:24:57Z"
     },
     "b3-DI1F35": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:20:16Z"
+      "updatedAt": "2026-10-26T22:24:57Z"
     },
     "janjometro": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:20:16Z"
+      "updatedAt": "2026-10-26T22:24:58Z"
     },
     "impostometro": {
       "status": "missing",
@@ -6502,7 +6502,7 @@
     },
     "news": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:20:17Z"
+      "updatedAt": "2026-10-26T22:24:59Z"
     }
   }
 }
