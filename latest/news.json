@@ -1,0 +1,48 @@
+{
+  "key": "news",
+  "updatedAt": "2026-10-26T22:20:17Z",
+  "value": [
+    {
+      "id": "news-1",
+      "title": "Quatro bombas que Lula deixou e que ameaçam o futuro da economia - Gazeta do Povo",
+      "source": "Gazeta do Povo",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNb1dXanNRQWMtVmdWcC1KaGRWOE9fZFBOZHUzVm1ubW1OdGNmak5tQjBhT0V2b3JWZXpzSkUySllTdkJmUmk5N18zLXJLTVVDcWw4YmVLZDNjWlR3VWtKVTlLNlA0ejdyUy1uM0NwOFFQMFpxY3Zrc2xidFVWTmxtS3hROGZ1dnE2WEc0cVlR?oc=5",
+      "publishedAt": "2026-10-26T13:48:00Z"
+    },
+    {
+      "id": "news-2",
+      "title": "Brasil segue erros fiscais da Europa que levaram a cortes brutais - Folha de S.Paulo",
+      "source": "Folha de S.Paulo",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQblFtWjhyeG05VVlyYVNpenlZSTVsNkJQeFc1WWQ5NWlpdnIyTkJ3TnV5ckdsTnQ1cE5qX3BvWHZYdmNRdl95ZkdtU2p6d1libkJHNnQ0TVJFYkxuQ05wa2ZIUUFaRW8tLU9sMWhVMlU5T0JaSGUyZm9OaTh1RV9LSEFHS2xiUWdQTWlDUmR2MlRRUU1lWDNMb1hCQXYxVmRUcTJlZEhsNm0zNkRVVjFoTDJhSmVZQXlX?oc=5",
+      "publishedAt": "2026-06-21T07:00:00Z"
+    },
+    {
+      "id": "news-3",
+      "title": "Desequilíbrio fiscal dos EUA reforça urgência de controle de gastos no Brasil - O GLOBO",
+      "source": "O GLOBO",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQbmF6eExMRnQwU0VGZnBGdU5hNnlkaTN1NnNTY0N0UzZ0ZDFoQV9yV0tPeTdRZERHQUVEaXA1LWg5M213Mk9nYU83emNwM0JRN3V2THhWcEI5TElpTkVrd3FUYjR5dFBrWi05NmlBcXFUaTJrYUNiZXl6RmhhRG9XZE5qX1NsQUIwUTFyZnpKM05vSWVMZGY3SUIxTkFmNm9IaV9yYldsVnluZE9wUGM2TzRaY1ZfZGFoUUd5SURvdTBmSks0a3dFNjlVNnFiY0Q4ODUw0gHiAUFVX3lxTE4wVWJsWHhPaGNrYzhuQ0tBM3NWN3FfWUJwRHppaDlVS05WbHlFeWhPRjlNc3lVMkx2YmNzaFo0M25tZDFHbm44RFFOZ3JTVFJVV2FsRllnRDRzbGV2dFpPM2Ztb3FHZ1ZWTXlITHR6VEU0VWt5MVZjd1pyTjBTMGNSYTR3UGZaN2hINHBPbVdxRUhPM1I5LXRVelZJUjVzMThGVGdBWWR4UVl0dmEyMWZsaHE2TlZ4c0J3WkJRUV9BdXZ4ZnhQQ19xSzNzaE14M1BXMXdQU2xpMTdVd0F3Z3hiTHc?oc=5",
+      "publishedAt": "2026-09-04T07:00:00Z"
+    },
+    {
+      "id": "news-4",
+      "title": "2027: o ano em que o Brasil vai descobrir se aprendeu alguma coisa - JOTA Info",
+      "source": "JOTA Info",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPU2hQQzVEb1BrdlpIWkZvamNseHh2ekRZZlMwdXhpc0R1TjBSTjZXRXk1U1VwZTQ5Q3ZLVkFmOFpORUJtWVl2bFNGZHVCX0NiaUZISC1IQ1h5QlRRQ3VMZXh2NjF6anNkbUl6LXRPR1VncGU5Wk9KUUxNdlNCZU8yQXc1dThwaDQ1bUtSMjFzVHJ2b0E1dUVsdU9sNjNZaHVXZVNhRVZRMHRoQWdtcnFUcG1Qaw?oc=5",
+      "publishedAt": "2026-08-17T07:00:00Z"
+    },
+    {
+      "id": "news-5",
+      "title": "Títulos dos EUA e Japão sofrem perdas generalizadas, com fiscal e inflação no radar - InfoMoney",
+      "source": "InfoMoney",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOWG5rMEMxYjg4NGdBdThCZnFCNVNJdDBLMkFkX211TnhhcGZtSW5vbnRKQWppT2xjNzhZdW5lMm43NmhDVkdqSlViZkIyOVdCWjQxQzFGRlNpWDhMM3hJM3FTQW44WFYyNTZRRm9lbWlNRkNCQ3NFNDNHQllST2dCZmJ4ZnluT2lCb0RPeHJqQi0yeUJuNUcyTWMzei1nTFRtMUs5cjBhajFZZXdLWk13cE5OQXdYTlJEaVlMN3Jn0gHDAUFVX3lxTFAwVnJ3TTljSlY2ZDRhWWZvVEs2N01hcjdaMTIyUG9tV3dOT3JGWmduNGxUQWhBazh6SHA2ZVZhcmJqRUFIVlRJVmJ2Q0w2OGtHUklfVGZFNlhZNkJ5b01GdkhZV3lPdlgxLVZmU2oyc2ZHNW1GdzRnMEQxZTNPdFNMVEE3ZkdhNnB6V3dmZ1VmMVhzRS1KcDRZY1Z1U3ZJWkxFX1VDcXllbFJHVmZ0UW9SQjJsc3NJaFhkWkdYaU8xSHhWUQ?oc=5",
+      "publishedAt": "2026-09-01T07:00:00Z"
+    },
+    {
+      "id": "news-6",
+      "title": "Risco de recessão no Brasil em 2027: Por que o mercado acendeu o sinal de alerta - ISTOÉ DINHEIRO",
+      "source": "ISTOÉ DINHEIRO",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE4yM1pBTEdCdUJxZmZqaERLeTlYd1ZrNEhTSkRSU2hseVZPLVczRHAxZHBabWh4NFBrUzd2emVEbTRDYnhJdU5vTTBJN2pMZWRBMzZQeDEwcFptMkp4c2V1Q3ptVl9PT1dVTjBvLThlQlptUFJaUlR5RHdB?oc=5",
+      "publishedAt": "2026-08-25T07:00:00Z"
+    }
+  ]
+}
