@@ -615,6 +615,22 @@ def revenue_points(limit: int = 36):
     ]
 
 
+def compact_brl(text: str) -> str:
+    """'R$ 117.595.594,73' -> 'R$ 117,6 mi', to fit a small tile."""
+    digits = re.sub(r"[^\d,]", "", text).replace(",", ".")
+
+    try:
+        value = float(digits)
+    except ValueError:
+        return text
+
+    for size, unit in ((1e12, "tri"), (1e9, "bi"), (1e6, "mi"), (1e3, "mil")):
+        if value >= size:
+            return f"R$ {number(value / size, 1)} {unit}"
+
+    return f"R$ {number(value)}"
+
+
 def number(value: float, decimals: int = 2):
     formatted = f"{value:,.{decimals}f}"
     return formatted.replace(",", "X").replace(".", ",").replace("X", ".")
@@ -1190,8 +1206,10 @@ def main():
         {
             "id": "janjometro",
             "label": "JANJÔMETRO",
-            "description": "Custo total publicado",
-            "value": janjometro or "—",
+            "description": f"Custo total publicado: {janjometro}"
+            if janjometro
+            else "Custo total publicado",
+            "value": compact_brl(janjometro) if janjometro else "—",
             "delta": "Total",
             "deltaLabel": "publicado",
             "trend": "flat",

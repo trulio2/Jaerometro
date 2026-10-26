@@ -10,10 +10,9 @@ import {
   ChartDialog,
   ChartPanel,
   MetricTile,
-  NewsPanel,
-  TickerStrip
+  NewsPanel
 } from '@/components/dashboard'
-import { useDashboard, useRealtimeQuotes } from '@/modules/services'
+import { useDashboard } from '@/modules/services'
 import type {
   DashboardChart,
   DashboardSection,
@@ -39,7 +38,8 @@ const overviewMetricIds = [
   'selic',
   'real-rate',
   'flow',
-  'interest'
+  'interest',
+  'janjometro'
 ]
 const overviewChartIds = [
   'usd-12m',
@@ -139,7 +139,6 @@ function ChartGrid({
 function DashboardSkeleton() {
   return (
     <div className="dashboard">
-      <div className="ticker panel skeleton skeleton-ticker" />
       <div className="skeleton-tabs" />
       <div className="overview">
         <div className="overview-metrics">
@@ -162,11 +161,6 @@ function Home() {
   const { tab: tabPath = '' } = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
   const { snapshot, status, error, refresh } = useDashboard()
-  const {
-    quotes: liveQuotes,
-    btc,
-    impostometro: liveImpostometro
-  } = useRealtimeQuotes()
   const tab = tabs.find((item) => item.path === tabPath)
 
   if (!tab) return <Navigate to="/" replace />
@@ -205,14 +199,6 @@ function Home() {
 
   return (
     <div className="dashboard">
-      <TickerStrip
-        generatedAt={snapshot.generatedAt}
-        metrics={snapshot.metrics}
-        liveQuotes={liveQuotes}
-        btc={btc}
-        impostometro={liveImpostometro ?? snapshot.impostometro}
-      />
-
       <DashboardTabs snapshot={snapshot} />
 
       {tab.id === 'overview' ? (

@@ -4,8 +4,7 @@ import type {
   DashboardFeed,
   ImpostometroData,
   LiveQuote,
-  LiveStatus,
-  MetricCard
+  LiveStatus
 } from '@/types'
 import {
   formatAsOf,
@@ -13,8 +12,9 @@ import {
   formatSignedPercent,
   toneFor
 } from './metricFormat'
+import './TickerStrip.css'
 
-type TickerStatus = LiveStatus | 'pending' | 'snapshot'
+type TickerStatus = LiveStatus | 'pending'
 
 interface TickerQuote {
   id: string
@@ -24,13 +24,14 @@ interface TickerQuote {
   positiveIsGood?: boolean
   status: TickerStatus
   detail?: string
+  // A second reading of the same asset, e.g. BTC in reais.
+  secondary?: string
 }
 
 const statusLabel: Record<TickerStatus, string> = {
   live: 'Ao vivo',
   stale: 'Atrasado',
-  pending: 'Aguardando',
-  snapshot: 'Snapshot diário'
+  pending: 'Aguardando'
 }
 
 const feedLabel: Record<DashboardFeed, string> = {
@@ -89,34 +90,20 @@ function fromLive(id: string, label: string, live?: LiveQuote): TickerQuote {
   }
 }
 
-function fromBtc(btc: BtcQuote | null | undefined): TickerQuote[] {
-  if (!btc) {
-    return [
-      { id: 'btc-usd', label: 'BTC/USD', value: '—', status: 'pending' },
-      { id: 'btc-brl', label: 'BTC/BRL', value: '—', status: 'pending' }
-    ]
+function fromBtc(btc: BtcQuote | null | undefined): TickerQuote {
+  if (!btc) return { id: 'btc', label: 'BTC', value: '—', status: 'pending' }
+
+  return {
+    id: 'btc',
+    label: 'BTC',
+    value: formatQuote(btc.usd, { decimals: 0, prefix: 'US$ ' }),
+    change: btc.usdChangePercent,
+    status: btc.status,
+    secondary: formatQuote(btc.brl, { decimals: 0, prefix: 'R$ ' }),
+    detail:
+      `BTC/BRL ${formatSignedPercent(btc.brlChangePercent)} · ` +
+      `${btc.source} · ${formatAsOf(btc.updatedAt)}`
   }
-
-  const detail = `${btc.source} · ${formatAsOf(btc.updatedAt)}`
-
-  return [
-    {
-      id: 'btc-usd',
-      label: 'BTC/USD',
-      value: formatQuote(btc.usd, { decimals: 0, prefix: 'US$ ' }),
-      change: btc.usdChangePercent,
-      status: btc.status,
-      detail
-    },
-    {
-      id: 'btc-brl',
-      label: 'BTC/BRL',
-      value: formatQuote(btc.brl, { decimals: 0, prefix: 'R$ ' }),
-      change: btc.brlChangePercent,
-      status: btc.status,
-      detail
-    }
-  ]
 }
 
 function TickerItem({ quote }: { quote: TickerQuote }) {
@@ -140,6 +127,9 @@ function TickerItem({ quote }: { quote: TickerQuote }) {
         <span className={`ticker-change tone-${tone}`}>
           {formatSignedPercent(quote.change)}
         </span>
+      )}
+      {quote.secondary && (
+        <span className="ticker-secondary">{quote.secondary}</span>
       )}
     </li>
   )
@@ -171,45 +161,31 @@ function ImpostometroItem({ data }: { data: ImpostometroData }) {
 
 export default function TickerStrip({
   generatedAt,
-  metrics,
   liveQuotes,
   btc,
   impostometro
 }: {
   generatedAt: string
-  metrics: MetricCard[]
   liveQuotes?: Record<string, LiveQuote>
   btc?: BtcQuote | null
   impostometro?: ImpostometroData | null
 }) {
   const now = useNow()
   const feed = feedStatus(generatedAt, now)
-  const janjometro = metrics.find((metric) => metric.id === 'janjometro')
   const quotes = [
     ...liveQuoteLabels.map(({ id, label }) =>
       fromLive(id, label, liveQuotes?.[id])
     ),
-    ...fromBtc(btc)
+    fromBtc(btc)
   ]
 
   return (
-    <header className="ticker panel">
+    <div className="ticker">
       <ul className="ticker-list" aria-label="Cotações ao vivo">
         {quotes.map((quote) => (
           <TickerItem key={quote.id} quote={quote} />
         ))}
         {impostometro && <ImpostometroItem data={impostometro} />}
-        {janjometro && (
-          <TickerItem
-            quote={{
-              id: janjometro.id,
-              label: janjometro.label,
-              value: janjometro.value,
-              status: 'snapshot',
-              detail: `${janjometro.description} · ${janjometro.source}`
-            }}
-          />
-        )}
       </ul>
 
       <div className="ticker-meta">
@@ -223,6 +199,6 @@ export default function TickerStrip({
           {feedLabel[feed]}
         </span>
       </div>
-    </header>
+    </div>
   )
 }

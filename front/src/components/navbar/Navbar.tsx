@@ -1,4 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
+// Imported directly: the dashboard index would pull the chart libraries
+// into the eagerly loaded navbar.
+import LiveTicker from '@/components/dashboard/LiveTicker'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -16,6 +19,7 @@ export default function Navbar() {
       <Link to="/" className="navbar-brand">
         Jaerômetro
       </Link>
+      {isLinkActive('/') && <LiveTicker />}
       <ul className="navbar-links">
         {links.map((link) => (
           <li key={link.to}>

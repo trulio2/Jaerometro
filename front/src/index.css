@@ -15,6 +15,19 @@
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
+  /* Dashboard palette, shared by the dashboard and the navbar ticker. */
+  --dash-bg: #060a0b;
+  --dash-panel: #0a1012;
+  --dash-panel-strong: #0d1618;
+  --dash-border: #1a2b2e;
+  --dash-border-strong: #244044;
+  --dash-text: #d9e8e9;
+  --dash-muted: #69878a;
+  --dash-cyan: #2de2e6;
+  --dash-green: #35d07f;
+  --dash-yellow: #f5c542;
+  --dash-red: #ff4d5e;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: dark;

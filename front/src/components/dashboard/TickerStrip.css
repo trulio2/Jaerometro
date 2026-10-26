@@ -1,0 +1,177 @@
+.feed {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+
+.feed::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.feed-live {
+  color: var(--dash-green);
+}
+
+.feed-stale {
+  color: var(--dash-yellow);
+}
+
+.feed-offline {
+  color: var(--dash-red);
+}
+
+/* Live quotes, shown inline in the navbar on dashboard routes. */
+
+.ticker {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 0 4px 0 12px;
+  border-left: 1px solid var(--dash-border);
+  text-align: left;
+}
+
+.ticker-list {
+  /* Fade the right edge so quotes cut off by the width read as scrollable. */
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ticker-list::-webkit-scrollbar {
+  display: none;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 4px 8px;
+  border-right: 1px solid var(--dash-border);
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+
+.ticker-item:first-child {
+  padding-left: 0;
+}
+
+.ticker-dot {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.ticker-live {
+  background: var(--dash-cyan);
+  box-shadow: 0 0 8px rgba(45, 226, 230, 0.7);
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+.ticker-stale {
+  background: var(--dash-yellow);
+}
+
+.ticker-pending {
+  border: 1px solid var(--dash-muted);
+}
+
+.ticker-label {
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  color: var(--dash-muted);
+}
+
+.ticker-value {
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--dash-text);
+}
+
+.ticker-change {
+  font-size: 10px;
+}
+
+.ticker-secondary {
+  font-size: 10px;
+  color: var(--dash-muted);
+}
+
+.ticker-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--dash-text);
+}
+
+@keyframes live-pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-live {
+    animation: none;
+  }
+}
+
+.ticker .tone-positive {
+  color: var(--dash-green);
+}
+
+.ticker .tone-negative {
+  color: var(--dash-red);
+}
+
+.ticker .tone-neutral {
+  color: var(--dash-muted);
+}
+
+/* The UTC clock is a nice-to-have; give its width to the quotes. */
+
+@media (max-width: 1599px) {
+  .ticker-meta time {
+    display: none;
+  }
+}
+
+/* Phones: the quotes move to their own line under the brand and links. */
+
+@media (max-width: 760px) {
+  .navbar:has(.ticker) {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .navbar .ticker {
+    order: 3;
+    flex-basis: 100%;
+    padding: 0;
+    border-left: 0;
+  }
+}
