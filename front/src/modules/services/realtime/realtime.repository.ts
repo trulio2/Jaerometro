@@ -90,7 +90,7 @@ export default class RealtimeRepository implements IRealtimeRepository {
       updatedAt,
       source: 'AwesomeAPI',
       status: statusFor(updatedAt),
-      positiveIsGood: false,
+      positiveIsGood: true,
       decimals: 2,
       prefix: 'R$ '
     }
