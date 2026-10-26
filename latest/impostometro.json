@@ -1,9 +1,9 @@
 {
   "key": "impostometro",
-  "updatedAt": "2026-10-26T23:29:45Z",
+  "updatedAt": "2026-10-26T23:37:31Z",
   "value": {
-    "value": 3324383859490.3,
+    "value": 3324383859490.3003,
     "incrementPerSecond": 136990.07859135413,
-    "updatedAt": "2026-10-26T23:29:45Z"
+    "updatedAt": "2026-10-26T23:37:31Z"
   }
 }

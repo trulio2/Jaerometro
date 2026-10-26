@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T23:29:01.215390Z",
+  "generatedAt": "2026-10-26T23:37:08.601337Z",
   "metrics": [
     {
       "id": "debt",
@@ -126,7 +126,7 @@
       "severity": "normal",
       "icon": "currency",
       "source": "Janjômetro API",
-      "updatedAt": "2026-10-26T23:29:01.215390Z"
+      "updatedAt": "2026-10-26T23:37:08.601337Z"
     },
     {
       "id": "interest",
@@ -1902,7 +1902,7 @@
               "label": "10/26",
               "value": 34.15,
               "open": 31.71,
-              "high": 34.505,
+              "high": 34.51,
               "low": 31.4,
               "close": 34.15
             }
@@ -3666,11 +3666,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 79931.2188,
+              "value": 80024.6875,
               "open": 80039.6875,
               "high": 80612.2422,
               "low": 79343.6562,
-              "close": 79931.2188
+              "close": 80024.6875
             }
           ]
         }
@@ -4549,11 +4549,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 439677.6553,
+              "value": 440191.7985,
               "open": 416838.6885,
               "high": 443423.7607,
               "low": 394322.1026,
-              "close": 439677.6553
+              "close": 440191.7985
             }
           ]
         }
@@ -7299,17 +7299,17 @@
             {
               "date": "2028",
               "label": "jan/28",
-              "value": 12.891
+              "value": 12.856
             },
             {
               "date": "2029",
               "label": "jan/29",
-              "value": 12.652
+              "value": 12.648
             },
             {
               "date": "2030",
               "label": "jan/30",
-              "value": 12.64
+              "value": 12.644
             },
             {
               "date": "2031",
@@ -7324,7 +7324,7 @@
             {
               "date": "2033",
               "label": "jan/33",
-              "value": 12.737
+              "value": 12.745
             },
             {
               "date": "2034",
@@ -7407,38 +7407,46 @@
       "severity": "critical",
       "title": "Dívida Pública em Zona de Risco",
       "message": "Dívida bruta do governo geral em 82,87% do PIB. Acima da barreira de 80%, com trajetória de alta.",
-      "at": "2026-10-26T23:29:01.215390Z"
+      "at": "2026-10-26T23:37:08.601337Z"
     },
     {
       "id": "alert-5",
       "severity": "warning",
       "title": "Juro Real Elevado",
       "message": "Juro real ex-post em 8,77%. Custo de carregamento da dívida pressiona o resultado fiscal.",
-      "at": "2026-10-26T23:29:01.215390Z"
+      "at": "2026-10-26T23:37:08.601337Z"
     },
     {
       "id": "alert-6",
       "severity": "warning",
       "title": "Saída Líquida de Capital",
       "message": "Fluxo financeiro externo negativo em US$ 5,2 bi no mês. Pressão sobre o câmbio.",
-      "at": "2026-10-26T23:29:01.215390Z"
+      "at": "2026-10-26T23:37:08.601337Z"
     },
     {
       "id": "alert-7",
       "severity": "warning",
       "title": "Inflação Acima da Meta",
       "message": "IPCA acumulado em 12 meses em 4,58%. Risco de reprecificação da curva de juros.",
-      "at": "2026-10-26T23:29:01.215390Z"
+      "at": "2026-10-26T23:37:08.601337Z"
     },
     {
       "id": "alert-8",
       "severity": "warning",
       "title": "Estresse no Mercado Acionário",
       "message": "EWZ -8,32% e IBOVESPA -5,22% no mês. Piora na percepção de risco.",
-      "at": "2026-10-26T23:29:01.215390Z"
+      "at": "2026-10-26T23:37:08.601337Z"
     }
   ],
   "news": [
+    {
+      "id": "e2e842aade1b",
+      "title": "Com eleição, dólar tem maior alta desde 1999 e Ibovespa despenca 14%",
+      "source": "UOL Economia",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNWHVSM2NIWFpPXzVsVFR2d1l4Z3FZNmh1Z0VlQ1ZlLUNpand2Vjg4N0RsVVFMUVdmWlY3aVJkSjNZY3dLVDk2UC1sQkJJTnJUMTBJVDBXaVVOaDd2NGctckYySUs5ODgzdVpYWW5ISmlBRVdaRzVuRFlrUmFqckl5LXotMVJhTWFRQ3hqLUp1Mkl5cWtlUEJpbjZPR21FOUZvWUhyMlI5OTdoZGNlQ1RYMHQyOXgwMzhHd0hjWXJsMzFUS05XZUx4eFFXcEZJVXhRYnF6SQ?oc=5",
+      "publishedAt": "2026-10-26T23:27:42Z",
+      "topic": "Mercado"
+    },
     {
       "id": "8cc0f28d0814",
       "title": "Focus reduz IPCA, PIB e câmbio de 2026, mas Selic fica estável",
@@ -7454,6 +7462,14 @@
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPSGJHdE1fSW5BYWJ6Y1dtamMzX1RYYWtpQU4yOVF4VVhhRUlnbVlUdU5OWXFrVkYzd0x3V0pKbzI1Q0tLemxqdXZNdDFVeDk3RFNlMTh1MU5SYU5HWlFpOE5icjFnWExJYXN2NHhOaDZqajhoMzNYSFFadFpLZ1NFOW1LcVVhVWg2bVBWb1ZsOXlMWUZGdDM3d2hYOS1GZ3JsRG5tWFBFeU1qYkN2RFJaNlNxOXpyZw?oc=5",
       "publishedAt": "2026-10-26T23:10:37Z",
       "topic": "Câmbio"
+    },
+    {
+      "id": "001658f141ee",
+      "title": "Lula tem chance de ouro de fazer ajuste e preservar direitos, diz economista",
+      "source": "Band",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOdVRiRXRXSUFIMWdzWE5TRDlqRWtNNWdQYllsT3ctVzBIOHUxNUhqUUI2V1ZOa2NUc1A3c1ZPSDhRbW9INzZ0TGd6ZzdVTzYzOTRlQXZRRFVuU2RxWUJ6YWM4RU5mWE01b1dPOWNmWENnd2RWenFHZGNXVFhUQXhrNV9odFNJdEViUjUzR3EtSFhjeU41OEZSc1ltQzI4d3IzXzBaNFJ3UlR3WHNrZXgtRHZUeS1sbG40?oc=5",
+      "publishedAt": "2026-10-26T22:57:00Z",
+      "topic": "Fiscal"
     },
     {
       "id": "893cf299738c",
@@ -7568,14 +7584,6 @@
       "topic": "Juros"
     },
     {
-      "id": "0988cb72888f",
-      "title": "Os desafios da economia que Lula terá que enfrentar em 4º mandato (e o que ele propõe)",
-      "source": "BBC",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1MQWViamdocER1RmFlc2JlRDk5THdBdEF0MUZ1emd2RmJoOEZQUWJMa1NTZ0hxTnNNY0gxZHJmMUdKSlJ6bzg2WFowRzFEMTk3OFE3dy0xY2l3UW4xRklHSzFzQQ?oc=5",
-      "publishedAt": "2026-10-26T21:25:41Z",
-      "topic": "Fiscal"
-    },
-    {
       "id": "b90969db3772",
       "title": "Tombo da bolsa apaga R$ 663 bilhões do valor das empresas do Ibovespa",
       "source": "Valor Investe",
@@ -7605,14 +7613,6 @@
       "source": "InfoMoney",
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxONWg0UEtVWmVuLTBfV3pfYkdVQ1k0STZVLWJWcXNmWDc1dlc5Q3lQVW1qcUluMzQ0R0QwWXFycnlPMG9reUtmaExtN1FWY2xjeTR5Q0FSU1F3SlNJRUJXeWNlUmx5VzJLTUlQU1oxX1V6WWVCV05QT3Y3SVVhbkdDWWo1VC1JQ3NsMkU0YjVTZjVTMTdYN01DWFZVeWtQaXpnWUE2UXZFSksxVlFrTzRFV0VKX25GMG5sdnR3SdIBwgFBVV95cUxQMEFtbWpRa1Uzb010THYteUM3Ujl1eTNUeXlqOHRSUkZWMHQyYUhFdmZkRk1GTXQ5VkhLakJRWmdsemh3QmpaM1JvOEdWTGFZTjNXd20wNUlybTJZVV93bzVYbGJ0My1Zak9RVkJXaHpYbEZKdWVjU2ZZcHduMkFQXy1heS1pd0U1NExhclVUYTBlcHkxZENHRUEtOVBQSU1VeUhrYzdCYmdsQzhRNzFxWDE4UW1NSW1iNl9nYlJBQVVQQQ?oc=5",
       "publishedAt": "2026-10-26T21:14:51Z",
-      "topic": "Mercado"
-    },
-    {
-      "id": "3c585a8b51e5",
-      "title": "Ibovespa Tem Maior Queda desde 2020 e Dólar Dispara no 1º Pregão após Eleições",
-      "source": "Forbes Brasil",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQQ0VJNXBSTlhGRmVjR1BpMUJTTW1EbXUxTVItREh4enVHRXY5ck00Nk85ak02YVBEWjZXQmNQb1E5eDZsWl9uRUJiWlNUdGZIeGxWR3BXSUNfbm9oeUp5ZEwzQm9kbjVKbllfOWcxeW5HR0REdzZSNElsMzA3UEJHa25jRGFMMUFBQnZLUzlpY2J4d28tNW9LVnYtLUpzMTU5cTMyWjZ2Z3BFZEc1T3NKcEFMM0NoWDZhUFVOLVpUZw?oc=5",
-      "publishedAt": "2026-10-26T21:13:31Z",
       "topic": "Mercado"
     },
     {
@@ -7681,146 +7681,146 @@
     }
   ],
   "impostometro": {
-    "value": 3324383859490.3,
+    "value": 3324383859490.3003,
     "incrementPerSecond": 136990.07859135413,
-    "updatedAt": "2026-10-26T23:29:45Z"
+    "updatedAt": "2026-10-26T23:37:31Z"
   },
   "sources": {
     "bcb-13762": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:02Z"
+      "updatedAt": "2026-10-26T23:37:09Z"
     },
     "bcb-13761": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:02Z"
+      "updatedAt": "2026-10-26T23:37:09Z"
     },
     "bcb-3698": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:03Z"
+      "updatedAt": "2026-10-26T23:37:10Z"
     },
     "bcb-433": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:04Z"
+      "updatedAt": "2026-10-26T23:37:11Z"
     },
     "bcb-13522": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:05Z"
+      "updatedAt": "2026-10-26T23:37:12Z"
     },
     "bcb-432": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:05Z"
+      "updatedAt": "2026-10-26T23:37:12Z"
     },
     "bcb-13961": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:06Z"
+      "updatedAt": "2026-10-26T23:37:13Z"
     },
     "bcb-4616": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:07Z"
+      "updatedAt": "2026-10-26T23:37:14Z"
     },
     "bcb-4606": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:07Z"
+      "updatedAt": "2026-10-26T23:37:14Z"
     },
     "bcb-1788": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:08Z"
+      "updatedAt": "2026-10-26T23:37:15Z"
     },
     "bcb-4380": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:08Z"
+      "updatedAt": "2026-10-26T23:37:16Z"
     },
     "bcb-5793": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:09Z"
+      "updatedAt": "2026-10-26T23:37:16Z"
     },
     "bcb-5727": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:29Z"
+      "updatedAt": "2026-10-26T23:37:17Z"
     },
     "bcb-7326": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:29Z"
+      "updatedAt": "2026-10-26T23:37:17Z"
     },
     "rfb-revenue": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:32Z"
+      "updatedAt": "2026-10-26T23:37:20Z"
     },
     "yahoo-EWZ": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:32Z"
+      "updatedAt": "2026-10-26T23:37:20Z"
     },
     "yahoo-BVSP": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:32Z"
+      "updatedAt": "2026-10-26T23:37:20Z"
     },
     "yahoo-BTC-USD": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:33Z"
+      "updatedAt": "2026-10-26T23:37:20Z"
     },
     "bcb-1": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:33Z"
+      "updatedAt": "2026-10-26T23:37:21Z"
     },
     "focus-ipca": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:34Z"
+      "updatedAt": "2026-10-26T23:37:22Z"
     },
     "focus-pib-total": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:35Z"
+      "updatedAt": "2026-10-26T23:37:22Z"
     },
     "b3-DI1F27": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:35Z"
+      "updatedAt": "2026-10-26T23:37:23Z"
     },
     "b3-DI1F28": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:36Z"
+      "updatedAt": "2026-10-26T23:37:25Z"
     },
     "b3-DI1F29": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:37Z"
+      "updatedAt": "2026-10-26T23:37:25Z"
     },
     "b3-DI1F30": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:38Z"
+      "updatedAt": "2026-10-26T23:37:26Z"
     },
     "b3-DI1F31": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:38Z"
+      "updatedAt": "2026-10-26T23:37:27Z"
     },
     "b3-DI1F32": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:40Z"
+      "updatedAt": "2026-10-26T23:37:27Z"
     },
     "b3-DI1F33": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:41Z"
+      "updatedAt": "2026-10-26T23:37:28Z"
     },
     "b3-DI1F34": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:41Z"
+      "updatedAt": "2026-10-26T23:37:29Z"
     },
     "b3-DI1F35": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:42Z"
+      "updatedAt": "2026-10-26T23:37:29Z"
     },
     "b3-IBOV": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:43Z"
+      "updatedAt": "2026-10-26T23:37:30Z"
     },
     "janjometro": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:44Z"
+      "updatedAt": "2026-10-26T23:37:31Z"
     },
     "impostometro": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:45Z"
+      "updatedAt": "2026-10-26T23:37:31Z"
     },
     "news": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:29:47Z"
+      "updatedAt": "2026-10-26T23:37:34Z"
     }
   }
 }
