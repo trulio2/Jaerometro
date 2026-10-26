@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T23:20:22.825464Z",
+  "generatedAt": "2026-10-26T23:25:20.910681Z",
   "metrics": [
     {
       "id": "debt",
@@ -126,7 +126,7 @@
       "severity": "normal",
       "icon": "currency",
       "source": "Janjômetro API",
-      "updatedAt": "2026-10-26T23:20:22.825464Z"
+      "updatedAt": "2026-10-26T23:25:20.910681Z"
     },
     {
       "id": "interest",
@@ -1902,7 +1902,7 @@
               "label": "10/26",
               "value": 34.15,
               "open": 31.71,
-              "high": 34.51,
+              "high": 34.505,
               "low": 31.4,
               "close": 34.15
             }
@@ -3666,11 +3666,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 79768.3984,
+              "value": 79861.8906,
               "open": 80039.6875,
               "high": 80612.2422,
               "low": 79343.6562,
-              "close": 79768.3984
+              "close": 79861.8906
             }
           ]
         }
@@ -4549,11 +4549,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 438782.0291,
+              "value": 439296.3016,
               "open": 416838.6885,
               "high": 443423.7607,
               "low": 394322.1026,
-              "close": 438782.0291
+              "close": 439296.3016
             }
           ]
         }
@@ -7304,7 +7304,7 @@
             {
               "date": "2029",
               "label": "jan/29",
-              "value": 12.652
+              "value": 12.64
             },
             {
               "date": "2030",
@@ -7324,17 +7324,17 @@
             {
               "date": "2033",
               "label": "jan/33",
-              "value": 12.737
+              "value": 12.75
             },
             {
               "date": "2034",
               "label": "jan/34",
-              "value": 12.749
+              "value": 12.766
             },
             {
               "date": "2035",
               "label": "jan/35",
-              "value": 12.745
+              "value": 12.758
             }
           ]
         }
@@ -7385,7 +7385,7 @@
       "id": "alert-1",
       "severity": "critical",
       "title": "Disparada nos Juros Futuros",
-      "message": "DI jan/32 saltou de 12,69% para 15,24% em 26/10 (DI jan/32 +255 bps, DI jan/35 +245 bps). Mercado exige prêmio maior para financiar a dívida.",
+      "message": "DI jan/32 saltou de 12,69% para 15,24% em 26/10 (DI jan/32 +255 bps, DI jan/35 +244 bps). Mercado exige prêmio maior para financiar a dívida.",
       "at": "2026-10-26"
     },
     {
@@ -7407,38 +7407,46 @@
       "severity": "critical",
       "title": "Dívida Pública em Zona de Risco",
       "message": "Dívida bruta do governo geral em 82,87% do PIB. Acima da barreira de 80%, com trajetória de alta.",
-      "at": "2026-10-26T23:20:22.825464Z"
+      "at": "2026-10-26T23:25:20.910681Z"
     },
     {
       "id": "alert-5",
       "severity": "warning",
       "title": "Juro Real Elevado",
       "message": "Juro real ex-post em 8,77%. Custo de carregamento da dívida pressiona o resultado fiscal.",
-      "at": "2026-10-26T23:20:22.825464Z"
+      "at": "2026-10-26T23:25:20.910681Z"
     },
     {
       "id": "alert-6",
       "severity": "warning",
       "title": "Saída Líquida de Capital",
       "message": "Fluxo financeiro externo negativo em US$ 5,2 bi no mês. Pressão sobre o câmbio.",
-      "at": "2026-10-26T23:20:22.825464Z"
+      "at": "2026-10-26T23:25:20.910681Z"
     },
     {
       "id": "alert-7",
       "severity": "warning",
       "title": "Inflação Acima da Meta",
       "message": "IPCA acumulado em 12 meses em 4,58%. Risco de reprecificação da curva de juros.",
-      "at": "2026-10-26T23:20:22.825464Z"
+      "at": "2026-10-26T23:25:20.910681Z"
     },
     {
       "id": "alert-8",
       "severity": "warning",
       "title": "Estresse no Mercado Acionário",
       "message": "EWZ -8,32% e IBOVESPA -5,22% no mês. Piora na percepção de risco.",
-      "at": "2026-10-26T23:20:22.825464Z"
+      "at": "2026-10-26T23:25:20.910681Z"
     }
   ],
   "news": [
+    {
+      "id": "8cc0f28d0814",
+      "title": "Focus reduz IPCA, PIB e câmbio de 2026, mas Selic fica estável",
+      "source": "Revista Investidor Institucional",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPN2pVTjk1UmUxaTVMMU9TOHk3eU1TalVySkU2SXFCV2RDcV91ZTJjRGFKZDZPZUdNY004ZFdNN24xUlU0em8tZy1VSVZPc2xRVHF6NHJfeUFVMlJOMUhfdFRFWkhFN3VpYzhueEw2NUZ0VnNkZUttYVFXVURrZ2xPblRwaXhfYy1ic0xXN2NzWkhnQ0VjU2dnd3doU0s1Si1EanBVY0xSd20zdHVqbmdPRXlPZTNYWHhyVzVCdWRuYXNzc2lyX1VQTVNB?oc=5",
+      "publishedAt": "2026-10-26T23:23:01Z",
+      "topic": "Juros"
+    },
     {
       "id": "6874c90c8a53",
       "title": "Após reeleição de Lula, dólar dispara e mercado reage com forte queda do real",
@@ -7475,7 +7483,7 @@
       "id": "7a21a3e1850c",
       "title": "‘Apreensivo’, setor de cana espera de Lula ajuste fiscal e subsídios",
       "source": "Globo Rural",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPcWNoYzJ4SkFRMXdtcHZ0ODBISm5OZ3piMUViZnZ3MFFYZk1DeXRrQ0ZrNWpPUXVCVXluNUkyOUFQZHdKcEFvcF9SdnpLV1RRMTZvMm9RNjZlaG1lOUdDbl9NSWNHVTRmRmIyYUV5R0w0c1I4bkVudmsxQS16UktNcm9IWm5CQmppbUFnOXRpSl91LXNYVUNjek1aV1NLeFJYaWVMTEtFQVdueFUxSnNKR2drVEhrVEdMUk1pNmlWdFVrOUXSAdIBQVVfeXFMTUVxdm93UVMxNEgtaWJWNndzVE9VdURuS2ZHZ2FOdUlEa2JsZW4xRFg1WjU4ODl6WXlFeW9yNE4teHhDenRNOU9nNnZyWk9mbWZwS2JHaWJKNXFqQWpvQkFaNmJmdlJPTlVRUlBjVGUwVGhoYWxqUVYwdVZvVkxIVnJKa2lqaERMbS1DbEUxUXFsUzgwd1JmbGF6bWc3eUdnMW9MWTFYS1FLYjRUdHdmY2pTRjRRbjRyckVvdUFaUDFPZ1g3NHBfTnJxbjZ4NGJfazlB?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNRXF2b3dRUzE0SC1pYlY2d3NUT1V1RG5LZkdnYU51SURrYmxlbjFEWDVaNTg4OXpZeUV5b3I0Ti14eEN6dE05T2c2dnJaT2ZtZnBLYkdpYko1cWpBam9CQVo2YmZ2Uk9OVVFSUGNUZTBUaGhhbGpRVjB1Vm9WTEhWckpraWpoRExtLUNsRTFRcWxTODB3UmZsYXptZzd5R2cxb0xZMVhLUUtiNFR0d2ZjalNGNFFuNHJyRW91QVpQMU9nWDc0cF9OcnFuNng0Yl9rOUHSAdIBQVVfeXFMTUVxdm93UVMxNEgtaWJWNndzVE9VdURuS2ZHZ2FOdUlEa2JsZW4xRFg1WjU4ODl6WXlFeW9yNE4teHhDenRNOU9nNnZyWk9mbWZwS2JHaWJKNXFqQWpvQkFaNmJmdlJPTlVRUlBjVGUwVGhoYWxqUVYwdVZvVkxIVnJKa2lqaERMbS1DbEUxUXFsUzgwd1JmbGF6bWc3eUdnMW9MWTFYS1FLYjRUdHdmY2pTRjRRbjRyckVvdUFaUDFPZ1g3NHBfTnJxbjZ4NGJfazlB?oc=5",
       "publishedAt": "2026-10-26T22:05:45Z",
       "topic": "Fiscal"
     },
@@ -7632,14 +7640,6 @@
       "topic": "Juros"
     },
     {
-      "id": "be28e6a9c82f",
-      "title": "Ibovespa desaba após reeleição de Lula e juros futuros disparam com temor fiscal",
-      "source": "ADVFN",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNOFlrckY2aXpDeWRyTDhVN1FPT29DWjJlZFRZbnV2ZlozRm0yczBUU3pMeWt5MXhTS2J5MGVoWUlNY1NvQTctMTFUbngzRkNZWVJyYlQyVzh1Y2JreWlMQmNFNEVjVDlNemVzc2ZBN2Y3OVltdVVXZWJfLURweW5DUXlreVcwYmhSQS1kT2tDbEUxYnlna0Y1RnNHLXpDUldXcHFlRDU4ZXBYbnF3ZlFTNWxoNkViYmc?oc=5",
-      "publishedAt": "2026-10-26T20:36:52Z",
-      "topic": "Juros"
-    },
-    {
       "id": "476dccf7f8e7",
       "title": "Tesouro Direto sai do ar com taxas em queda após maior alta da série histórica",
       "source": "InfoMoney",
@@ -7681,146 +7681,146 @@
     }
   ],
   "impostometro": {
-    "value": 3324383859490.2993,
+    "value": 3324383859490.301,
     "incrementPerSecond": 136990.07859135413,
-    "updatedAt": "2026-10-26T23:23:13Z"
+    "updatedAt": "2026-10-26T23:25:50Z"
   },
   "sources": {
     "bcb-13762": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:20:35Z"
+      "updatedAt": "2026-10-26T23:25:21Z"
     },
     "bcb-13761": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:21:41Z"
+      "updatedAt": "2026-10-26T23:25:22Z"
     },
     "bcb-3698": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:21:42Z"
+      "updatedAt": "2026-10-26T23:25:23Z"
     },
     "bcb-433": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:21:42Z"
+      "updatedAt": "2026-10-26T23:25:24Z"
     },
     "bcb-13522": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:21:43Z"
+      "updatedAt": "2026-10-26T23:25:25Z"
     },
     "bcb-432": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:15Z"
+      "updatedAt": "2026-10-26T23:25:26Z"
     },
     "bcb-13961": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:53Z"
+      "updatedAt": "2026-10-26T23:25:26Z"
     },
     "bcb-4616": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:54Z"
+      "updatedAt": "2026-10-26T23:25:27Z"
     },
     "bcb-4606": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:54Z"
+      "updatedAt": "2026-10-26T23:25:28Z"
     },
     "bcb-1788": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:55Z"
+      "updatedAt": "2026-10-26T23:25:29Z"
     },
     "bcb-4380": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:55Z"
+      "updatedAt": "2026-10-26T23:25:30Z"
     },
     "bcb-5793": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:56Z"
+      "updatedAt": "2026-10-26T23:25:31Z"
     },
     "bcb-5727": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:57Z"
+      "updatedAt": "2026-10-26T23:25:31Z"
     },
     "bcb-7326": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:57Z"
+      "updatedAt": "2026-10-26T23:25:32Z"
     },
     "rfb-revenue": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:59Z"
+      "updatedAt": "2026-10-26T23:25:35Z"
     },
     "yahoo-EWZ": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:59Z"
+      "updatedAt": "2026-10-26T23:25:35Z"
     },
     "yahoo-BVSP": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:59Z"
+      "updatedAt": "2026-10-26T23:25:36Z"
     },
     "yahoo-BTC-USD": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:22:59Z"
+      "updatedAt": "2026-10-26T23:25:36Z"
     },
     "bcb-1": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:02Z"
+      "updatedAt": "2026-10-26T23:25:36Z"
     },
     "focus-ipca": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:03Z"
+      "updatedAt": "2026-10-26T23:25:38Z"
     },
     "focus-pib-total": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:04Z"
+      "updatedAt": "2026-10-26T23:25:39Z"
     },
     "b3-DI1F27": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:05Z"
+      "updatedAt": "2026-10-26T23:25:40Z"
     },
     "b3-DI1F28": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:05Z"
+      "updatedAt": "2026-10-26T23:25:41Z"
     },
     "b3-DI1F29": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:06Z"
+      "updatedAt": "2026-10-26T23:25:42Z"
     },
     "b3-DI1F30": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:07Z"
+      "updatedAt": "2026-10-26T23:25:43Z"
     },
     "b3-DI1F31": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:08Z"
+      "updatedAt": "2026-10-26T23:25:44Z"
     },
     "b3-DI1F32": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:08Z"
+      "updatedAt": "2026-10-26T23:25:46Z"
     },
     "b3-DI1F33": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:10Z"
+      "updatedAt": "2026-10-26T23:25:47Z"
     },
     "b3-DI1F34": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:10Z"
+      "updatedAt": "2026-10-26T23:25:47Z"
     },
     "b3-DI1F35": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:11Z"
+      "updatedAt": "2026-10-26T23:25:48Z"
     },
     "b3-IBOV": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:12Z"
+      "updatedAt": "2026-10-26T23:25:49Z"
     },
     "janjometro": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:12Z"
+      "updatedAt": "2026-10-26T23:25:49Z"
     },
     "impostometro": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:13Z"
+      "updatedAt": "2026-10-26T23:25:50Z"
     },
     "news": {
       "status": "ok",
-      "updatedAt": "2026-10-26T23:23:15Z"
+      "updatedAt": "2026-10-26T23:25:52Z"
     }
   }
 }
