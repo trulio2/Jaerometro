@@ -1,18 +1,19 @@
 {
-  "generatedAt": "2026-10-26T22:24:21.768375Z",
+  "generatedAt": "2026-10-26T22:36:25.664776Z",
   "metrics": [
     {
       "id": "debt",
       "label": "DÍVIDA BRUTA / PIB",
       "description": "Dívida do governo geral",
       "value": "82,87%",
+      "detail": "R$ 11,05 tri",
       "delta": "+0,32 p.p.",
       "deltaLabel": "no mês",
       "trend": "up",
       "tone": "negative",
       "severity": "critical",
       "icon": "risk",
-      "source": "BCB SGS 13762",
+      "source": "BCB SGS 13762 / 13761",
       "updatedAt": "2026-08"
     },
     {
@@ -125,15 +126,15 @@
       "severity": "normal",
       "icon": "currency",
       "source": "Janjômetro API",
-      "updatedAt": "2026-10-26T22:24:21.768375Z"
+      "updatedAt": "2026-10-26T22:36:25.664776Z"
     },
     {
       "id": "interest",
       "label": "JUROS DA DÍVIDA PAGOS",
       "description": "Juros nominais em 12 meses",
       "value": "R$ 1,18 tri",
-      "delta": "+2,75%",
-      "deltaLabel": "no mês",
+      "delta": "+24,9%",
+      "deltaLabel": "em 1 ano",
       "trend": "up",
       "tone": "negative",
       "severity": "warning",
@@ -1901,7 +1902,7 @@
               "label": "10/26",
               "value": 34.15,
               "open": 31.71,
-              "high": 34.505,
+              "high": 34.51,
               "low": 31.4,
               "close": 34.15
             }
@@ -3665,11 +3666,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 79867.8438,
+              "value": 79800.0078,
               "open": 80039.6875,
               "high": 80612.2422,
               "low": 79343.6562,
-              "close": 79867.8438
+              "close": 79800.0078
             }
           ]
         }
@@ -4548,11 +4549,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 439329.0484,
+              "value": 438955.9029,
               "open": 416838.6885,
               "high": 443423.7607,
               "low": 394322.1026,
-              "close": 439329.0484
+              "close": 438955.9029
             }
           ]
         }
@@ -4724,162 +4725,294 @@
     },
     {
       "id": "debt-12m",
-      "title": "DÍVIDA BRUTA / PIB — MÉDIA 12M",
-      "subtitle": "Média móvel de 12 meses (% do PIB)",
+      "title": "DÍVIDA BRUTA DO GOVERNO GERAL",
+      "subtitle": "Estoque em R$ tri (área) e em % do PIB (linha)",
       "kind": "line",
       "section": "fiscal",
       "series": [
         {
-          "id": "debt",
-          "label": "Dívida bruta (média 12m)",
+          "id": "debt-brl",
+          "label": "Dívida bruta (R$ tri)",
           "color": "#2de2e6",
           "axis": "left",
+          "type": "area",
+          "decimals": 2,
+          "prefix": "R$ ",
+          "suffix": " tri",
+          "points": [
+            {
+              "date": "2024-09",
+              "label": "09/24",
+              "value": 8.928
+            },
+            {
+              "date": "2024-10",
+              "label": "10/24",
+              "value": 9.0319
+            },
+            {
+              "date": "2024-11",
+              "label": "11/24",
+              "value": 9.0911
+            },
+            {
+              "date": "2024-12",
+              "label": "12/24",
+              "value": 8.9842
+            },
+            {
+              "date": "2025-01",
+              "label": "01/25",
+              "value": 8.94
+            },
+            {
+              "date": "2025-02",
+              "label": "02/25",
+              "value": 9.0453
+            },
+            {
+              "date": "2025-03",
+              "label": "03/25",
+              "value": 9.0959
+            },
+            {
+              "date": "2025-04",
+              "label": "04/25",
+              "value": 9.1763
+            },
+            {
+              "date": "2025-05",
+              "label": "05/25",
+              "value": 9.2647
+            },
+            {
+              "date": "2025-06",
+              "label": "06/25",
+              "value": 9.3888
+            },
+            {
+              "date": "2025-07",
+              "label": "07/25",
+              "value": 9.5552
+            },
+            {
+              "date": "2025-08",
+              "label": "08/25",
+              "value": 9.6198
+            },
+            {
+              "date": "2025-09",
+              "label": "09/25",
+              "value": 9.7485
+            },
+            {
+              "date": "2025-10",
+              "label": "10/25",
+              "value": 9.8558
+            },
+            {
+              "date": "2025-11",
+              "label": "11/25",
+              "value": 9.9909
+            },
+            {
+              "date": "2025-12",
+              "label": "12/25",
+              "value": 10.0179
+            },
+            {
+              "date": "2026-01",
+              "label": "01/26",
+              "value": 10.08
+            },
+            {
+              "date": "2026-02",
+              "label": "02/26",
+              "value": 10.1783
+            },
+            {
+              "date": "2026-03",
+              "label": "03/26",
+              "value": 10.3558
+            },
+            {
+              "date": "2026-04",
+              "label": "04/26",
+              "value": 10.4428
+            },
+            {
+              "date": "2026-05",
+              "label": "05/26",
+              "value": 10.6223
+            },
+            {
+              "date": "2026-06",
+              "label": "06/26",
+              "value": 10.8095
+            },
+            {
+              "date": "2026-07",
+              "label": "07/26",
+              "value": 10.9467
+            },
+            {
+              "date": "2026-08",
+              "label": "08/26",
+              "value": 11.055
+            }
+          ]
+        },
+        {
+          "id": "debt",
+          "label": "Dívida bruta (% PIB)",
+          "color": "#f5c542",
+          "axis": "right",
           "decimals": 2,
           "suffix": "%",
           "points": [
             {
               "date": "2024-09",
               "label": "09/24",
-              "value": 75.3275,
+              "value": 77.09,
               "severity": "warning"
             },
             {
               "date": "2024-10",
               "label": "10/24",
-              "value": 75.6658,
+              "value": 77.38,
               "severity": "warning"
             },
             {
               "date": "2024-11",
               "label": "11/24",
-              "value": 76.0142,
+              "value": 77.5,
               "severity": "warning"
             },
             {
               "date": "2024-12",
               "label": "12/24",
-              "value": 76.2175,
+              "value": 76.27,
               "severity": "warning"
             },
             {
               "date": "2025-01",
               "label": "01/25",
-              "value": 76.3017,
+              "value": 75.48,
               "severity": "warning"
             },
             {
               "date": "2025-02",
               "label": "02/25",
-              "value": 76.3825,
+              "value": 75.78,
               "severity": "warning"
             },
             {
               "date": "2025-03",
               "label": "03/25",
-              "value": 76.4267,
+              "value": 75.55,
               "severity": "warning"
             },
             {
               "date": "2025-04",
               "label": "04/25",
-              "value": 76.4658,
+              "value": 75.62,
               "severity": "warning"
             },
             {
               "date": "2025-05",
               "label": "05/25",
-              "value": 76.4725,
+              "value": 75.75,
               "severity": "warning"
             },
             {
               "date": "2025-06",
               "label": "06/25",
-              "value": 76.4408,
+              "value": 76.3,
               "severity": "warning"
             },
             {
               "date": "2025-07",
               "label": "07/25",
-              "value": 76.4383,
+              "value": 77.18,
               "severity": "warning"
             },
             {
               "date": "2025-08",
               "label": "08/25",
-              "value": 76.4342,
+              "value": 77.31,
               "severity": "warning"
             },
             {
               "date": "2025-09",
               "label": "09/25",
-              "value": 76.4967,
+              "value": 77.84,
               "severity": "warning"
             },
             {
               "date": "2025-10",
               "label": "10/25",
-              "value": 76.5725,
+              "value": 78.29,
               "severity": "warning"
             },
             {
               "date": "2025-11",
               "label": "11/25",
-              "value": 76.6933,
+              "value": 78.95,
               "severity": "warning"
             },
             {
               "date": "2025-12",
               "label": "12/25",
-              "value": 76.8908,
+              "value": 78.64,
               "severity": "warning"
             },
             {
               "date": "2026-01",
               "label": "01/26",
-              "value": 77.1592,
+              "value": 78.7,
               "severity": "warning"
             },
             {
               "date": "2026-02",
               "label": "02/26",
-              "value": 77.4383,
+              "value": 79.13,
               "severity": "warning"
             },
             {
               "date": "2026-03",
               "label": "03/26",
-              "value": 77.7992,
+              "value": 79.88,
               "severity": "warning"
             },
             {
               "date": "2026-04",
               "label": "04/26",
-              "value": 78.1717,
-              "severity": "warning"
+              "value": 80.09,
+              "severity": "critical"
             },
             {
               "date": "2026-05",
               "label": "05/26",
-              "value": 78.6125,
-              "severity": "warning"
+              "value": 81.04,
+              "severity": "critical"
             },
             {
               "date": "2026-06",
               "label": "06/26",
-              "value": 79.0833,
-              "severity": "warning"
+              "value": 81.95,
+              "severity": "critical"
             },
             {
               "date": "2026-07",
               "label": "07/26",
-              "value": 79.5308,
-              "severity": "warning"
+              "value": 82.55,
+              "severity": "critical"
             },
             {
               "date": "2026-08",
               "label": "08/26",
-              "value": 79.9942,
-              "severity": "warning"
+              "value": 82.87,
+              "severity": "critical"
             }
           ]
         }
@@ -4887,139 +5020,401 @@
     },
     {
       "id": "revenue-12m",
-      "title": "ARRECADAÇÃO FEDERAL — ACUMULADO 12M",
-      "subtitle": "Soma móvel de 12 meses (R$ bi)",
+      "title": "ARRECADAÇÃO FEDERAL — CRESCIMENTO ANUAL",
+      "subtitle": "Acumulado em 12 meses vs. 1 ano antes (área), IPCA 12m e total em R$ tri",
       "kind": "line",
       "section": "fiscal",
       "series": [
         {
-          "id": "revenue",
-          "label": "Arrecadação 12m",
+          "id": "revenue-growth",
+          "label": "Crescimento anual",
           "color": "#2de2e6",
           "axis": "left",
+          "type": "area",
           "decimals": 1,
-          "prefix": "R$ ",
-          "suffix": " bi",
+          "suffix": "%",
           "points": [
             {
               "date": "2024-10",
               "label": "10/24",
-              "value": 2592.837
+              "value": 13.24
             },
             {
               "date": "2024-11",
               "label": "11/24",
-              "value": 2622.6622
+              "value": 14.17
             },
             {
               "date": "2024-12",
               "label": "12/24",
-              "value": 2652.7018
+              "value": 14.43
             },
             {
               "date": "2025-01",
               "label": "01/25",
-              "value": 2673.2302
+              "value": 13.9
             },
             {
               "date": "2025-02",
               "label": "02/25",
-              "value": 2689.161
+              "value": 13.25
             },
             {
               "date": "2025-03",
               "label": "03/25",
-              "value": 2708.2233
+              "value": 13.12
             },
             {
               "date": "2025-04",
               "label": "04/25",
-              "value": 2727.0655
+              "value": 12.73
             },
             {
               "date": "2025-05",
               "label": "05/25",
-              "value": 2754.2383
+              "value": 12.64
             },
             {
               "date": "2025-06",
               "label": "06/25",
-              "value": 2779.9883
+              "value": 12.39
             },
             {
               "date": "2025-07",
               "label": "07/25",
-              "value": 2803.1657
+              "value": 12.0
             },
             {
               "date": "2025-08",
               "label": "08/25",
-              "value": 2810.3351
+              "value": 11.01
             },
             {
               "date": "2025-09",
               "label": "09/25",
-              "value": 2823.8929
+              "value": 10.29
             },
             {
               "date": "2025-10",
               "label": "10/25",
-              "value": 2837.8808
+              "value": 9.45
             },
             {
               "date": "2025-11",
               "label": "11/25",
-              "value": 2855.4159
+              "value": 8.87
             },
             {
               "date": "2025-12",
               "label": "12/25",
-              "value": 2886.8748
+              "value": 8.83
             },
             {
               "date": "2026-01",
               "label": "01/26",
-              "value": 2911.4617
+              "value": 8.91
             },
             {
               "date": "2026-02",
               "label": "02/26",
-              "value": 2931.1257
+              "value": 9.0
             },
             {
               "date": "2026-03",
               "label": "03/26",
-              "value": 2950.7015
+              "value": 8.95
             },
             {
               "date": "2026-04",
               "label": "04/26",
-              "value": 2981.8094
+              "value": 9.34
             },
             {
               "date": "2026-05",
               "label": "05/26",
-              "value": 3018.4508
+              "value": 9.59
             },
             {
               "date": "2026-06",
               "label": "06/26",
-              "value": 3048.2941
+              "value": 9.65
             },
             {
               "date": "2026-07",
               "label": "07/26",
-              "value": 3083.4185
+              "value": 10.0
             },
             {
               "date": "2026-08",
               "label": "08/26",
-              "value": 3110.1933
+              "value": 10.67
             },
             {
               "date": "2026-09",
               "label": "09/26",
-              "value": 3132.8509
+              "value": 10.94
+            }
+          ]
+        },
+        {
+          "id": "revenue-ipca",
+          "label": "IPCA 12m",
+          "color": "#f5c542",
+          "axis": "left",
+          "dashed": true,
+          "decimals": 2,
+          "suffix": "%",
+          "points": [
+            {
+              "date": "2024-10",
+              "label": "10/24",
+              "value": 4.76
+            },
+            {
+              "date": "2024-11",
+              "label": "11/24",
+              "value": 4.87
+            },
+            {
+              "date": "2024-12",
+              "label": "12/24",
+              "value": 4.83
+            },
+            {
+              "date": "2025-01",
+              "label": "01/25",
+              "value": 4.56
+            },
+            {
+              "date": "2025-02",
+              "label": "02/25",
+              "value": 5.06
+            },
+            {
+              "date": "2025-03",
+              "label": "03/25",
+              "value": 5.48
+            },
+            {
+              "date": "2025-04",
+              "label": "04/25",
+              "value": 5.53
+            },
+            {
+              "date": "2025-05",
+              "label": "05/25",
+              "value": 5.32
+            },
+            {
+              "date": "2025-06",
+              "label": "06/25",
+              "value": 5.35
+            },
+            {
+              "date": "2025-07",
+              "label": "07/25",
+              "value": 5.23
+            },
+            {
+              "date": "2025-08",
+              "label": "08/25",
+              "value": 5.13
+            },
+            {
+              "date": "2025-09",
+              "label": "09/25",
+              "value": 5.17
+            },
+            {
+              "date": "2025-10",
+              "label": "10/25",
+              "value": 4.68
+            },
+            {
+              "date": "2025-11",
+              "label": "11/25",
+              "value": 4.46
+            },
+            {
+              "date": "2025-12",
+              "label": "12/25",
+              "value": 4.26
+            },
+            {
+              "date": "2026-01",
+              "label": "01/26",
+              "value": 4.44
+            },
+            {
+              "date": "2026-02",
+              "label": "02/26",
+              "value": 3.81
+            },
+            {
+              "date": "2026-03",
+              "label": "03/26",
+              "value": 4.14
+            },
+            {
+              "date": "2026-04",
+              "label": "04/26",
+              "value": 4.39
+            },
+            {
+              "date": "2026-05",
+              "label": "05/26",
+              "value": 4.72
+            },
+            {
+              "date": "2026-06",
+              "label": "06/26",
+              "value": 4.64
+            },
+            {
+              "date": "2026-07",
+              "label": "07/26",
+              "value": 4.44
+            },
+            {
+              "date": "2026-08",
+              "label": "08/26",
+              "value": 4.22
+            },
+            {
+              "date": "2026-09",
+              "label": "09/26",
+              "value": 4.58
+            }
+          ]
+        },
+        {
+          "id": "revenue",
+          "label": "Arrecadação 12m",
+          "color": "#c9d6d7",
+          "axis": "right",
+          "decimals": 2,
+          "prefix": "R$ ",
+          "suffix": " tri",
+          "points": [
+            {
+              "date": "2024-10",
+              "label": "10/24",
+              "value": 2.5928
+            },
+            {
+              "date": "2024-11",
+              "label": "11/24",
+              "value": 2.6227
+            },
+            {
+              "date": "2024-12",
+              "label": "12/24",
+              "value": 2.6527
+            },
+            {
+              "date": "2025-01",
+              "label": "01/25",
+              "value": 2.6732
+            },
+            {
+              "date": "2025-02",
+              "label": "02/25",
+              "value": 2.6892
+            },
+            {
+              "date": "2025-03",
+              "label": "03/25",
+              "value": 2.7082
+            },
+            {
+              "date": "2025-04",
+              "label": "04/25",
+              "value": 2.7271
+            },
+            {
+              "date": "2025-05",
+              "label": "05/25",
+              "value": 2.7542
+            },
+            {
+              "date": "2025-06",
+              "label": "06/25",
+              "value": 2.78
+            },
+            {
+              "date": "2025-07",
+              "label": "07/25",
+              "value": 2.8032
+            },
+            {
+              "date": "2025-08",
+              "label": "08/25",
+              "value": 2.8103
+            },
+            {
+              "date": "2025-09",
+              "label": "09/25",
+              "value": 2.8239
+            },
+            {
+              "date": "2025-10",
+              "label": "10/25",
+              "value": 2.8379
+            },
+            {
+              "date": "2025-11",
+              "label": "11/25",
+              "value": 2.8554
+            },
+            {
+              "date": "2025-12",
+              "label": "12/25",
+              "value": 2.8869
+            },
+            {
+              "date": "2026-01",
+              "label": "01/26",
+              "value": 2.9115
+            },
+            {
+              "date": "2026-02",
+              "label": "02/26",
+              "value": 2.9311
+            },
+            {
+              "date": "2026-03",
+              "label": "03/26",
+              "value": 2.9507
+            },
+            {
+              "date": "2026-04",
+              "label": "04/26",
+              "value": 2.9818
+            },
+            {
+              "date": "2026-05",
+              "label": "05/26",
+              "value": 3.0185
+            },
+            {
+              "date": "2026-06",
+              "label": "06/26",
+              "value": 3.0483
+            },
+            {
+              "date": "2026-07",
+              "label": "07/26",
+              "value": 3.0834
+            },
+            {
+              "date": "2026-08",
+              "label": "08/26",
+              "value": 3.1102
+            },
+            {
+              "date": "2026-09",
+              "label": "09/26",
+              "value": 3.1329
             }
           ]
         }
@@ -5027,16 +5422,278 @@
     },
     {
       "id": "interest-12m",
-      "title": "JUROS DA DÍVIDA — ACUMULADO 12M",
-      "subtitle": "Soma móvel de 12 meses (R$ trilhões)",
+      "title": "JUROS DA DÍVIDA — CRESCIMENTO ANUAL",
+      "subtitle": "Juros nominais do setor público em 12 meses vs. 1 ano antes (área), IPCA 12m e total em R$ tri",
       "kind": "line",
       "section": "fiscal",
       "series": [
         {
-          "id": "interest",
-          "label": "Juros nominais 12m",
-          "color": "#2de2e6",
+          "id": "interest-growth",
+          "label": "Crescimento anual",
+          "color": "#ff4d5e",
           "axis": "left",
+          "type": "area",
+          "decimals": 1,
+          "suffix": "%",
+          "points": [
+            {
+              "date": "2024-09",
+              "label": "09/24",
+              "value": 17.15
+            },
+            {
+              "date": "2024-10",
+              "label": "10/24",
+              "value": 20.72
+            },
+            {
+              "date": "2024-11",
+              "label": "11/24",
+              "value": 28.69
+            },
+            {
+              "date": "2024-12",
+              "label": "12/24",
+              "value": 32.32
+            },
+            {
+              "date": "2025-01",
+              "label": "01/25",
+              "value": 22.12
+            },
+            {
+              "date": "2025-02",
+              "label": "02/25",
+              "value": 23.7
+            },
+            {
+              "date": "2025-03",
+              "label": "03/25",
+              "value": 25.38
+            },
+            {
+              "date": "2025-04",
+              "label": "04/25",
+              "value": 19.59
+            },
+            {
+              "date": "2025-05",
+              "label": "05/25",
+              "value": 21.05
+            },
+            {
+              "date": "2025-06",
+              "label": "06/25",
+              "value": 9.16
+            },
+            {
+              "date": "2025-07",
+              "label": "07/25",
+              "value": 8.21
+            },
+            {
+              "date": "2025-08",
+              "label": "08/25",
+              "value": 10.7
+            },
+            {
+              "date": "2025-09",
+              "label": "09/25",
+              "value": 20.14
+            },
+            {
+              "date": "2025-10",
+              "label": "10/25",
+              "value": 13.56
+            },
+            {
+              "date": "2025-11",
+              "label": "11/25",
+              "value": 6.94
+            },
+            {
+              "date": "2025-12",
+              "label": "12/25",
+              "value": 6.01
+            },
+            {
+              "date": "2026-01",
+              "label": "01/26",
+              "value": 13.17
+            },
+            {
+              "date": "2026-02",
+              "label": "02/26",
+              "value": 12.21
+            },
+            {
+              "date": "2026-03",
+              "label": "03/26",
+              "value": 15.55
+            },
+            {
+              "date": "2026-04",
+              "label": "04/26",
+              "value": 18.0
+            },
+            {
+              "date": "2026-05",
+              "label": "05/26",
+              "value": 17.41
+            },
+            {
+              "date": "2026-06",
+              "label": "06/26",
+              "value": 27.21
+            },
+            {
+              "date": "2026-07",
+              "label": "07/26",
+              "value": 22.24
+            },
+            {
+              "date": "2026-08",
+              "label": "08/26",
+              "value": 24.9
+            }
+          ]
+        },
+        {
+          "id": "interest-ipca",
+          "label": "IPCA 12m",
+          "color": "#f5c542",
+          "axis": "left",
+          "dashed": true,
+          "decimals": 2,
+          "suffix": "%",
+          "points": [
+            {
+              "date": "2024-09",
+              "label": "09/24",
+              "value": 4.42
+            },
+            {
+              "date": "2024-10",
+              "label": "10/24",
+              "value": 4.76
+            },
+            {
+              "date": "2024-11",
+              "label": "11/24",
+              "value": 4.87
+            },
+            {
+              "date": "2024-12",
+              "label": "12/24",
+              "value": 4.83
+            },
+            {
+              "date": "2025-01",
+              "label": "01/25",
+              "value": 4.56
+            },
+            {
+              "date": "2025-02",
+              "label": "02/25",
+              "value": 5.06
+            },
+            {
+              "date": "2025-03",
+              "label": "03/25",
+              "value": 5.48
+            },
+            {
+              "date": "2025-04",
+              "label": "04/25",
+              "value": 5.53
+            },
+            {
+              "date": "2025-05",
+              "label": "05/25",
+              "value": 5.32
+            },
+            {
+              "date": "2025-06",
+              "label": "06/25",
+              "value": 5.35
+            },
+            {
+              "date": "2025-07",
+              "label": "07/25",
+              "value": 5.23
+            },
+            {
+              "date": "2025-08",
+              "label": "08/25",
+              "value": 5.13
+            },
+            {
+              "date": "2025-09",
+              "label": "09/25",
+              "value": 5.17
+            },
+            {
+              "date": "2025-10",
+              "label": "10/25",
+              "value": 4.68
+            },
+            {
+              "date": "2025-11",
+              "label": "11/25",
+              "value": 4.46
+            },
+            {
+              "date": "2025-12",
+              "label": "12/25",
+              "value": 4.26
+            },
+            {
+              "date": "2026-01",
+              "label": "01/26",
+              "value": 4.44
+            },
+            {
+              "date": "2026-02",
+              "label": "02/26",
+              "value": 3.81
+            },
+            {
+              "date": "2026-03",
+              "label": "03/26",
+              "value": 4.14
+            },
+            {
+              "date": "2026-04",
+              "label": "04/26",
+              "value": 4.39
+            },
+            {
+              "date": "2026-05",
+              "label": "05/26",
+              "value": 4.72
+            },
+            {
+              "date": "2026-06",
+              "label": "06/26",
+              "value": 4.64
+            },
+            {
+              "date": "2026-07",
+              "label": "07/26",
+              "value": 4.44
+            },
+            {
+              "date": "2026-08",
+              "label": "08/26",
+              "value": 4.22
+            }
+          ]
+        },
+        {
+          "id": "interest",
+          "label": "Juros 12m",
+          "color": "#c9d6d7",
+          "axis": "right",
           "decimals": 2,
           "prefix": "R$ ",
           "suffix": " tri",
@@ -5166,163 +5823,304 @@
       ]
     },
     {
+      "id": "interest-revenue",
+      "title": "JUROS / ARRECADAÇÃO FEDERAL",
+      "subtitle": "Juros nominais do governo central em 12m, em % da arrecadação federal em 12m",
+      "kind": "line",
+      "section": "fiscal",
+      "series": [
+        {
+          "id": "interest-share",
+          "label": "Juros / arrecadação",
+          "color": "#ff4d5e",
+          "axis": "left",
+          "type": "area",
+          "decimals": 1,
+          "suffix": "%",
+          "points": [
+            {
+              "date": "2024-09",
+              "label": "09/24",
+              "value": 28.16
+            },
+            {
+              "date": "2024-10",
+              "label": "10/24",
+              "value": 29.81
+            },
+            {
+              "date": "2024-11",
+              "label": "11/24",
+              "value": 31.36
+            },
+            {
+              "date": "2024-12",
+              "label": "12/24",
+              "value": 32.24
+            },
+            {
+              "date": "2025-01",
+              "label": "01/25",
+              "value": 30.57
+            },
+            {
+              "date": "2025-02",
+              "label": "02/25",
+              "value": 30.87
+            },
+            {
+              "date": "2025-03",
+              "label": "03/25",
+              "value": 31.08
+            },
+            {
+              "date": "2025-04",
+              "label": "04/25",
+              "value": 30.54
+            },
+            {
+              "date": "2025-05",
+              "label": "05/25",
+              "value": 30.87
+            },
+            {
+              "date": "2025-06",
+              "label": "06/25",
+              "value": 29.34
+            },
+            {
+              "date": "2025-07",
+              "label": "07/25",
+              "value": 30.05
+            },
+            {
+              "date": "2025-08",
+              "label": "08/25",
+              "value": 30.07
+            },
+            {
+              "date": "2025-09",
+              "label": "09/25",
+              "value": 31.17
+            },
+            {
+              "date": "2025-10",
+              "label": "10/25",
+              "value": 31.01
+            },
+            {
+              "date": "2025-11",
+              "label": "11/25",
+              "value": 30.52
+            },
+            {
+              "date": "2025-12",
+              "label": "12/25",
+              "value": 30.89
+            },
+            {
+              "date": "2026-01",
+              "label": "01/26",
+              "value": 31.33
+            },
+            {
+              "date": "2026-02",
+              "label": "02/26",
+              "value": 31.4
+            },
+            {
+              "date": "2026-03",
+              "label": "03/26",
+              "value": 32.73
+            },
+            {
+              "date": "2026-04",
+              "label": "04/26",
+              "value": 32.92
+            },
+            {
+              "date": "2026-05",
+              "label": "05/26",
+              "value": 32.99
+            },
+            {
+              "date": "2026-06",
+              "label": "06/26",
+              "value": 34.26
+            },
+            {
+              "date": "2026-07",
+              "label": "07/26",
+              "value": 33.66
+            },
+            {
+              "date": "2026-08",
+              "label": "08/26",
+              "value": 34.6
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "primary-12m",
       "title": "RESULTADO PRIMÁRIO — ACUMULADO 12M",
-      "subtitle": "Acumulado em 12 meses (% do PIB)",
-      "kind": "bar",
+      "subtitle": "Setor público consolidado, % do PIB (positivo = superávit)",
+      "kind": "line",
       "section": "fiscal",
       "series": [
         {
           "id": "primary",
           "label": "Resultado primário 12m",
-          "color": "#2de2e6",
+          "color": "#ff4d5e",
           "axis": "left",
+          "type": "area",
           "decimals": 2,
           "suffix": "% PIB",
           "points": [
             {
               "date": "2024-09",
               "label": "09/24",
-              "value": 2.12,
-              "severity": "normal"
+              "value": -2.12,
+              "severity": "critical"
             },
             {
               "date": "2024-10",
               "label": "10/24",
-              "value": 1.91,
-              "severity": "normal"
+              "value": -1.91,
+              "severity": "critical"
             },
             {
               "date": "2024-11",
               "label": "11/24",
-              "value": 1.64,
-              "severity": "normal"
+              "value": -1.64,
+              "severity": "critical"
             },
             {
               "date": "2024-12",
               "label": "12/24",
-              "value": 0.4,
-              "severity": "normal"
+              "value": -0.4,
+              "severity": "critical"
             },
             {
               "date": "2025-01",
               "label": "01/25",
-              "value": 0.39,
-              "severity": "normal"
+              "value": -0.39,
+              "severity": "critical"
             },
             {
               "date": "2025-02",
               "label": "02/25",
-              "value": 0.13,
-              "severity": "normal"
+              "value": -0.13,
+              "severity": "critical"
             },
             {
               "date": "2025-03",
               "label": "03/25",
-              "value": 0.11,
-              "severity": "normal"
+              "value": -0.11,
+              "severity": "critical"
             },
             {
               "date": "2025-04",
               "label": "04/25",
-              "value": 0.05,
-              "severity": "normal"
+              "value": -0.05,
+              "severity": "critical"
             },
             {
               "date": "2025-05",
               "label": "05/25",
-              "value": -0.2,
-              "severity": "critical"
+              "value": 0.2,
+              "severity": "normal"
             },
             {
               "date": "2025-06",
               "label": "06/25",
-              "value": -0.15,
-              "severity": "critical"
+              "value": 0.15,
+              "severity": "normal"
             },
             {
               "date": "2025-07",
               "label": "07/25",
-              "value": 0.22,
-              "severity": "normal"
+              "value": -0.22,
+              "severity": "critical"
             },
             {
               "date": "2025-08",
               "label": "08/25",
-              "value": 0.19,
-              "severity": "normal"
+              "value": -0.19,
+              "severity": "critical"
             },
             {
               "date": "2025-09",
               "label": "09/25",
-              "value": 0.27,
-              "severity": "normal"
+              "value": -0.27,
+              "severity": "critical"
             },
             {
               "date": "2025-10",
               "label": "10/25",
-              "value": 0.3,
-              "severity": "normal"
+              "value": -0.3,
+              "severity": "critical"
             },
             {
               "date": "2025-11",
               "label": "11/25",
-              "value": 0.36,
-              "severity": "normal"
+              "value": -0.36,
+              "severity": "critical"
             },
             {
               "date": "2025-12",
               "label": "12/25",
-              "value": 0.43,
-              "severity": "normal"
+              "value": -0.43,
+              "severity": "critical"
             },
             {
               "date": "2026-01",
               "label": "01/26",
-              "value": 0.43,
-              "severity": "normal"
+              "value": -0.43,
+              "severity": "critical"
             },
             {
               "date": "2026-02",
               "label": "02/26",
-              "value": 0.41,
-              "severity": "normal"
+              "value": -0.41,
+              "severity": "critical"
             },
             {
               "date": "2026-03",
               "label": "03/26",
-              "value": 1.06,
-              "severity": "normal"
+              "value": -1.06,
+              "severity": "critical"
             },
             {
               "date": "2026-04",
               "label": "04/26",
-              "value": 0.97,
-              "severity": "normal"
+              "value": -0.97,
+              "severity": "critical"
             },
             {
               "date": "2026-05",
               "label": "05/26",
-              "value": 1.14,
-              "severity": "normal"
+              "value": -1.14,
+              "severity": "critical"
             },
             {
               "date": "2026-06",
               "label": "06/26",
-              "value": 1.19,
-              "severity": "normal"
+              "value": -1.19,
+              "severity": "critical"
             },
             {
               "date": "2026-07",
               "label": "07/26",
-              "value": 0.67,
-              "severity": "normal"
+              "value": -0.67,
+              "severity": "critical"
             },
             {
               "date": "2026-08",
               "label": "08/26",
-              "value": 0.62,
-              "severity": "normal"
+              "value": -0.62,
+              "severity": "critical"
             }
           ]
         }
@@ -5333,7 +6131,7 @@
       "title": "CRESCIMENTO DO PIB — ANUAL",
       "subtitle": "Variação real anual (%)",
       "kind": "bar",
-      "section": "fiscal",
+      "section": "monetary",
       "series": [
         {
           "id": "gdp-growth",
@@ -6327,42 +7125,42 @@
       "severity": "critical",
       "title": "Dívida Pública em Zona de Risco",
       "message": "Dívida bruta do governo geral em 82,87% do PIB. Acima da barreira de 80%, com trajetória de alta.",
-      "at": "2026-10-26T22:24:21.768375Z"
+      "at": "2026-10-26T22:36:25.664776Z"
     },
     {
       "id": "alert-2",
       "severity": "warning",
       "title": "Juro Real Elevado",
       "message": "Juro real ex-post em 8,77%. Custo de carregamento da dívida pressiona o resultado fiscal.",
-      "at": "2026-10-26T22:24:21.768375Z"
+      "at": "2026-10-26T22:36:25.664776Z"
     },
     {
       "id": "alert-3",
       "severity": "warning",
       "title": "Saída Líquida de Capital",
       "message": "Fluxo financeiro externo negativo em US$ 5,2 bi no mês. Pressão sobre o câmbio.",
-      "at": "2026-10-26T22:24:21.768375Z"
+      "at": "2026-10-26T22:36:25.664776Z"
     },
     {
       "id": "alert-4",
       "severity": "warning",
       "title": "Inflação Acima da Meta",
       "message": "IPCA acumulado em 12 meses em 4,58%. Risco de reprecificação da curva de juros.",
-      "at": "2026-10-26T22:24:21.768375Z"
+      "at": "2026-10-26T22:36:25.664776Z"
     },
     {
       "id": "alert-5",
       "severity": "warning",
       "title": "Estresse no Mercado Acionário",
       "message": "EWZ -8,32% e IBOVESPA -5,22% no mês. Piora na percepção de risco.",
-      "at": "2026-10-26T22:24:21.768375Z"
+      "at": "2026-10-26T22:36:25.664776Z"
     },
     {
       "id": "alert-6",
       "severity": "info",
       "title": "Sistema Iniciado",
       "message": "Monitoramento macro-financeiro carregado a partir da base pública.",
-      "at": "2026-10-26T22:24:21.768375Z"
+      "at": "2026-10-26T22:36:25.664776Z"
     }
   ],
   "news": [
@@ -6413,87 +7211,95 @@
   "sources": {
     "bcb-13762": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:22Z"
+      "updatedAt": "2026-10-26T22:36:26Z"
+    },
+    "bcb-13761": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T22:36:26Z"
     },
     "bcb-3698": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:23Z"
+      "updatedAt": "2026-10-26T22:36:27Z"
     },
     "bcb-433": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:44Z"
+      "updatedAt": "2026-10-26T22:37:33Z"
     },
     "bcb-13522": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:45Z"
+      "updatedAt": "2026-10-26T22:38:36Z"
     },
     "bcb-432": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:46Z"
+      "updatedAt": "2026-10-26T22:38:37Z"
     },
     "bcb-13961": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:46Z"
+      "updatedAt": "2026-10-26T22:39:10Z"
     },
     "bcb-4616": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:47Z"
+      "updatedAt": "2026-10-26T22:39:11Z"
+    },
+    "bcb-4606": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T22:39:11Z"
     },
     "bcb-1788": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:48Z"
+      "updatedAt": "2026-10-26T22:39:12Z"
     },
     "bcb-4380": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:49Z"
+      "updatedAt": "2026-10-26T22:39:12Z"
     },
     "bcb-5793": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:49Z"
+      "updatedAt": "2026-10-26T22:39:13Z"
     },
     "bcb-7326": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:50Z"
+      "updatedAt": "2026-10-26T22:39:14Z"
     },
     "rfb-revenue": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:53Z"
+      "updatedAt": "2026-10-26T22:39:16Z"
     },
     "yahoo-EWZ": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:53Z"
+      "updatedAt": "2026-10-26T22:39:16Z"
     },
     "yahoo-BVSP": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:53Z"
+      "updatedAt": "2026-10-26T22:39:17Z"
     },
     "yahoo-BTC-USD": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:53Z"
+      "updatedAt": "2026-10-26T22:39:17Z"
     },
     "bcb-1": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:53Z"
+      "updatedAt": "2026-10-26T22:39:18Z"
     },
     "focus-ipca": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:55Z"
+      "updatedAt": "2026-10-26T22:39:19Z"
     },
     "focus-pib-total": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:56Z"
+      "updatedAt": "2026-10-26T22:39:20Z"
     },
     "b3-DI1F32": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:57Z"
+      "updatedAt": "2026-10-26T22:39:20Z"
     },
     "b3-DI1F35": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:57Z"
+      "updatedAt": "2026-10-26T22:39:21Z"
     },
     "janjometro": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:58Z"
+      "updatedAt": "2026-10-26T22:39:21Z"
     },
     "impostometro": {
       "status": "missing",
@@ -6502,7 +7308,7 @@
     },
     "news": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:24:59Z"
+      "updatedAt": "2026-10-26T22:39:22Z"
     }
   }
 }
