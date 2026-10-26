@@ -84,14 +84,6 @@ function DashboardTabs({ snapshot }: { snapshot: DashboardSnapshot }) {
           )
         })}
       </ul>
-
-      <div className="dashboard-tabs-meta">
-        {activeAlerts > 0 && (
-          <NavLink to="/" className="tabs-alerts">
-            {String(activeAlerts).padStart(2, '0')} alertas
-          </NavLink>
-        )}
-      </div>
     </nav>
   )
 }
