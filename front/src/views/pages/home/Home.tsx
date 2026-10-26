@@ -58,10 +58,6 @@ function tabCount(snapshot: DashboardSnapshot, tab: DashboardTab): number {
 }
 
 function DashboardTabs({ snapshot }: { snapshot: DashboardSnapshot }) {
-  const activeAlerts = snapshot.alerts.filter(
-    (alert) => alert.severity !== 'info'
-  ).length
-
   return (
     <nav className="dashboard-tabs" aria-label="Seções do painel">
       <ul>
