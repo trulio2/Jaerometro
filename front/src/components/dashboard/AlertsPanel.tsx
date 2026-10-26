@@ -1,13 +1,10 @@
 import type { AlertSeverity, DashboardAlert } from '@/types'
+import { formatAsOf } from './metricFormat'
 
 const alertIcon: Record<AlertSeverity, string> = {
   critical: 'M12 3 2.8 20h18.4L12 3Zm0 5.2v5.1m0 3.1v.1',
   warning: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-5.2v-5.1m0-3.1v-.1',
   info: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-9.4V16m0-7.2v-.1'
-}
-
-function formatTime(value: string): string {
-  return new Date(value).toISOString().slice(11, 19)
 }
 
 function AlertIcon({ severity }: { severity: AlertSeverity }) {
@@ -44,7 +41,7 @@ export default function AlertsPanel({ alerts }: { alerts: DashboardAlert[] }) {
             <div className="alert-content">
               <div className="alert-title-row">
                 <h3>{alert.title}</h3>
-                <time dateTime={alert.at}>{formatTime(alert.at)}</time>
+                <time dateTime={alert.at}>{formatAsOf(alert.at)}</time>
               </div>
               <p>{alert.message}</p>
             </div>

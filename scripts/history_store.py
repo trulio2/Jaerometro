@@ -96,6 +96,48 @@ class HistoryStore:
         self._mark(key, "ok", updated_at)
         return merged
 
+    def archive(
+        self,
+        key: str,
+        fetch: Callable[[], list[dict]],
+        keep: Callable[[dict], bool],
+    ) -> list[dict]:
+        """Merge fetched records into the stored archive for ``key``.
+
+        Records are matched by their ``id`` (a fresh copy replaces the stored
+        one) and ordered by ``sortKey``, newest first. ``keep`` decides which
+        records stay, so the archive does not grow forever. On failure the
+        stored archive is returned and the source is reported as stale.
+        """
+        path = self.history_dir / f"{key}.json"
+        stored = self._read(path)
+        records = {row["id"]: row for row in (stored or {}).get("rows", [])}
+
+        try:
+            fresh = fetch()
+        except Exception as error:
+            if stored is None:
+                self._mark(key, "missing", None, error)
+                print(f"[missing] {key}: {error}")
+                return []
+
+            self._mark(key, "stale", stored.get("updatedAt"), error)
+            print(f"[stale] {key}: {error}")
+            return stored["rows"]
+
+        for record in fresh:
+            records[record["id"]] = record
+
+        updated_at = _now()
+        kept = sorted(
+            (record for record in records.values() if keep(record)),
+            key=lambda record: record["sortKey"],
+            reverse=True,
+        )
+        _write_rows(path, key, updated_at, kept)
+        self._mark(key, "ok", updated_at)
+        return kept
+
     def latest(self, key: str, fetch: Callable[[], Any], default=None):
         """Return a fresh value for ``key``, or the last good one on failure.
 

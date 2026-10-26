@@ -89,6 +89,7 @@ export interface DashboardNews {
   source: string
   url: string
   publishedAt: string
+  topic?: string
 }
 
 export interface ImpostometroData {

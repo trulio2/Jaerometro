@@ -38,7 +38,9 @@ export default function NewsPanel({
             target="_blank"
             rel="noreferrer"
           >
-            <span className="news-source">{item.source}</span>
+            <span className="news-source">
+              {item.topic ? `${item.topic} · ${item.source}` : item.source}
+            </span>
             <h3>{item.title}</h3>
             <time dateTime={item.publishedAt}>
               {formatPublished(item.publishedAt)}

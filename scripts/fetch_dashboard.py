@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import os
 import re
 import time
+import unicodedata
 import xml.etree.ElementTree as ET
 from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -241,31 +243,53 @@ def combine_ohlc(left, right):
     return result
 
 
-def b3_di_rate(symbol: str):
+def b3_session(symbol: str):
+    """Stored [session date, close, daily change %] rows for a B3 instrument.
+
+    The intraday history gives the session date and close; the quotation
+    endpoint gives the change against the previous session's close, which
+    the intraday history lacks when a move happens at the open.
+    """
+
     def fetch(first, last):
-        url = (
+        history = request_json(
             "https://cotacao.b3.com.br/mds/api/v1/DailyFluctuationHistory/"
             f"{symbol}"
         )
-        payload = request_json(url)
-        floor = payload.get("TradgFlr", {})
+        floor = history.get("TradgFlr", {})
         quotes = floor.get("scty", {}).get("lstQtn", [])
-        day = floor.get("date") or NOW.date().isoformat()
+        closes = [item for item in quotes if item.get("closPric")]
+        day = floor.get("date")
 
-        for item in reversed(quotes):
-            price = item.get("closPric")
+        if not day or not closes:
+            raise ValueError(f"no {symbol} session")
 
-            if price:
-                return [[day, float(price)]]
+        change = closes[-1].get("prcFlcn") or None
 
-        raise ValueError(f"no {symbol} quote")
+        try:
+            quotation = request_json(
+                "https://cotacao.b3.com.br/mds/api/v1/InstrumentQuotation/"
+                f"{symbol}"
+            )
+            trades = quotation.get("Trad") or []
+
+            if trades:
+                change = trades[0]["scty"]["SctyQtn"].get("prcFlcn", change)
+        except Exception as error:
+            print(f"[b3] {symbol} quotation failed: {error}")
+
+        return [
+            [
+                day,
+                float(closes[-1]["closPric"]),
+                None if change is None else round(float(change), 4),
+            ]
+        ]
 
     try:
-        rows = STORE.series(f"b3-{symbol}", fetch)
+        return STORE.series(f"b3-{symbol}", fetch)
     except Exception:
-        return None
-
-    return rows[-1][1] if rows else None
+        return []
 
 
 def focus_series(indicator: str, limit: int = 5):
@@ -345,53 +369,120 @@ def impostometro_data():
     return STORE.latest("impostometro", fetch_impostometro)
 
 
-def fetch_news(limit: int):
-    query = quote("Brasil economia dívida inflação juros crise")
+# Google News search terms per topic. Long AND-style queries return almost
+# nothing recent, so each topic uses a short query with a recency filter.
+NEWS_TOPICS = [
+    ("fiscal", "Fiscal", "ajuste fiscal when:7d"),
+    ("juros", "Juros", 'Copom OR Selic OR "juros futuros" when:7d'),
+    ("cambio", "Câmbio", "dólar real when:7d"),
+    ("inflacao", "Inflação", "IPCA OR inflação when:7d"),
+    ("mercado", "Mercado", "Ibovespa bolsa when:7d"),
+]
+NEWS_PER_TOPIC = 8
+NEWS_SHOWN_PER_TOPIC = 6
+NEWS_ARCHIVE_DAYS = 30
+
+
+def news_key(title: str) -> str:
+    """Accent- and punctuation-free title, to spot the same story twice."""
+    text = unicodedata.normalize("NFKD", title.lower())
+    text = "".join(char for char in text if not unicodedata.combining(char))
+    return re.sub(r"[^a-z0-9]+", " ", text).strip()
+
+
+def fetch_news_topic(topic: str, label: str, query: str):
     url = (
         "https://news.google.com/rss/search"
-        f"?q={query}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        f"?q={quote(query)}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
     )
     response = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     response.raise_for_status()
     root = ET.fromstring(response.content)
     items = []
 
-    for index, item in enumerate(root.findall("./channel/item")):
-        title = item.findtext("title") or "Notícia sem título"
-        link = item.findtext("link") or ""
+    for item in root.findall("./channel/item"):
+        title = (item.findtext("title") or "").strip()
         source_node = item.find("source")
         source = (
-            source_node.text
+            source_node.text.strip()
             if source_node is not None and source_node.text
             else "Google Notícias"
         )
-        published = item.findtext("pubDate")
+
+        # Google appends " - Source" to every title; the source has its own field.
+        if title.endswith(f" - {source}"):
+            title = title[: -len(source) - 3].rstrip()
 
         try:
-            published_at = parsedate_to_datetime(published).astimezone(
-                timezone.utc
-            ).isoformat().replace("+00:00", "Z")
+            published = parsedate_to_datetime(item.findtext("pubDate"))
         except (TypeError, ValueError):
-            published_at = NOW.isoformat().replace("+00:00", "Z")
+            continue
 
+        if not title:
+            continue
+
+        published_at = (
+            published.astimezone(timezone.utc)
+            .isoformat()
+            .replace("+00:00", "Z")
+        )
         items.append(
             {
-                "id": f"news-{index + 1}",
+                "id": hashlib.sha1(news_key(title).encode()).hexdigest()[:12],
+                "sortKey": published_at,
                 "title": title,
                 "source": source,
-                "url": link,
+                "url": item.findtext("link") or "",
                 "publishedAt": published_at,
+                "topic": label,
             }
         )
 
-        if len(items) >= limit:
-            break
-
-    return items or None
+    items.sort(key=lambda item: item["publishedAt"], reverse=True)
+    return items[:NEWS_PER_TOPIC]
 
 
-def news_items(limit: int = 6):
-    return STORE.latest("news", lambda: fetch_news(limit), default=[])
+def fetch_news():
+    items = []
+    errors = []
+
+    for topic, label, query in NEWS_TOPICS:
+        try:
+            items.extend(fetch_news_topic(topic, label, query))
+        except Exception as error:
+            errors.append(f"{topic}: {error}")
+            print(f"[news] {topic} failed: {error}")
+
+    if not items:
+        raise ValueError("; ".join(errors) or "no news found")
+
+    # The same story often matches several topics; keep its first topic.
+    unique = {}
+
+    for item in items:
+        unique.setdefault(item["id"], item)
+
+    return list(unique.values())
+
+
+def news_items():
+    cutoff = (NOW - timedelta(days=NEWS_ARCHIVE_DAYS)).isoformat()
+    archive = STORE.archive(
+        "news",
+        fetch_news,
+        keep=lambda item: item["publishedAt"] >= cutoff[:19],
+    )
+    per_topic = {}
+    shown = []
+
+    for item in archive:
+        count = per_topic.get(item["topic"], 0)
+
+        if count < NEWS_SHOWN_PER_TOPIC:
+            per_topic[item["topic"]] = count + 1
+            shown.append({key: value for key, value in item.items() if key != "sortKey"})
+
+    return shown
 
 
 def latest_revenue_report_url(year: int):
@@ -664,19 +755,109 @@ def rolling_compound(points, window: int = 12, limit: int = 24):
     return result[-limit:]
 
 
-def build_alerts(debt, real_rate, flow, ipca, revenue, money, ewz, ibov, focus_ipca):
+# Daily market moves that signal stress. Thresholds are (warning, critical).
+DI_JUMP_BPS = (50, 100)
+USD_JUMP_PCT = (2, 3)
+IBOV_DROP_PCT = (-3, -5)
+# A session older than this no longer counts as "today's" move.
+SESSION_MAX_AGE_DAYS = 4
+
+SEVERITY_ORDER = {"critical": 0, "warning": 1, "info": 2}
+
+
+def recent_session(day: str) -> bool:
+    age = NOW.date() - date.fromisoformat(day)
+    return age.days <= SESSION_MAX_AGE_DAYS
+
+
+def short_date(day: str) -> str:
+    return f"{day[8:10]}/{day[5:7]}"
+
+
+def daily_market_alerts(di_sessions, ibov_sessions, usd_daily):
     alerts = []
 
-    def add(severity, title, message):
+    def add(severity, title, message, day):
+        alerts.append((severity, title, message, day))
+
+    jumps = []
+
+    for name, rows in di_sessions.items():
+        # Rows stored before the daily change was recorded have no third item.
+        if not rows or len(rows[-1]) < 3 or rows[-1][2] is None:
+            continue
+
+        day, close, pct = rows[-1][:3]
+
+        if not recent_session(day):
+            continue
+
+        before = close / (1 + pct / 100)
+        jumps.append((round((close - before) * 100), name, before, close, day))
+
+    if jumps:
+        bps, name, before, close, day = max(jumps)
+
+        if bps >= DI_JUMP_BPS[0]:
+            detail = ", ".join(
+                f"{item_name} {signed(item_bps, 0)} bps"
+                for item_bps, item_name, *_ in sorted(jumps, reverse=True)
+            )
+            add(
+                "critical" if bps >= DI_JUMP_BPS[1] else "warning",
+                "Disparada nos Juros Futuros",
+                f"{name} saltou de {number(before)}% para {number(close)}% "
+                f"em {short_date(day)} ({detail}). "
+                "Mercado exige prêmio maior para financiar a dívida.",
+                day,
+            )
+
+    if len(usd_daily) >= 2 and recent_session(usd_daily[-1][0].isoformat()):
+        (day, value), (_, before) = usd_daily[-1], usd_daily[-2]
+        move = change(value, before)
+
+        if move >= USD_JUMP_PCT[0]:
+            add(
+                "critical" if move >= USD_JUMP_PCT[1] else "warning",
+                "Alta Forte do Dólar",
+                f"Dólar PTAX subiu {number(move)}% em {short_date(day.isoformat())}, "
+                f"de R$ {number(before, 4)} para R$ {number(value, 4)}.",
+                day.isoformat(),
+            )
+
+    if ibov_sessions and ibov_sessions[-1][2] is not None:
+        day, close, move = ibov_sessions[-1][:3]
+
+        if recent_session(day) and move <= IBOV_DROP_PCT[0]:
+            add(
+                "critical" if move <= IBOV_DROP_PCT[1] else "warning",
+                "Queda Forte da Bolsa",
+                f"IBOVESPA caiu {number(abs(move))}% em {short_date(day)}, "
+                f"fechando em {number(close, 0)} pontos.",
+                day,
+            )
+
+    return alerts
+
+
+def build_alerts(
+    debt, real_rate, flow, ipca, revenue, money, ewz, ibov, focus_ipca, daily=()
+):
+    alerts = []
+
+    def add(severity, title, message, at=None):
         alerts.append(
             {
                 "id": f"alert-{len(alerts) + 1}",
                 "severity": severity,
                 "title": title,
                 "message": message,
-                "at": NOW.isoformat().replace("+00:00", "Z"),
+                "at": at or NOW.isoformat().replace("+00:00", "Z"),
             }
         )
+
+    for severity, title, message, day in daily:
+        add(severity, title, message, day)
 
     if debt > 80:
         add(
@@ -755,7 +936,9 @@ def build_alerts(debt, real_rate, flow, ipca, revenue, money, ewz, ibov, focus_i
         "Monitoramento macro-financeiro carregado a partir da base pública.",
     )
 
-    return alerts[:6]
+    # Most severe first; sorted() is stable, so rule order breaks ties.
+    alerts.sort(key=lambda alert: SEVERITY_ORDER[alert["severity"]])
+    return alerts[:8]
 
 
 def main():
@@ -806,16 +989,20 @@ def main():
     ewz_candles = yahoo_monthly("EWZ", limit=CANDLE_MONTHS)
     ibov_candles = yahoo_monthly("^BVSP", limit=CANDLE_MONTHS)
     btc_usd_candles = yahoo_monthly("BTC-USD", limit=CANDLE_MONTHS)
-    usd_candles = monthly_ohlc_from_daily(
-        bcb_series(1, months=CANDLE_MONTHS), limit=CANDLE_MONTHS
-    )
+    usd_daily = bcb_series(1, months=CANDLE_MONTHS)
+    usd_candles = monthly_ohlc_from_daily(usd_daily, limit=CANDLE_MONTHS)
     btc_brl_candles = combine_ohlc(btc_usd_candles, usd_candles)
     ewz_points = ewz_candles[-36:]
     ibov_points = ibov_candles[-36:]
     focus_ipca = focus_series("IPCA")
     focus_pib = focus_series("PIB Total")
-    di_2032 = b3_di_rate("DI1F32")
-    di_2035 = b3_di_rate("DI1F35")
+    di_sessions = {
+        "DI jan/32": b3_session("DI1F32"),
+        "DI jan/35": b3_session("DI1F35"),
+    }
+    ibov_sessions = b3_session("IBOV")
+    di_2032 = di_sessions["DI jan/32"][-1][1] if di_sessions["DI jan/32"] else None
+    di_2035 = di_sessions["DI jan/35"][-1][1] if di_sessions["DI jan/35"] else None
     janjometro = janjometro_value()
     impostometro_live = impostometro_data()
 
@@ -1473,6 +1660,7 @@ def main():
         ewz_points,
         ibov_points,
         focus_ipca,
+        daily=daily_market_alerts(di_sessions, ibov_sessions, usd_daily),
     )
 
     snapshot = {
