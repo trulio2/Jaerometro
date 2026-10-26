@@ -1,10 +1,5 @@
 import type { CSSProperties } from 'react'
-import {
-  Navigate,
-  NavLink,
-  useParams,
-  useSearchParams
-} from 'react-router-dom'
+import { Navigate, NavLink, useParams, useSearchParams } from 'react-router-dom'
 import {
   AlertsPanel,
   ChartDialog,
@@ -41,12 +36,7 @@ const overviewMetricIds = [
   'interest',
   'janjometro'
 ]
-const overviewChartIds = [
-  'usd-12m',
-  'debt-12m',
-  'real-rate-12m',
-  'ipca-12m'
-]
+const overviewChartIds = ['usd-12m', 'debt-12m', 'real-rate-12m', 'ipca-12m']
 
 function gridStyle(count: number): CSSProperties {
   const cols = count <= 3 ? count : count === 4 ? 2 : 3
@@ -101,16 +91,6 @@ function DashboardTabs({ snapshot }: { snapshot: DashboardSnapshot }) {
             {String(activeAlerts).padStart(2, '0')} alertas
           </NavLink>
         )}
-        <span className="dashboard-credit">
-          Gráficos por{' '}
-          <a
-            href="https://www.tradingview.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            TradingView
-          </a>
-        </span>
       </div>
     </nav>
   )

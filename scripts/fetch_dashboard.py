@@ -790,6 +790,126 @@ def short_date(day: str) -> str:
     return f"{day[8:10]}/{day[5:7]}"
 
 
+# January DI contracts that make up the curve: the next nine years.
+DI_CURVE_YEARS = range(NOW.year + 1, NOW.year + 10)
+# How far back the "a month ago" curve looks, and the slack allowed when no
+# session falls exactly on that day (weekends, holidays, missed runs).
+CURVE_LOOKBACK_DAYS = 30
+CURVE_LOOKBACK_SLACK_DAYS = 5
+
+
+def di_symbol(year: int) -> str:
+    return f"DI1F{year % 100:02d}"
+
+
+def di_curve_series(sessions_by_year):
+    """Curve points for the latest session, the one before it, and ~1 month ago."""
+    latest = max(
+        (rows[-1][0] for rows in sessions_by_year.values() if rows), default=None
+    )
+
+    if latest is None:
+        return []
+
+    target = date.fromisoformat(latest) - timedelta(days=CURVE_LOOKBACK_DAYS)
+    today, previous, month_ago = [], [], []
+
+    for year, rows in sorted(sessions_by_year.items()):
+        point = {"date": str(year), "label": f"jan/{year % 100:02d}"}
+        row = rows[-1] if rows else None
+
+        if not row or row[0] != latest:
+            continue
+
+        today.append({**point, "value": round(row[1], 3)})
+
+        if len(row) >= 3 and row[2] is not None:
+            previous.append(
+                {**point, "value": round(row[1] / (1 + row[2] / 100), 3)}
+            )
+
+        # Closest stored session on or before the target, within the slack.
+        older = [
+            stored
+            for stored in rows
+            if date.fromisoformat(stored[0]) <= target
+            and (target - date.fromisoformat(stored[0])).days
+            <= CURVE_LOOKBACK_SLACK_DAYS
+        ]
+
+        if older:
+            month_ago.append({**point, "value": round(older[-1][1], 3)})
+
+    series = [
+        {
+            "id": "di-curve-today",
+            "label": f"Sessão {short_date(latest)}",
+            "color": "#ff4d5e",
+            "axis": "left",
+            "type": "area",
+            "decimals": 2,
+            "suffix": "%",
+            "points": today,
+        },
+        {
+            "id": "di-curve-previous",
+            "label": "Sessão anterior",
+            "color": "#c9d6d7",
+            "axis": "left",
+            "dashed": True,
+            "decimals": 2,
+            "suffix": "%",
+            "points": previous,
+        },
+    ]
+
+    # Only once the store holds a month of history for most of the curve.
+    if len(month_ago) >= len(today) / 2:
+        series.append(
+            {
+                "id": "di-curve-month",
+                "label": "1 mês atrás",
+                "color": "#f5c542",
+                "axis": "left",
+                "dashed": True,
+                "decimals": 2,
+                "suffix": "%",
+                "points": month_ago,
+            }
+        )
+
+    return [item for item in series if item["points"]]
+
+
+def di_daily_series(sessions_by_year, years, limit: int = 250):
+    """Daily closes of the given January contracts, oldest first."""
+    colors = ["#ff4d5e", "#f5c542"]
+    series = []
+
+    for year, color in zip(years, colors):
+        rows = sessions_by_year.get(year) or []
+        series.append(
+            {
+                "id": f"di-{year}",
+                "label": f"DI jan/{year % 100:02d}",
+                "color": color,
+                "axis": "left",
+                "decimals": 2,
+                "suffix": "%",
+                "points": [
+                    {
+                        "date": row[0],
+                        "label": short_date(row[0]),
+                        "value": round(row[1], 3),
+                    }
+                    for row in rows[-limit:]
+                ],
+            }
+        )
+
+    return series
+
+
 def daily_market_alerts(di_sessions, ibov_sessions, usd_daily):
     alerts = []
 
@@ -979,6 +1099,7 @@ def main():
     money_points = monthly_points(bcb_series(1788), scale=0.000001)
     pib_points = monthly_points(bcb_series(4380), scale=0.000001)
     primary_points = monthly_points(bcb_series(5793))
+    nominal_points = monthly_points(bcb_series(5727))
     gdp_growth_points = annual_points(bcb_series(7326, months=24 * 12), limit=24)
 
     selic_by_month = series_map(selic_points)
@@ -1012,27 +1133,22 @@ def main():
     ibov_points = ibov_candles[-36:]
     focus_ipca = focus_series("IPCA")
     focus_pib = focus_series("PIB Total")
+    di_by_year = {
+        year: b3_session(di_symbol(year))
+        for year in sorted({*DI_CURVE_YEARS, 2032, 2035})
+    }
     di_sessions = {
-        "DI jan/32": b3_session("DI1F32"),
-        "DI jan/35": b3_session("DI1F35"),
+        "DI jan/32": di_by_year[2032],
+        "DI jan/35": di_by_year[2035],
     }
     ibov_sessions = b3_session("IBOV")
-    di_2032 = di_sessions["DI jan/32"][-1][1] if di_sessions["DI jan/32"] else None
-    di_2035 = di_sessions["DI jan/35"][-1][1] if di_sessions["DI jan/35"] else None
     janjometro = janjometro_value()
     impostometro_live = impostometro_data()
 
-    future_rates = []
-
-    if di_2032 is not None:
-        future_rates.append(
-            {"date": "2032-01-01", "label": "2032", "value": round(di_2032, 4)}
-        )
-
-    if di_2035 is not None:
-        future_rates.append(
-            {"date": "2035-01-01", "label": "2035", "value": round(di_2035, 4)}
-        )
+    di_curve = di_curve_series(
+        {year: di_by_year[year] for year in DI_CURVE_YEARS}
+    )
+    di_daily = di_daily_series(di_by_year, (2032, 2035))
 
     usd_rolling = rolling_average(usd_points)
     ewz_rolling = rolling_average(ewz_points)
@@ -1061,6 +1177,10 @@ def main():
     # to read as a result: surplus above zero, deficit below.
     primary_12m = [
         {**point, "value": -point["value"]} for point in primary_points[-24:]
+    ]
+    # SGS 5727 (nominal result: primary minus interest) uses the same convention.
+    nominal_12m = [
+        {**point, "value": -point["value"]} for point in nominal_points[-24:]
     ]
     ipca_rolling = rolling_compound(ipca_points)
     money_rolling = rolling_average(money_points)
@@ -1494,8 +1614,8 @@ def main():
         },
         {
             "id": "primary-12m",
-            "title": "RESULTADO PRIMÁRIO — ACUMULADO 12M",
-            "subtitle": "Setor público consolidado, % do PIB (positivo = superávit)",
+            "title": "RESULTADO PRIMÁRIO E NOMINAL — ACUMULADO 12M",
+            "subtitle": "Setor público consolidado, % do PIB (positivo = superávit); nominal inclui juros",
             "kind": "line",
             "section": "fiscal",
             "series": [
@@ -1508,7 +1628,16 @@ def main():
                     "decimals": 2,
                     "suffix": "% PIB",
                     "points": primary_chart_points,
-                }
+                },
+                {
+                    "id": "nominal",
+                    "label": "Resultado nominal 12m",
+                    "color": "#f5c542",
+                    "axis": "left",
+                    "decimals": 2,
+                    "suffix": "% PIB",
+                    "points": nominal_12m,
+                },
             ],
         },
         {
@@ -1649,22 +1778,20 @@ def main():
             ],
         },
         {
-            "id": "future-rates",
-            "title": "JUROS FUTUROS — DI 2032 / 2035",
-            "subtitle": "Taxa corrente dos contratos DI (% a.a.)",
+            "id": "di-curve",
+            "title": "CURVA DE JUROS — DI FUTURO",
+            "subtitle": "Taxa dos contratos DI de janeiro por vencimento (% a.a.)",
             "kind": "line",
             "section": "future",
-            "series": [
-                {
-                    "id": "future-rates",
-                    "label": "DI futuro",
-                    "color": "#2de2e6",
-                    "axis": "left",
-                    "decimals": 2,
-                    "suffix": "%",
-                    "points": future_rates,
-                }
-            ],
+            "series": di_curve,
+        },
+        {
+            "id": "future-rates",
+            "title": "JUROS FUTUROS — DI JAN/32 E JAN/35",
+            "subtitle": "Taxa de fechamento por sessão (% a.a.)",
+            "kind": "line",
+            "section": "future",
+            "series": di_daily,
         },
     ]
 
