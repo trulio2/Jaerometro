@@ -1,4 +1,22 @@
 import { ChangelogRepository, ChangelogService } from './changelog'
-import { HomeRepository, HomeService } from './home'
+import {
+  DashboardRepository,
+  DashboardService,
+  useDashboard
+} from './dashboard'
+import {
+  RealtimeRepository,
+  RealtimeService,
+  useRealtimeQuotes
+} from './realtime'
 
-export { ChangelogRepository, ChangelogService, HomeRepository, HomeService }
+export {
+  ChangelogRepository,
+  ChangelogService,
+  DashboardRepository,
+  DashboardService,
+  RealtimeRepository,
+  RealtimeService,
+  useDashboard,
+  useRealtimeQuotes
+}

@@ -1,7 +1,7 @@
 import { Suspense, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
+import { Navbar } from '@/components'
 import { init } from '@/setup'
-import Navbar from '@/components/navbar/Navbar'
 
 function RootLayout() {
   useEffect(() => {

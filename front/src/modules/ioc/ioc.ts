@@ -1,12 +1,15 @@
 import {
   ChangelogRepository,
-  ChangelogService,
-  HomeRepository,
-  HomeService
-} from '@/modules/services'
+  ChangelogService
+} from '@/modules/services/changelog'
+import DashboardRepository from '@/modules/services/dashboard/dashboard.repository'
+import DashboardService from '@/modules/services/dashboard/dashboard.service'
+import RealtimeRepository from '@/modules/services/realtime/realtime.repository'
+import RealtimeService from '@/modules/services/realtime/realtime.service'
 import {
   type IChangelogRepository,
-  type IHomeRepository,
+  type IDashboardRepository,
+  type IRealtimeRepository,
   REPOSITORIES,
   SERVICES
 } from '@/types'
@@ -27,17 +30,24 @@ class IoC {
           this.getOrCreateInstance<IChangelogRepository>(REPOSITORIES.CHANGELOG)
         )
         break
-      case SERVICES.HOME:
-        newInstance = new HomeService(
-          this.getOrCreateInstance<IHomeRepository>(REPOSITORIES.HOME)
+      case SERVICES.DASHBOARD:
+        newInstance = new DashboardService(
+          this.getOrCreateInstance<IDashboardRepository>(REPOSITORIES.DASHBOARD)
         )
         break
-
+      case SERVICES.REALTIME:
+        newInstance = new RealtimeService(
+          this.getOrCreateInstance<IRealtimeRepository>(REPOSITORIES.REALTIME)
+        )
+        break
       case REPOSITORIES.CHANGELOG:
         newInstance = new ChangelogRepository()
         break
-      case REPOSITORIES.HOME:
-        newInstance = new HomeRepository()
+      case REPOSITORIES.DASHBOARD:
+        newInstance = new DashboardRepository()
+        break
+      case REPOSITORIES.REALTIME:
+        newInstance = new RealtimeRepository()
         break
       default:
         break

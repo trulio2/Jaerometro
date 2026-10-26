@@ -6,13 +6,17 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "data": "python ../scripts/fetch_dashboard.py",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "lightweight-charts": "4.2.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-is": "^19.0.0",
     "react-router-dom": "^7.18.2",
+    "recharts": "^3.10.1",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
