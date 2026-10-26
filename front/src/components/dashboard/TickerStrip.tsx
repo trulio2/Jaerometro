@@ -35,9 +35,9 @@ const statusLabel: Record<TickerStatus, string> = {
 }
 
 const feedLabel: Record<DashboardFeed, string> = {
-  live: 'FEED ATIVO',
-  stale: 'FEED ATRASADO',
-  offline: 'FEED OFFLINE'
+  live: 'ATIVO',
+  stale: 'ATRASADO',
+  offline: 'OFFLINE'
 }
 
 const liveQuoteLabels = [
