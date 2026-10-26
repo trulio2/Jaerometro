@@ -20,6 +20,9 @@ export default function MetricTile({ metric }: { metric: MetricCard }) {
 
       <div className="metric-value-row">
         <span className="metric-value">{metric.value}</span>
+        {metric.detail && (
+          <span className="metric-detail">{metric.detail}</span>
+        )}
         <span className={`metric-delta tone-${metric.tone}`}>
           <span aria-hidden="true">{trendArrow[metric.trend]}</span>
           {metric.delta}

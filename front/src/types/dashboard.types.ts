@@ -29,6 +29,8 @@ export interface MetricCard {
   label: string
   description: string
   value: string
+  // Secondary reading shown next to the value, e.g. debt in R$.
+  detail?: string
   delta: string
   deltaLabel: string
   trend: MetricTrend
@@ -55,6 +57,8 @@ export interface ChartSeries {
   label: string
   color: string
   axis: ChartAxis
+  // Only used by line charts: 'area' fills the space under the line.
+  type?: 'line' | 'area'
   dashed?: boolean
   decimals?: number
   prefix?: string

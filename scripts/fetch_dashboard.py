@@ -21,6 +21,8 @@ OUTPUT = ROOT / "front" / "public" / "data" / "dashboard.json"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 TIMEOUT = 60
 CANDLE_MONTHS = 96
+# Enough months for 24 points of year-over-year growth on 12-month sums.
+FISCAL_MONTHS = 72
 NOW = datetime.now(timezone.utc)
 DATA_DIR = Path(os.environ.get("JAEROMETRO_DATA_DIR", ROOT / "data"))
 # Re-fetch this far behind the last stored row so revised figures are picked up.
@@ -597,6 +599,34 @@ def rolling_sum(points, window: int = 12, limit: int = 24):
     return result[-limit:]
 
 
+def yoy_growth(points, limit: int = 24):
+    """Percent change of each point against the same month a year before."""
+    by_date = {point["date"]: point["value"] for point in points}
+    result = []
+
+    for point in points:
+        year, month = point["date"][:4], point["date"][5:7]
+        before = by_date.get(f"{int(year) - 1}-{month}")
+
+        if before:
+            result.append(
+                {**point, "value": round((point["value"] / before - 1) * 100, 2)}
+            )
+
+    return result[-limit:]
+
+
+def ratio_points(numerators, denominators, limit: int = 24):
+    """numerator / denominator in percent, for the months both series have."""
+    by_date = {point["date"]: point["value"] for point in denominators}
+
+    return [
+        {**point, "value": round(point["value"] / by_date[point["date"]] * 100, 2)}
+        for point in numerators
+        if by_date.get(point["date"])
+    ][-limit:]
+
+
 def rolling_average(points, window: int = 12, limit: int = 24):
     result = []
 
@@ -730,6 +760,7 @@ def build_alerts(debt, real_rate, flow, ipca, revenue, money, ewz, ibov, focus_i
 
 def main():
     debt_points = monthly_points(bcb_series(13762))
+    debt_brl_points = monthly_points(bcb_series(13761), scale=0.000001)
     usd_points = monthly_points(bcb_series(3698))
     ipca_points = monthly_points(bcb_series(433))
     ipca12_points = monthly_points(bcb_series(13522))
@@ -740,7 +771,12 @@ def main():
     if flow_points and flow_points[-1]["date"] == current_month:
         flow_points = flow_points[:-1]
 
-    interest_points = monthly_points(bcb_series(4616), scale=0.001)
+    interest_points = monthly_points(
+        bcb_series(4616, months=FISCAL_MONTHS), limit=FISCAL_MONTHS, scale=0.001
+    )
+    central_interest_points = monthly_points(
+        bcb_series(4606, months=FISCAL_MONTHS), limit=FISCAL_MONTHS, scale=0.001
+    )
     money_points = monthly_points(bcb_series(1788), scale=0.000001)
     pib_points = monthly_points(bcb_series(4380), scale=0.000001)
     primary_points = monthly_points(bcb_series(5793))
@@ -766,7 +802,7 @@ def main():
             }
         )
 
-    revenue = revenue_points()
+    revenue = revenue_points(limit=FISCAL_MONTHS)
     ewz_candles = yahoo_monthly("EWZ", limit=CANDLE_MONTHS)
     ibov_candles = yahoo_monthly("^BVSP", limit=CANDLE_MONTHS)
     btc_usd_candles = yahoo_monthly("BTC-USD", limit=CANDLE_MONTHS)
@@ -799,14 +835,30 @@ def main():
     ewz_rolling = rolling_average(ewz_points)
     ibov_rolling = rolling_average(ibov_points)
     flow_rolling = rolling_sum(flow_points)
-    debt_rolling = rolling_average(debt_points)
-    revenue_rolling = rolling_sum(revenue)
-    interest_rolling = rolling_sum(interest_points)
-    interest_rolling_tri = [
-        {**point, "value": round(point["value"] / 1000, 4)}
-        for point in interest_rolling
+    revenue_rolling = rolling_sum(revenue, limit=FISCAL_MONTHS)
+    interest_rolling = rolling_sum(interest_points, limit=FISCAL_MONTHS)
+    central_interest_rolling = rolling_sum(
+        central_interest_points, limit=FISCAL_MONTHS
+    )
+    revenue_growth = yoy_growth(revenue_rolling)
+    interest_growth = yoy_growth(interest_rolling)
+    interest_share = ratio_points(central_interest_rolling, revenue_rolling)
+
+    def ipca_matching(points):
+        dates = {point["date"] for point in points}
+        return [point for point in ipca12_points if point["date"] in dates]
+
+    def to_trillions(points):
+        return [
+            {**point, "value": round(point["value"] / 1000, 4)}
+            for point in points[-24:]
+        ]
+
+    # SGS 5793 follows the NFSP convention (positive = deficit), so flip it
+    # to read as a result: surplus above zero, deficit below.
+    primary_12m = [
+        {**point, "value": -point["value"]} for point in primary_points[-24:]
     ]
-    primary_12m = primary_points[-24:]
     ipca_rolling = rolling_compound(ipca_points)
     money_rolling = rolling_average(money_points)
     real_rolling = rolling_average(real_points)
@@ -831,7 +883,8 @@ def main():
     ewz_delta = change(ewz, previous(ewz_points))
     flow_change = flow - previous(flow_points)
     interest_12m = latest(interest_rolling)
-    interest_delta = change(interest_12m, previous(interest_rolling))
+    interest_delta = latest(interest_growth)
+    debt_brl = latest(debt_brl_points)
 
     metrics = [
         {
@@ -839,13 +892,14 @@ def main():
             "label": "DÍVIDA BRUTA / PIB",
             "description": "Dívida do governo geral",
             "value": f"{number(debt)}%",
+            "detail": f"R$ {number(debt_brl)} tri",
             "delta": signed(debt_delta, 2, " p.p."),
             "deltaLabel": "no mês",
             "trend": trend(debt_delta),
             "tone": "negative",
             "severity": "critical" if debt > 80 else "warning",
             "icon": "risk",
-            "source": "BCB SGS 13762",
+            "source": "BCB SGS 13762 / 13761",
             "updatedAt": as_of(debt_points),
         },
         {
@@ -965,8 +1019,8 @@ def main():
             "label": "JUROS DA DÍVIDA PAGOS",
             "description": "Juros nominais em 12 meses",
             "value": f"R$ {number(interest_12m / 1000)} tri",
-            "delta": signed(interest_delta, 2, "%"),
-            "deltaLabel": "no mês",
+            "delta": signed(interest_delta, 1, "%"),
+            "deltaLabel": "em 1 ano",
             "trend": trend(interest_delta),
             "tone": "negative" if interest_delta > 0 else "positive",
             "severity": "warning" if interest_12m >= 1000 else "normal",
@@ -980,8 +1034,8 @@ def main():
         flow_rolling,
         lambda value: "critical" if value < 0 else "normal",
     )
-    debt_rolling_chart = chart_point_severity(
-        debt_rolling,
+    debt_chart = chart_point_severity(
+        debt_points[-24:],
         lambda value: "critical" if value > 80 else "warning" if value > 75 else "normal",
     )
     ipca_rolling_chart = chart_point_severity(
@@ -1109,72 +1163,143 @@ def main():
         },
         {
             "id": "debt-12m",
-            "title": "DÍVIDA BRUTA / PIB — MÉDIA 12M",
-            "subtitle": "Média móvel de 12 meses (% do PIB)",
+            "title": "DÍVIDA BRUTA DO GOVERNO GERAL",
+            "subtitle": "Estoque em R$ tri (área) e em % do PIB (linha)",
             "kind": "line",
             "section": "fiscal",
             "series": [
                 {
-                    "id": "debt",
-                    "label": "Dívida bruta (média 12m)",
+                    "id": "debt-brl",
+                    "label": "Dívida bruta (R$ tri)",
                     "color": "#2de2e6",
                     "axis": "left",
+                    "type": "area",
+                    "decimals": 2,
+                    "prefix": "R$ ",
+                    "suffix": " tri",
+                    "points": debt_brl_points[-24:],
+                },
+                {
+                    "id": "debt",
+                    "label": "Dívida bruta (% PIB)",
+                    "color": "#f5c542",
+                    "axis": "right",
                     "decimals": 2,
                     "suffix": "%",
-                    "points": debt_rolling_chart,
-                }
+                    "points": debt_chart,
+                },
             ],
         },
         {
             "id": "revenue-12m",
-            "title": "ARRECADAÇÃO FEDERAL — ACUMULADO 12M",
-            "subtitle": "Soma móvel de 12 meses (R$ bi)",
+            "title": "ARRECADAÇÃO FEDERAL — CRESCIMENTO ANUAL",
+            "subtitle": "Acumulado em 12 meses vs. 1 ano antes (área), IPCA 12m e total em R$ tri",
             "kind": "line",
             "section": "fiscal",
             "series": [
                 {
-                    "id": "revenue",
-                    "label": "Arrecadação 12m",
+                    "id": "revenue-growth",
+                    "label": "Crescimento anual",
                     "color": "#2de2e6",
                     "axis": "left",
+                    "type": "area",
                     "decimals": 1,
+                    "suffix": "%",
+                    "points": revenue_growth,
+                },
+                {
+                    "id": "revenue-ipca",
+                    "label": "IPCA 12m",
+                    "color": "#f5c542",
+                    "axis": "left",
+                    "dashed": True,
+                    "decimals": 2,
+                    "suffix": "%",
+                    "points": ipca_matching(revenue_growth),
+                },
+                {
+                    "id": "revenue",
+                    "label": "Arrecadação 12m",
+                    "color": "#c9d6d7",
+                    "axis": "right",
+                    "decimals": 2,
                     "prefix": "R$ ",
-                    "suffix": " bi",
-                    "points": revenue_rolling,
-                }
+                    "suffix": " tri",
+                    "points": to_trillions(revenue_rolling),
+                },
             ],
         },
         {
             "id": "interest-12m",
-            "title": "JUROS DA DÍVIDA — ACUMULADO 12M",
-            "subtitle": "Soma móvel de 12 meses (R$ trilhões)",
+            "title": "JUROS DA DÍVIDA — CRESCIMENTO ANUAL",
+            "subtitle": "Juros nominais do setor público em 12 meses vs. 1 ano antes (área), IPCA 12m e total em R$ tri",
             "kind": "line",
             "section": "fiscal",
             "series": [
                 {
-                    "id": "interest",
-                    "label": "Juros nominais 12m",
-                    "color": "#2de2e6",
+                    "id": "interest-growth",
+                    "label": "Crescimento anual",
+                    "color": "#ff4d5e",
                     "axis": "left",
+                    "type": "area",
+                    "decimals": 1,
+                    "suffix": "%",
+                    "points": interest_growth,
+                },
+                {
+                    "id": "interest-ipca",
+                    "label": "IPCA 12m",
+                    "color": "#f5c542",
+                    "axis": "left",
+                    "dashed": True,
+                    "decimals": 2,
+                    "suffix": "%",
+                    "points": ipca_matching(interest_growth),
+                },
+                {
+                    "id": "interest",
+                    "label": "Juros 12m",
+                    "color": "#c9d6d7",
+                    "axis": "right",
                     "decimals": 2,
                     "prefix": "R$ ",
                     "suffix": " tri",
-                    "points": interest_rolling_tri,
+                    "points": to_trillions(interest_rolling),
+                },
+            ],
+        },
+        {
+            "id": "interest-revenue",
+            "title": "JUROS / ARRECADAÇÃO FEDERAL",
+            "subtitle": "Juros nominais do governo central em 12m, em % da arrecadação federal em 12m",
+            "kind": "line",
+            "section": "fiscal",
+            "series": [
+                {
+                    "id": "interest-share",
+                    "label": "Juros / arrecadação",
+                    "color": "#ff4d5e",
+                    "axis": "left",
+                    "type": "area",
+                    "decimals": 1,
+                    "suffix": "%",
+                    "points": interest_share,
                 }
             ],
         },
         {
             "id": "primary-12m",
             "title": "RESULTADO PRIMÁRIO — ACUMULADO 12M",
-            "subtitle": "Acumulado em 12 meses (% do PIB)",
-            "kind": "bar",
+            "subtitle": "Setor público consolidado, % do PIB (positivo = superávit)",
+            "kind": "line",
             "section": "fiscal",
             "series": [
                 {
                     "id": "primary",
                     "label": "Resultado primário 12m",
-                    "color": "#2de2e6",
+                    "color": "#ff4d5e",
                     "axis": "left",
+                    "type": "area",
                     "decimals": 2,
                     "suffix": "% PIB",
                     "points": primary_chart_points,
@@ -1186,7 +1311,7 @@ def main():
             "title": "CRESCIMENTO DO PIB — ANUAL",
             "subtitle": "Variação real anual (%)",
             "kind": "bar",
-            "section": "fiscal",
+            "section": "monetary",
             "series": [
                 {
                     "id": "gdp-growth",

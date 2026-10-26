@@ -822,6 +822,12 @@
   font-size: 20px;
 }
 
+.metric-detail {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--dash-text);
+}
+
 /* Chart grid */
 
 .chart-grid {

@@ -21,5 +21,8 @@ export function formatAxisValue(
     return `${value.toFixed(1)}%`
   }
 
-  return String(Math.round(value))
+  // Keep one decimal for series like "R$ 11,1 tri" so nearby ticks differ.
+  return value.toLocaleString('pt-BR', {
+    maximumFractionDigits: Math.min(series?.decimals ?? 0, 1)
+  })
 }

@@ -1,8 +1,11 @@
+import { useId } from 'react'
 import {
+  Area,
   CartesianGrid,
+  ComposedChart,
   Legend,
   Line,
-  LineChart,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -50,6 +53,18 @@ export default function LineChartPanel({
 }) {
   const primary = chart.series[0]
   const hasRight = chart.series.some((series) => series.axis === 'right')
+  const leftSeries =
+    chart.series.find((series) => series.axis === 'left') ?? primary
+  const leftCrossesZero = chart.series.some(
+    (series) =>
+      series.axis === 'left' &&
+      series.points.some((point) => point.value < 0) &&
+      series.points.some((point) => point.value > 0)
+  )
+  // The same chart can be mounted twice (grid and dialog), so gradient ids
+  // need to be unique per instance; useId's punctuation is not valid in url().
+  const gradientPrefix = `area${useId().replace(/[^a-zA-Z0-9]/g, '')}`
+  const areaSeries = chart.series.filter((series) => series.type === 'area')
 
   return (
     <section className="panel chart-panel">
@@ -63,10 +78,27 @@ export default function LineChartPanel({
 
       <div className="chart-body" role="img" aria-label={chart.title}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
+          <ComposedChart
             data={toRows(chart)}
             margin={{ top: 8, right: 4, left: -8, bottom: 0 }}
           >
+            {areaSeries.length > 0 && (
+              <defs>
+                {areaSeries.map((series) => (
+                  <linearGradient
+                    key={series.id}
+                    id={`${gradientPrefix}-${series.id}`}
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop offset="0%" stopColor={series.color} stopOpacity={0.32} />
+                    <stop offset="100%" stopColor={series.color} stopOpacity={0.02} />
+                  </linearGradient>
+                ))}
+              </defs>
+            )}
             <CartesianGrid
               stroke="#1a2b2e"
               strokeDasharray="3 3"
@@ -85,8 +117,9 @@ export default function LineChartPanel({
               axisLine={false}
               tickLine={false}
               width={38}
+              domain={['auto', 'auto']}
               tickFormatter={(value: number) =>
-                formatAxisValue(value, primary)
+                formatAxisValue(value, leftSeries)
               }
             />
             {hasRight && (
@@ -97,6 +130,7 @@ export default function LineChartPanel({
                 axisLine={false}
                 tickLine={false}
                 width={44}
+                domain={['auto', 'auto']}
                 tickFormatter={(value: number) =>
                   formatAxisValue(
                     value,
@@ -135,22 +169,40 @@ export default function LineChartPanel({
                 color: '#69878a'
               }}
             />
-            {chart.series.map((series) => (
-              <Line
-                key={series.id}
-                yAxisId={series.axis}
-                type="monotone"
-                dataKey={series.id}
-                name={series.label}
-                stroke={series.color}
-                strokeWidth={2}
-                strokeDasharray={series.dashed ? '5 4' : undefined}
-                dot={series.points.length <= 6 ? { r: 2.5, strokeWidth: 0 } : false}
-                activeDot={{ r: 3, strokeWidth: 0 }}
-                isAnimationActive={false}
-              />
-            ))}
-          </LineChart>
+            {leftCrossesZero && (
+              <ReferenceLine yAxisId="left" y={0} stroke="#2a4245" />
+            )}
+            {chart.series.map((series) =>
+              series.type === 'area' ? (
+                <Area
+                  key={series.id}
+                  yAxisId={series.axis}
+                  type="monotone"
+                  dataKey={series.id}
+                  name={series.label}
+                  stroke={series.color}
+                  strokeWidth={2}
+                  fill={`url(#${gradientPrefix}-${series.id})`}
+                  activeDot={{ r: 3, strokeWidth: 0 }}
+                  isAnimationActive={false}
+                />
+              ) : (
+                <Line
+                  key={series.id}
+                  yAxisId={series.axis}
+                  type="monotone"
+                  dataKey={series.id}
+                  name={series.label}
+                  stroke={series.color}
+                  strokeWidth={2}
+                  strokeDasharray={series.dashed ? '5 4' : undefined}
+                  dot={series.points.length <= 6 ? { r: 2.5, strokeWidth: 0 } : false}
+                  activeDot={{ r: 3, strokeWidth: 0 }}
+                  isAnimationActive={false}
+                />
+              )
+            )}
+          </ComposedChart>
         </ResponsiveContainer>
       </div>
     </section>
