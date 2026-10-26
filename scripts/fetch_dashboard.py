@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import io
 import json
+import os
 import re
 import time
 import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.parse import quote, urljoin
@@ -13,12 +14,18 @@ from urllib.parse import quote, urljoin
 import openpyxl
 import requests
 
+from history_store import HistoryStore
+
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "front" / "public" / "data" / "dashboard.json"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 TIMEOUT = 60
 CANDLE_MONTHS = 96
 NOW = datetime.now(timezone.utc)
+DATA_DIR = Path(os.environ.get("JAEROMETRO_DATA_DIR", ROOT / "data"))
+# Re-fetch this far behind the last stored row so revised figures are picked up.
+REVISION_DAYS = 120
+STORE = HistoryStore(DATA_DIR)
 
 
 def request_json(url: str):
@@ -37,23 +44,40 @@ def request_json(url: str):
 
 
 def bcb_series(code: int, months: int = 36):
-    start = (NOW - timedelta(days=months * 31)).date()
-    end = NOW.date()
-    url = (
-        f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.{code}/dados"
-        f"?formato=json&dataInicial={start.strftime('%d/%m/%Y')}"
-        f"&dataFinal={end.strftime('%d/%m/%Y')}"
-    )
-    rows = request_json(url)
-    points = []
+    window_start = (NOW - timedelta(days=months * 31)).date()
 
-    for row in rows:
-        date = datetime.strptime(row["data"], "%d/%m/%Y").date()
-        value = float(str(row["valor"]).replace(",", "."))
-        points.append((date, value))
+    def fetch(first, last):
+        start = window_start
+        # A series can start a few weeks after the window opens, so allow
+        # some slack before deciding the stored history is too short.
+        covered = first and date.fromisoformat(first) <= window_start + timedelta(
+            days=45
+        )
 
-    points.sort(key=lambda item: item[0])
-    return points
+        if covered:
+            start = date.fromisoformat(last) - timedelta(days=REVISION_DAYS)
+
+        url = (
+            f"https://api.bcb.gov.br/dados/serie/bcdata.sgs.{code}/dados"
+            f"?formato=json&dataInicial={start.strftime('%d/%m/%Y')}"
+            f"&dataFinal={NOW.date().strftime('%d/%m/%Y')}"
+        )
+        payload = request_json(url)
+
+        # BCB sometimes answers 200 with an error object instead of rows.
+        if not isinstance(payload, list):
+            raise ValueError(f"unexpected BCB response: {str(payload)[:120]}")
+
+        return [
+            [
+                datetime.strptime(row["data"], "%d/%m/%Y").date().isoformat(),
+                float(str(row["valor"]).replace(",", ".")),
+            ]
+            for row in payload
+        ]
+
+    rows = STORE.series(f"bcb-{code}", fetch)
+    return [(date.fromisoformat(day), value) for day, value in rows]
 
 
 def monthly_points(rows, limit: int = 36, scale: float = 1.0):
@@ -111,48 +135,61 @@ def annual_points(rows, limit: int = 24):
     ]
 
 
+def months_ago(count: int) -> str:
+    month_index = NOW.year * 12 + NOW.month - 1 - count
+    return f"{month_index // 12}-{month_index % 12 + 1:02d}"
+
+
 def yahoo_monthly(symbol: str, limit: int = 36):
-    url = (
-        "https://query1.finance.yahoo.com/v8/finance/chart/"
-        f"{quote(symbol, safe='')}?range=10y&interval=1mo"
-    )
-    payload = request_json(url)
-    result = payload["chart"]["result"][0]
-    timestamps = result.get("timestamp", [])
-    quote_data = result["indicators"]["quote"][0]
-    opens = quote_data.get("open", [])
-    highs = quote_data.get("high", [])
-    lows = quote_data.get("low", [])
-    closes = quote_data.get("close", [])
-    by_month = {}
+    def fetch(first, last):
+        # Once enough history is stored, a short range refreshes the last
+        # months, including the still-open current one.
+        covered = first and first <= months_ago(limit - 1)
+        span = "1y" if covered else "10y"
+        url = (
+            "https://query1.finance.yahoo.com/v8/finance/chart/"
+            f"{quote(symbol, safe='')}?range={span}&interval=1mo"
+        )
+        payload = request_json(url)
+        result = payload["chart"]["result"][0]
+        timestamps = result.get("timestamp", [])
+        quote_data = result["indicators"]["quote"][0]
+        opens = quote_data.get("open", [])
+        highs = quote_data.get("high", [])
+        lows = quote_data.get("low", [])
+        closes = quote_data.get("close", [])
+        by_month = {}
 
-    for timestamp, open_price, high, low, close in zip(
-        timestamps, opens, highs, lows, closes
-    ):
-        if close is None:
-            continue
+        for timestamp, open_price, high, low, close in zip(
+            timestamps, opens, highs, lows, closes
+        ):
+            if close is None:
+                continue
 
-        date = datetime.fromtimestamp(timestamp, tz=timezone.utc)
-        by_month[(date.year, date.month)] = {
-            "open": float(open_price or close),
-            "high": float(high or close),
-            "low": float(low or close),
-            "close": float(close),
-        }
+            moment = datetime.fromtimestamp(timestamp, tz=timezone.utc)
+            by_month[f"{moment.year}-{moment.month:02d}"] = [
+                float(open_price or close),
+                float(high or close),
+                float(low or close),
+                float(close),
+            ]
 
-    selected = sorted(by_month.items())[-limit:]
+        return [[month, *values] for month, values in sorted(by_month.items())]
+
+    key = "yahoo-" + re.sub(r"[^A-Za-z0-9-]", "", symbol)
+    selected = STORE.series(key, fetch)[-limit:]
 
     return [
         {
-            "date": f"{year}-{month:02d}",
-            "label": f"{month:02d}/{str(year)[-2:]}",
-            "value": round(values["close"], 4),
-            "open": round(values["open"], 4),
-            "high": round(values["high"], 4),
-            "low": round(values["low"], 4),
-            "close": round(values["close"], 4),
+            "date": month,
+            "label": f"{month[5:7]}/{month[2:4]}",
+            "value": round(close, 4),
+            "open": round(open_price, 4),
+            "high": round(high, 4),
+            "low": round(low, 4),
+            "close": round(close, 4),
         }
-        for (year, month), values in selected
+        for month, open_price, high, low, close in selected
     ]
 
 
@@ -203,61 +240,75 @@ def combine_ohlc(left, right):
 
 
 def b3_di_rate(symbol: str):
-    url = (
-        "https://cotacao.b3.com.br/mds/api/v1/DailyFluctuationHistory/"
-        f"{symbol}"
-    )
-    payload = request_json(url)
-    quotes = payload.get("TradgFlr", {}).get("scty", {}).get("lstQtn", [])
+    def fetch(first, last):
+        url = (
+            "https://cotacao.b3.com.br/mds/api/v1/DailyFluctuationHistory/"
+            f"{symbol}"
+        )
+        payload = request_json(url)
+        floor = payload.get("TradgFlr", {})
+        quotes = floor.get("scty", {}).get("lstQtn", [])
+        day = floor.get("date") or NOW.date().isoformat()
 
-    for item in reversed(quotes):
-        price = item.get("closPric")
+        for item in reversed(quotes):
+            price = item.get("closPric")
 
-        if price:
-            return float(price)
+            if price:
+                return [[day, float(price)]]
 
-    return None
+        raise ValueError(f"no {symbol} quote")
+
+    try:
+        rows = STORE.series(f"b3-{symbol}", fetch)
+    except Exception:
+        return None
+
+    return rows[-1][1] if rows else None
 
 
 def focus_series(indicator: str, limit: int = 5):
-    filter_value = quote(f"Indicador eq '{indicator}'", safe="")
-    url = (
-        "https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/"
-        "ExpectativasMercadoAnuais"
-        f"?$filter={filter_value}&$orderby=Data%20desc&$top=1000&$format=json"
-    )
-    rows = request_json(url)["value"]
-    rows = [row for row in rows if row.get("baseCalculo") == 0]
+    def fetch():
+        filter_value = quote(f"Indicador eq '{indicator}'", safe="")
+        url = (
+            "https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/"
+            "odata/ExpectativasMercadoAnuais"
+            f"?$filter={filter_value}&$orderby=Data%20desc&$top=1000"
+            "&$format=json"
+        )
+        rows = request_json(url)["value"]
+        rows = [row for row in rows if row.get("baseCalculo") == 0]
 
-    if not rows:
-        return []
+        if not rows:
+            return None
 
-    latest = max(row["Data"] for row in rows)
-    rows = [row for row in rows if row["Data"] == latest]
-    rows.sort(key=lambda row: int(row["DataReferencia"]))
-    rows = rows[-limit:]
+        latest = max(row["Data"] for row in rows)
+        rows = [row for row in rows if row["Data"] == latest]
+        rows.sort(key=lambda row: int(row["DataReferencia"]))
 
-    return [
-        {
-            "date": row["DataReferencia"],
-            "label": row["DataReferencia"],
-            "value": round(float(row["Mediana"] or row["Media"]), 4),
-        }
-        for row in rows
-    ]
+        return [
+            {
+                "date": row["DataReferencia"],
+                "label": row["DataReferencia"],
+                "value": round(float(row["Mediana"] or row["Media"]), 4),
+            }
+            for row in rows[-limit:]
+        ]
+
+    key = "focus-" + re.sub(r"[^a-z0-9]+", "-", indicator.lower()).strip("-")
+    return STORE.latest(key, fetch, default=[])
 
 
 def janjometro_value():
-    url = "https://api.janjometro.com/api/v1/post/sumPublishedCosts"
-
-    try:
+    def fetch():
+        url = "https://api.janjometro.com/api/v1/post/sumPublishedCosts"
         payload = request_json(url)
-        return str(payload.get("totalCost", "")).replace("\xa0", " ").strip()
-    except Exception:
-        return ""
+        value = str(payload.get("totalCost", "")).replace("\xa0", " ").strip()
+        return value or None
+
+    return STORE.latest("janjometro", fetch, default="")
 
 
-def impostometro_data():
+def fetch_impostometro():
     start = f"01/01/{NOW.year}"
     end = NOW.strftime("%d/%m/%Y")
     headers = {
@@ -266,33 +317,33 @@ def impostometro_data():
         "Accept": "application/json, text/javascript, */*; q=0.01",
         "Referer": "https://impostometro.com.br/",
     }
+    response = requests.get(
+        "https://impostometro.com.br/Contador/Brasil",
+        params={"dataInicial": start, "dataFinal": end},
+        headers=headers,
+        timeout=TIMEOUT,
+    )
+    response.raise_for_status()
+    data = response.json()
+    raw = data["Data"].split(".")[0]
+    local = datetime.strptime(raw, "%Y-%m-%dT%H:%M:%S").replace(
+        tzinfo=timezone(timedelta(hours=-3))
+    )
 
-    try:
-        response = requests.get(
-            "https://impostometro.com.br/Contador/Brasil",
-            params={"dataInicial": start, "dataFinal": end},
-            headers=headers,
-            timeout=TIMEOUT,
-        )
-        response.raise_for_status()
-        data = response.json()
-        raw = data["Data"].split(".")[0]
-        local = datetime.strptime(raw, "%Y-%m-%dT%H:%M:%S").replace(
-            tzinfo=timezone(timedelta(hours=-3))
-        )
-
-        return {
-            "value": float(data["Valor"]),
-            "incrementPerSecond": float(data["Incremento"]),
-            "updatedAt": local.astimezone(timezone.utc)
-            .isoformat()
-            .replace("+00:00", "Z"),
-        }
-    except Exception:
-        return None
+    return {
+        "value": float(data["Valor"]),
+        "incrementPerSecond": float(data["Incremento"]),
+        "updatedAt": local.astimezone(timezone.utc)
+        .isoformat()
+        .replace("+00:00", "Z"),
+    }
 
 
-def news_items(limit: int = 6):
+def impostometro_data():
+    return STORE.latest("impostometro", fetch_impostometro)
+
+
+def fetch_news(limit: int):
     query = quote("Brasil economia dívida inflação juros crise")
     url = (
         "https://news.google.com/rss/search"
@@ -334,7 +385,11 @@ def news_items(limit: int = 6):
         if len(items) >= limit:
             break
 
-    return items
+    return items or None
+
+
+def news_items(limit: int = 6):
+    return STORE.latest("news", lambda: fetch_news(limit), default=[])
 
 
 def latest_revenue_report_url(year: int):
@@ -374,7 +429,7 @@ def latest_revenue_report_url(year: int):
     return urljoin(page_url, best_url) + "/@@download/file"
 
 
-def revenue_points(limit: int = 36):
+def fetch_revenue_rows():
     report_url = None
 
     for year in (NOW.year, NOW.year - 1):
@@ -387,7 +442,7 @@ def revenue_points(limit: int = 36):
             break
 
     if not report_url:
-        return []
+        raise ValueError("no revenue report found")
 
     response = requests.get(report_url, headers=HEADERS, timeout=TIMEOUT)
     response.raise_for_status()
@@ -400,7 +455,7 @@ def revenue_points(limit: int = 36):
     )
 
     if not sheet_name:
-        return []
+        raise ValueError("revenue table not found in report")
 
     sheet = workbook[sheet_name]
     month_names = {
@@ -446,18 +501,24 @@ def revenue_points(limit: int = 36):
         total = row[9] if len(row) > 9 else None
 
         if month and isinstance(total, (int, float)):
-            values.append((current_year, month, float(total)))
+            values.append([f"{current_year}-{month:02d}", float(total)])
 
-    values.sort()
-    selected = values[-limit:]
+    if not values:
+        raise ValueError("revenue table has no monthly totals")
+
+    return values
+
+
+def revenue_points(limit: int = 36):
+    rows = STORE.series("rfb-revenue", lambda first, last: fetch_revenue_rows())
 
     return [
         {
-            "date": f"{year}-{month:02d}",
-            "label": f"{month:02d}/{str(year)[-2:]}",
+            "date": month,
+            "label": f"{month[5:7]}/{month[2:4]}",
             "value": round(value / 1000, 4),
         }
-        for year, month, value in selected
+        for month, value in rows[-limit:]
     ]
 
 
@@ -1296,6 +1357,7 @@ def main():
         "alerts": alerts,
         "news": news_items(),
         "impostometro": impostometro_live,
+        "sources": STORE.sources,
     }
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
@@ -1303,7 +1365,13 @@ def main():
         json.dumps(snapshot, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    stale = [key for key, info in STORE.sources.items() if info["status"] != "ok"]
+
     print(f"Wrote {OUTPUT}")
+    print(f"Sources: {len(STORE.sources) - len(stale)} ok, {len(stale)} not fresh")
+
+    for key in stale:
+        print(f"  {key}: {STORE.sources[key]['status']}")
 
 
 if __name__ == "__main__":

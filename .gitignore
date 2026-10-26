@@ -6,3 +6,4 @@ resources/
 
 __pycache__/
 front/public/data/dashboard.json
+/data/

@@ -19,6 +19,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # push the data branch
     defaults:
       run:
         working-directory: front
@@ -47,9 +49,51 @@ jobs:
         working-directory: .
         run: pip install -r scripts/requirements.txt
 
-      - name: Refresh dashboard snapshot
+      # Stored source history lives on the `data` branch, outside master's
+      # history. It is checked out as a worktree so the script can update it.
+      - name: Load stored history
         working-directory: .
+        run: |
+          if git ls-remote --exit-code --heads origin data > /dev/null; then
+            git fetch --depth=1 origin data:data
+            git worktree add data-store data
+          else
+            git worktree add --orphan -b data data-store
+          fi
+
+      - name: Refresh dashboard snapshot
+        id: refresh
+        continue-on-error: true
+        working-directory: .
+        env:
+          JAEROMETRO_DATA_DIR: data-store
         run: python scripts/fetch_dashboard.py
+
+      - name: Save history
+        if: steps.refresh.outcome == 'success'
+        working-directory: data-store
+        run: |
+          cp ../front/public/data/dashboard.json dashboard.json
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No data changes."
+            exit 0
+          fi
+
+          git -c user.name="github-actions[bot]" \
+            -c user.email="41898283+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "data: refresh $(date -u +%F)"
+          git push origin data
+
+      # If the refresh crashed outright, ship the last snapshot that worked.
+      - name: Fall back to last snapshot
+        if: steps.refresh.outcome == 'failure'
+        working-directory: .
+        run: |
+          echo "::warning::Snapshot refresh failed; deploying the last saved snapshot."
+          mkdir -p front/public/data
+          cp data-store/dashboard.json front/public/data/dashboard.json
 
       - name: Lint
         run: yarn lint
