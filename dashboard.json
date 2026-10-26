@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T22:58:57.182887Z",
+  "generatedAt": "2026-10-26T23:11:33.834968Z",
   "metrics": [
     {
       "id": "debt",
@@ -126,7 +126,7 @@
       "severity": "normal",
       "icon": "currency",
       "source": "Janjômetro API",
-      "updatedAt": "2026-10-26T22:58:57.182887Z"
+      "updatedAt": "2026-10-26T23:11:33.834968Z"
     },
     {
       "id": "interest",
@@ -1902,7 +1902,7 @@
               "label": "10/26",
               "value": 34.15,
               "open": 31.71,
-              "high": 34.51,
+              "high": 34.505,
               "low": 31.4,
               "close": 34.15
             }
@@ -3666,11 +3666,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 79851.9297,
+              "value": 79736.25,
               "open": 80039.6875,
               "high": 80612.2422,
               "low": 79343.6562,
-              "close": 79851.9297
+              "close": 79736.25
             }
           ]
         }
@@ -4549,11 +4549,11 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": 439241.5097,
+              "value": 438605.1904,
               "open": 416838.6885,
               "high": 443423.7607,
               "low": 394322.1026,
-              "close": 439241.5097
+              "close": 438605.1904
             }
           ]
         }
@@ -5964,8 +5964,8 @@
     },
     {
       "id": "primary-12m",
-      "title": "RESULTADO PRIMÁRIO — ACUMULADO 12M",
-      "subtitle": "Setor público consolidado, % do PIB (positivo = superávit)",
+      "title": "RESULTADO PRIMÁRIO E NOMINAL — ACUMULADO 12M",
+      "subtitle": "Setor público consolidado, % do PIB (positivo = superávit); nominal inclui juros",
       "kind": "line",
       "section": "fiscal",
       "series": [
@@ -6121,6 +6121,136 @@
               "label": "08/26",
               "value": -0.62,
               "severity": "critical"
+            }
+          ]
+        },
+        {
+          "id": "nominal",
+          "label": "Resultado nominal 12m",
+          "color": "#f5c542",
+          "axis": "left",
+          "decimals": 2,
+          "suffix": "% PIB",
+          "points": [
+            {
+              "date": "2024-09",
+              "label": "09/24",
+              "value": -9.2
+            },
+            {
+              "date": "2024-10",
+              "label": "10/24",
+              "value": -9.36
+            },
+            {
+              "date": "2024-11",
+              "label": "11/24",
+              "value": -9.47
+            },
+            {
+              "date": "2024-12",
+              "label": "12/24",
+              "value": -8.47
+            },
+            {
+              "date": "2025-01",
+              "label": "01/25",
+              "value": -8.08
+            },
+            {
+              "date": "2025-02",
+              "label": "02/25",
+              "value": -7.87
+            },
+            {
+              "date": "2025-03",
+              "label": "03/25",
+              "value": -7.88
+            },
+            {
+              "date": "2025-04",
+              "label": "04/25",
+              "value": -7.7
+            },
+            {
+              "date": "2025-05",
+              "label": "05/25",
+              "value": -7.54
+            },
+            {
+              "date": "2025-06",
+              "label": "06/25",
+              "value": -7.27
+            },
+            {
+              "date": "2025-07",
+              "label": "07/25",
+              "value": -7.82
+            },
+            {
+              "date": "2025-08",
+              "label": "08/25",
+              "value": -7.79
+            },
+            {
+              "date": "2025-09",
+              "label": "09/25",
+              "value": -8.13
+            },
+            {
+              "date": "2025-10",
+              "label": "10/25",
+              "value": -8.14
+            },
+            {
+              "date": "2025-11",
+              "label": "11/25",
+              "value": -8.12
+            },
+            {
+              "date": "2025-12",
+              "label": "12/25",
+              "value": -8.34
+            },
+            {
+              "date": "2026-01",
+              "label": "01/26",
+              "value": -8.48
+            },
+            {
+              "date": "2026-02",
+              "label": "02/26",
+              "value": -8.47
+            },
+            {
+              "date": "2026-03",
+              "label": "03/26",
+              "value": -9.39
+            },
+            {
+              "date": "2026-04",
+              "label": "04/26",
+              "value": -9.37
+            },
+            {
+              "date": "2026-05",
+              "label": "05/26",
+              "value": -9.61
+            },
+            {
+              "date": "2026-06",
+              "label": "06/26",
+              "value": -9.99
+            },
+            {
+              "date": "2026-07",
+              "label": "07/26",
+              "value": -9.35
+            },
+            {
+              "date": "2026-08",
+              "label": "08/26",
+              "value": -9.48
             }
           ]
         }
@@ -7090,28 +7220,159 @@
       ]
     },
     {
-      "id": "future-rates",
-      "title": "JUROS FUTUROS — DI 2032 / 2035",
-      "subtitle": "Taxa corrente dos contratos DI (% a.a.)",
+      "id": "di-curve",
+      "title": "CURVA DE JUROS — DI FUTURO",
+      "subtitle": "Taxa dos contratos DI de janeiro por vencimento (% a.a.)",
       "kind": "line",
       "section": "future",
       "series": [
         {
-          "id": "future-rates",
-          "label": "DI futuro",
-          "color": "#2de2e6",
+          "id": "di-curve-today",
+          "label": "Sessão 26/10",
+          "color": "#ff4d5e",
+          "axis": "left",
+          "type": "area",
+          "decimals": 2,
+          "suffix": "%",
+          "points": [
+            {
+              "date": "2027",
+              "label": "jan/27",
+              "value": 13.723
+            },
+            {
+              "date": "2028",
+              "label": "jan/28",
+              "value": 14.905
+            },
+            {
+              "date": "2029",
+              "label": "jan/29",
+              "value": 15.25
+            },
+            {
+              "date": "2030",
+              "label": "jan/30",
+              "value": 15.28
+            },
+            {
+              "date": "2031",
+              "label": "jan/31",
+              "value": 15.24
+            },
+            {
+              "date": "2032",
+              "label": "jan/32",
+              "value": 15.24
+            },
+            {
+              "date": "2033",
+              "label": "jan/33",
+              "value": 15.25
+            },
+            {
+              "date": "2034",
+              "label": "jan/34",
+              "value": 15.185
+            },
+            {
+              "date": "2035",
+              "label": "jan/35",
+              "value": 15.195
+            }
+          ]
+        },
+        {
+          "id": "di-curve-previous",
+          "label": "Sessão anterior",
+          "color": "#c9d6d7",
+          "axis": "left",
+          "dashed": true,
+          "decimals": 2,
+          "suffix": "%",
+          "points": [
+            {
+              "date": "2027",
+              "label": "jan/27",
+              "value": 13.48
+            },
+            {
+              "date": "2028",
+              "label": "jan/28",
+              "value": 12.856
+            },
+            {
+              "date": "2029",
+              "label": "jan/29",
+              "value": 12.652
+            },
+            {
+              "date": "2030",
+              "label": "jan/30",
+              "value": 12.644
+            },
+            {
+              "date": "2031",
+              "label": "jan/31",
+              "value": 12.641
+            },
+            {
+              "date": "2032",
+              "label": "jan/32",
+              "value": 12.694
+            },
+            {
+              "date": "2033",
+              "label": "jan/33",
+              "value": 12.75
+            },
+            {
+              "date": "2034",
+              "label": "jan/34",
+              "value": 12.766
+            },
+            {
+              "date": "2035",
+              "label": "jan/35",
+              "value": 12.77
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "future-rates",
+      "title": "JUROS FUTUROS — DI JAN/32 E JAN/35",
+      "subtitle": "Taxa de fechamento por sessão (% a.a.)",
+      "kind": "line",
+      "section": "future",
+      "series": [
+        {
+          "id": "di-2032",
+          "label": "DI jan/32",
+          "color": "#ff4d5e",
           "axis": "left",
           "decimals": 2,
           "suffix": "%",
           "points": [
             {
-              "date": "2032-01-01",
-              "label": "2032",
+              "date": "2026-10-26",
+              "label": "26/10",
               "value": 15.24
-            },
+            }
+          ]
+        },
+        {
+          "id": "di-2035",
+          "label": "DI jan/35",
+          "color": "#f5c542",
+          "axis": "left",
+          "decimals": 2,
+          "suffix": "%",
+          "points": [
             {
-              "date": "2035-01-01",
-              "label": "2035",
+              "date": "2026-10-26",
+              "label": "26/10",
               "value": 15.195
             }
           ]
@@ -7124,7 +7385,7 @@
       "id": "alert-1",
       "severity": "critical",
       "title": "Disparada nos Juros Futuros",
-      "message": "DI jan/32 saltou de 12,69% para 15,24% em 26/10 (DI jan/32 +255 bps, DI jan/35 +244 bps). Mercado exige prêmio maior para financiar a dívida.",
+      "message": "DI jan/32 saltou de 12,69% para 15,24% em 26/10 (DI jan/32 +255 bps, DI jan/35 +242 bps). Mercado exige prêmio maior para financiar a dívida.",
       "at": "2026-10-26"
     },
     {
@@ -7146,35 +7407,35 @@
       "severity": "critical",
       "title": "Dívida Pública em Zona de Risco",
       "message": "Dívida bruta do governo geral em 82,87% do PIB. Acima da barreira de 80%, com trajetória de alta.",
-      "at": "2026-10-26T22:58:57.182887Z"
+      "at": "2026-10-26T23:11:33.834968Z"
     },
     {
       "id": "alert-5",
       "severity": "warning",
       "title": "Juro Real Elevado",
       "message": "Juro real ex-post em 8,77%. Custo de carregamento da dívida pressiona o resultado fiscal.",
-      "at": "2026-10-26T22:58:57.182887Z"
+      "at": "2026-10-26T23:11:33.834968Z"
     },
     {
       "id": "alert-6",
       "severity": "warning",
       "title": "Saída Líquida de Capital",
       "message": "Fluxo financeiro externo negativo em US$ 5,2 bi no mês. Pressão sobre o câmbio.",
-      "at": "2026-10-26T22:58:57.182887Z"
+      "at": "2026-10-26T23:11:33.834968Z"
     },
     {
       "id": "alert-7",
       "severity": "warning",
       "title": "Inflação Acima da Meta",
       "message": "IPCA acumulado em 12 meses em 4,58%. Risco de reprecificação da curva de juros.",
-      "at": "2026-10-26T22:58:57.182887Z"
+      "at": "2026-10-26T23:11:33.834968Z"
     },
     {
       "id": "alert-8",
       "severity": "warning",
       "title": "Estresse no Mercado Acionário",
       "message": "EWZ -8,32% e IBOVESPA -5,22% no mês. Piora na percepção de risco.",
-      "at": "2026-10-26T22:58:57.182887Z"
+      "at": "2026-10-26T23:11:33.834968Z"
     }
   ],
   "news": [
@@ -7379,14 +7640,6 @@
       "topic": "Juros"
     },
     {
-      "id": "476dccf7f8e7",
-      "title": "Tesouro Direto sai do ar com taxas em queda após maior alta da série histórica",
-      "source": "InfoMoney",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOYm9RVWxkSWV5dHZxWEszY1AyUmZJQ19lbko2cVBaMWNWMHVhdXBXRU4xaWVhdTV2TThnVGRzbldkWU9TdzZFalFKdDdwbHhxRDZOVmRyWnRCRWpJclZFcWVEdWNKTlhyUURlV0NYdnNGYXYtX0Z3UmxjRmpOeExIREJxOFVBUVRUdVgxenBsRVPSAZYBQVVfeXFMTkNHTW8yVGdsSjJIcUlnZGQ2UHJlOVUzT01hWUo4V3BrdktnUExxRTJ2eVIwc3JKaUVmMm12eFQ0UFUyQUpTWWdXbTBLc2RPMHB6VzlEN0lVUjlJVDZ5Mjk4UlBmSUJ6d3NUUllMTEZ6UzdJNldtRVJPREhUQ1NzcXZCVGVibnlPdnJITDB6VkZUMDR0R1Fn?oc=5",
-      "publishedAt": "2026-10-26T20:10:39Z",
-      "topic": "Inflação"
-    },
-    {
       "id": "b9bb24709f55",
       "title": "Tesouro IPCA+ tem a segunda maior alta da série histórica após vitória de Lula",
       "source": "InfoMoney",
@@ -7417,105 +7670,145 @@
       "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPNnJOcklpcUZMN3J3UUpLZWQxczg5dDVCLXp1RjN2QW4taTRhczFYR1VUSE50Mjl1VmpPSHc0bS1kUzJzTHoyQmVQVE9CWEdZb3lzMG11a05fV21pRW1VcS1zRmU5OXZoYjJoSDlYZUNBQldDUGljWm8wRjR1V0N6cFZSQnhSUDM4ZHNhTTBHUDZMc1o2dHZXX1VUVjgzQTJDMGNRSWV2cnRnb09ZdHBVQ3dRWlVOX1BYWHNpSlpuUTZDYWR6MHB4YlhPS1I2VDQzV1JBRUY0dmp6dlNlSmhucTFVR2Y1RmlPVWVLek5n?oc=5",
       "publishedAt": "2026-10-26T16:19:22Z",
       "topic": "Inflação"
+    },
+    {
+      "id": "5d4b93c58721",
+      "title": "Fed deve manter juros nos EUA, mas inflação pode levar a novos aumentos",
+      "source": "Vero Notícias",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQa2o0NWJOLVJQTUctUlo4Yi1maVBnYk85M0w3SkktMFRUa080SlZlS2NnT2FmeHVJYkpna0IySmZUanpWMi1kVFJWTGozM1Jtd0hrWGhEei1uRDlkX0hHTG9fVHVoTTFvdXpkUm96Ulc1MnB5OUJoOWtjekh5NTRBX1p6S3dxdXlMMndPZG9aVFpqR2ZUMVpWNmQ0SXFmcUIweDhFRDNkS1Q?oc=5",
+      "publishedAt": "2026-10-26T16:00:00Z",
+      "topic": "Inflação"
     }
   ],
   "impostometro": null,
   "sources": {
     "bcb-13762": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:58:58Z"
+      "updatedAt": "2026-10-26T23:11:34Z"
     },
     "bcb-13761": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:58:59Z"
+      "updatedAt": "2026-10-26T23:11:34Z"
     },
     "bcb-3698": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:00Z"
+      "updatedAt": "2026-10-26T23:11:35Z"
     },
     "bcb-433": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:00Z"
+      "updatedAt": "2026-10-26T23:11:36Z"
     },
     "bcb-13522": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:01Z"
+      "updatedAt": "2026-10-26T23:11:37Z"
     },
     "bcb-432": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:01Z"
+      "updatedAt": "2026-10-26T23:11:38Z"
     },
     "bcb-13961": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:02Z"
+      "updatedAt": "2026-10-26T23:11:38Z"
     },
     "bcb-4616": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:02Z"
+      "updatedAt": "2026-10-26T23:11:39Z"
     },
     "bcb-4606": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:02Z"
+      "updatedAt": "2026-10-26T23:11:40Z"
     },
     "bcb-1788": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:03Z"
+      "updatedAt": "2026-10-26T23:11:40Z"
     },
     "bcb-4380": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:04Z"
+      "updatedAt": "2026-10-26T23:11:41Z"
     },
     "bcb-5793": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:05Z"
+      "updatedAt": "2026-10-26T23:11:42Z"
+    },
+    "bcb-5727": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T23:11:42Z"
     },
     "bcb-7326": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:06Z"
+      "updatedAt": "2026-10-26T23:11:43Z"
     },
     "rfb-revenue": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:09Z"
+      "updatedAt": "2026-10-26T23:11:45Z"
     },
     "yahoo-EWZ": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:09Z"
+      "updatedAt": "2026-10-26T23:11:46Z"
     },
     "yahoo-BVSP": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:09Z"
+      "updatedAt": "2026-10-26T23:11:46Z"
     },
     "yahoo-BTC-USD": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:09Z"
+      "updatedAt": "2026-10-26T23:11:46Z"
     },
     "bcb-1": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:09Z"
+      "updatedAt": "2026-10-26T23:11:47Z"
     },
     "focus-ipca": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:10Z"
+      "updatedAt": "2026-10-26T23:11:48Z"
     },
     "focus-pib-total": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:11Z"
+      "updatedAt": "2026-10-26T23:11:49Z"
+    },
+    "b3-DI1F27": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T23:11:50Z"
+    },
+    "b3-DI1F28": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T23:11:51Z"
+    },
+    "b3-DI1F29": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T23:11:51Z"
+    },
+    "b3-DI1F30": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T23:11:52Z"
+    },
+    "b3-DI1F31": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T23:11:53Z"
     },
     "b3-DI1F32": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:11Z"
+      "updatedAt": "2026-10-26T23:11:53Z"
+    },
+    "b3-DI1F33": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T23:11:55Z"
+    },
+    "b3-DI1F34": {
+      "status": "ok",
+      "updatedAt": "2026-10-26T23:11:55Z"
     },
     "b3-DI1F35": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:12Z"
+      "updatedAt": "2026-10-26T23:11:56Z"
     },
     "b3-IBOV": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:13Z"
+      "updatedAt": "2026-10-26T23:11:57Z"
     },
     "janjometro": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:14Z"
+      "updatedAt": "2026-10-26T23:11:58Z"
     },
     "impostometro": {
       "status": "missing",
@@ -7524,7 +7817,7 @@
     },
     "news": {
       "status": "ok",
-      "updatedAt": "2026-10-26T22:59:17Z"
+      "updatedAt": "2026-10-26T23:12:01Z"
     }
   }
 }
