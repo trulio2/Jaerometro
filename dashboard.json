@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T17:48:46.833581Z",
+  "generatedAt": "2026-11-04T17:58:26.925717Z",
   "metrics": [
     {
       "id": "debt",
@@ -20,15 +20,15 @@
       "id": "usd",
       "label": "DÓLAR",
       "description": "Cotação do dólar em reais",
-      "value": "R$ 5,14",
-      "delta": "-0,16%",
+      "value": "R$ 5,13",
+      "delta": "-0,30%",
       "deltaLabel": "no mês",
       "trend": "down",
       "tone": "positive",
       "severity": "normal",
       "icon": "currency",
       "source": "BCB SGS 3698",
-      "updatedAt": "2026-09"
+      "updatedAt": "2026-10"
     },
     {
       "id": "ipca",
@@ -76,8 +76,8 @@
       "id": "ibov",
       "label": "IBOVESPA",
       "description": "Índice da bolsa brasileira",
-      "value": "165.178 pts",
-      "delta": "-1,63%",
+      "value": "167.821 pts",
+      "delta": "-0,06%",
       "deltaLabel": "no mês",
       "trend": "down",
       "tone": "negative",
@@ -90,8 +90,8 @@
       "id": "ewz",
       "label": "EWZ",
       "description": "ETF Brasil em Nova York",
-      "value": "US$ 31,73",
-      "delta": "-2,26%",
+      "value": "US$ 32,30",
+      "delta": "-0,48%",
       "deltaLabel": "no mês",
       "trend": "down",
       "tone": "negative",
@@ -104,7 +104,7 @@
       "id": "flow",
       "label": "FLUXO CAMBIAL",
       "description": "Conta financeira líquida",
-      "value": "US$ 8,7 bi",
+      "value": "US$ 18,2 bi",
       "delta": "Entrada",
       "deltaLabel": "no mês",
       "trend": "up",
@@ -126,7 +126,7 @@
       "severity": "normal",
       "icon": "currency",
       "source": "Janjômetro API",
-      "updatedAt": "2026-11-03T17:48:46.833581Z"
+      "updatedAt": "2026-11-04T17:58:26.925717Z"
     },
     {
       "id": "interest",
@@ -1017,11 +1017,11 @@
             {
               "date": "2026-11",
               "label": "11/26",
-              "value": 5.4935,
+              "value": 5.4778,
               "open": 5.4935,
               "high": 5.4935,
-              "low": 5.4935,
-              "close": 5.4935
+              "low": 5.4778,
+              "close": 5.4778
             }
           ]
         }
@@ -1900,11 +1900,11 @@
             {
               "date": "2026-11",
               "label": "11/26",
-              "value": 31.725,
-              "open": 31.62,
-              "high": 31.795,
-              "low": 31.495,
-              "close": 31.725
+              "value": 32.305,
+              "open": 32.17,
+              "high": 32.33,
+              "low": 31.89,
+              "close": 32.305
             }
           ]
         }
@@ -2783,11 +2783,11 @@
             {
               "date": "2026-11",
               "label": "11/26",
-              "value": 165177.5625,
-              "open": 167917.2969,
-              "high": 168005.4531,
-              "low": 164446.5312,
-              "close": 165177.5625
+              "value": 167820.5781,
+              "open": 165547.875,
+              "high": 167986.375,
+              "low": 165541.375,
+              "close": 167820.5781
             }
           ]
         }
@@ -3666,11 +3666,11 @@
             {
               "date": "2026-11",
               "label": "11/26",
-              "value": 77634.2969,
-              "open": 76683.8906,
-              "high": 77676.5469,
-              "low": 76305.5391,
-              "close": 77634.2969
+              "value": 80330.2031,
+              "open": 77338.2266,
+              "high": 80746.25,
+              "low": 75709.9141,
+              "close": 80330.2031
             }
           ]
         }
@@ -4549,11 +4549,11 @@
             {
               "date": "2026-11",
               "label": "11/26",
-              "value": 426484.01,
-              "open": 421262.953,
-              "high": 426716.1104,
-              "low": 419184.479,
-              "close": 426484.01
+              "value": 440032.7865,
+              "open": 424857.5478,
+              "high": 443579.5244,
+              "low": 414723.7675,
+              "close": 440032.7865
             }
           ]
         }
@@ -4716,8 +4716,8 @@
             {
               "date": "2026-10",
               "label": "10/26",
-              "value": -0.0165,
-              "severity": "critical"
+              "value": 9.481,
+              "severity": "normal"
             }
           ]
         }
@@ -7223,7 +7223,7 @@
       "series": [
         {
           "id": "di-curve-today",
-          "label": "Sessão 03/11",
+          "label": "Sessão 04/11",
           "color": "#ff4d5e",
           "axis": "left",
           "type": "area",
@@ -7233,47 +7233,47 @@
             {
               "date": "2027",
               "label": "jan/27",
-              "value": 13.632
+              "value": 13.609
             },
             {
               "date": "2028",
               "label": "jan/28",
-              "value": 14.645
+              "value": 14.415
             },
             {
               "date": "2029",
               "label": "jan/29",
-              "value": 15.22
+              "value": 14.82
             },
             {
               "date": "2030",
               "label": "jan/30",
-              "value": 15.48
+              "value": 15.015
             },
             {
               "date": "2031",
               "label": "jan/31",
-              "value": 15.565
+              "value": 15.065
             },
             {
               "date": "2032",
               "label": "jan/32",
-              "value": 15.62
+              "value": 15.12
             },
             {
               "date": "2033",
               "label": "jan/33",
-              "value": 15.64
+              "value": 15.15
             },
             {
               "date": "2034",
               "label": "jan/34",
-              "value": 15.725
+              "value": 15.15
             },
             {
               "date": "2035",
               "label": "jan/35",
-              "value": 15.615
+              "value": 15.13
             }
           ]
         },
@@ -7289,47 +7289,47 @@
             {
               "date": "2027",
               "label": "jan/27",
-              "value": 13.64
+              "value": 13.63
             },
             {
               "date": "2028",
               "label": "jan/28",
-              "value": 14.483
+              "value": 14.632
             },
             {
               "date": "2029",
               "label": "jan/29",
-              "value": 14.962
+              "value": 15.135
             },
             {
               "date": "2030",
               "label": "jan/30",
-              "value": 15.193
+              "value": 15.361
             },
             {
               "date": "2031",
               "label": "jan/31",
-              "value": 15.272
+              "value": 15.431
             },
             {
               "date": "2032",
               "label": "jan/32",
-              "value": 15.324
+              "value": 15.476
             },
             {
               "date": "2033",
               "label": "jan/33",
-              "value": 15.349
+              "value": 15.509
             },
             {
               "date": "2034",
               "label": "jan/34",
-              "value": 15.351
+              "value": 15.503
             },
             {
               "date": "2035",
               "label": "jan/35",
-              "value": 15.333
+              "value": 15.486
             }
           ]
         }
@@ -7379,6 +7379,11 @@
               "date": "2026-11-03",
               "label": "03/11",
               "value": 15.62
+            },
+            {
+              "date": "2026-11-04",
+              "label": "04/11",
+              "value": 15.12
             }
           ]
         },
@@ -7419,6 +7424,11 @@
               "date": "2026-11-03",
               "label": "03/11",
               "value": 15.615
+            },
+            {
+              "date": "2026-11-04",
+              "label": "04/11",
+              "value": 15.13
             }
           ]
         }
@@ -7431,134 +7441,262 @@
       "severity": "critical",
       "title": "Dívida Pública em Zona de Risco",
       "message": "Dívida bruta do governo geral em 82,93% do PIB. Acima da barreira de 80%, com trajetória de alta.",
-      "at": "2026-11-03T17:48:46.833581Z"
+      "at": "2026-11-04T17:58:26.925717Z"
     },
     {
       "id": "alert-2",
       "severity": "warning",
       "title": "Juro Real Elevado",
       "message": "Juro real ex-post em 8,77%. Custo de carregamento da dívida pressiona o resultado fiscal.",
-      "at": "2026-11-03T17:48:46.833581Z"
+      "at": "2026-11-04T17:58:26.925717Z"
     },
     {
       "id": "alert-3",
       "severity": "warning",
       "title": "Inflação Acima da Meta",
       "message": "IPCA acumulado em 12 meses em 4,58%. Risco de reprecificação da curva de juros.",
-      "at": "2026-11-03T17:48:46.833581Z"
+      "at": "2026-11-04T17:58:26.925717Z"
     },
     {
       "id": "alert-4",
       "severity": "info",
       "title": "Sistema Iniciado",
       "message": "Monitoramento macro-financeiro carregado a partir da base pública.",
-      "at": "2026-11-03T17:48:46.833581Z"
+      "at": "2026-11-04T17:58:26.925717Z"
     }
   ],
   "news": [
     {
-      "id": "0d44e86651c0",
-      "title": "Kassab cobra de Lula ajuste fiscal e equipe econômica forte",
-      "source": "Claudio Dantas",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObHdBOEJuQjdscElJWTVWbk0wLTVLckpfRnpMeGo1QkFpb2N0RWVoOXNBS0ZMdkc5VUVWRXlkYjh3Y2NrMDltQWJXcW9ZcGY5QzRvVDR1WEdVT0RoSUVsd1c3TXl4TXRaQmJLSDFpUXNsUEx6cFhnY1FhQXVLZnM4d1I2X2ZnM1lnNXNPbWRjeWJpWUE?oc=5",
-      "publishedAt": "2026-11-03T17:37:14Z",
-      "topic": "Fiscal"
-    },
-    {
-      "id": "8024267dc191",
-      "title": "Selic pode cair para 13,50% nesta quarta; veja os dados que podem mexer com o mercado",
-      "source": "Suno - Investimentos Inteligentes",
-      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9DYmRBRkpta2wxSng5NmhBb2R3MHQ1SFJKVm04blh0NVRpQ0hsOUhSblQ1Q2tKUEplTHJVQk5Zajl3Um11cmFVSDk0LW9vN1YzRWVPV1M4T2ZDbHl2VDlycEdrV1J5bWJYeHptY2hsQdIBdEFVX3lxTE1IS1RHNUc5SlAxZWZHVjNGV1JpNVZUd3YwTGFmQTdLdGVRT29lMDRXbXFadVBySVpBeWVqeEFwT2dPQlJuNklwLWIzNHJXYVAwVGlhanJzVWw0dThqcUJNVDA5XzNSQ05XVGJYWlFPT1JJbFhH?oc=5",
-      "publishedAt": "2026-11-03T17:36:06Z",
+      "id": "a75fd780218d",
+      "title": "Brasil fechará esta quarta com a maior taxa real de juros no mundo",
+      "source": "CartaCapital",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNN1RrWnc2bWdZN1RxbVVfLTdUdVkyRHJTRHBfYW5jV3doZExRMEYzMG9GcU1wX3QtNE5UVGZRY3E4VDQxb21URFNLb3lnZ3Z4WE9YVkJ1TGJyOXdYdmFhUUZkUlhBdTIwVEh0M1JnenJCZzd5OXVZeXdzWUQ4dnIwMFFZTDFEcTBWVzJlTExXVjlQWnlOd2NQSXNZSHRsZUlydTlPa2kyek0zd3ViX0dPYS1Tbw?oc=5",
+      "publishedAt": "2026-11-04T17:44:00Z",
       "topic": "Juros"
     },
     {
-      "id": "8cf3202b8827",
-      "title": "Felipe Salto: Juro baixo depende de responsabilidade fiscal",
-      "source": "UOL Economia",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNSWlEV3pITmlIOTFMZmUwczBFRktCdElQWnN6aDEwMzAxd3JzYjdsXzRuUW5MVmNFdWtKeVNWLUdLOGVBd0JHeFFma2ZsbU5GaWg4VWJ4ZVFyajVWaXlfQmptNDlJZjVYWUhPT1N0TDBMLUVoZ2xGcnc5N3prc2NIclhraElmVTFVc2ZTbEtzUTJkQWg2T2w3WFQtMFZpYjdBRXN0Q0hnd2ZuNG52RWc?oc=5",
-      "publishedAt": "2026-11-03T17:34:29Z",
+      "id": "af39d5649c69",
+      "title": "Ajuste fiscal e racismo, a conexão oculta",
+      "source": "Outras Palavras",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNZG41a0Jla0dSRUxmNnhhUlFSMVM1ZzZxTjZPM2dyNzFrMGYyc21CdUgzQzJUYWlZdm5NbEtmdWVoOTl3YU5BaUhOTS1LOWoybjRrelNWejhWb1ptbFRSekpJOEMzZ2hPMjZZVEhab1VBV3hocmJZUVlKTnVpNEtvMVkzTGVqaHd3Mmt4X0xlUHYzQQ?oc=5",
+      "publishedAt": "2026-11-04T17:10:28Z",
       "topic": "Fiscal"
     },
     {
-      "id": "5ecc00e4fab4",
-      "title": "É hora de cair na real: O ajuste fiscal que Lula terá de enfrentar no quarto mandato",
-      "source": "VEJA",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPaGFmaVhRNW5xek5rQzBwWnBxb0FydDN0amlzZWY4d2pfZlpoZlRMVjZ2aGhvWUJKRkgxdVd2QnVQSGs5LXlBOXQtNEk4RHpCVzRFdnUwaVNJTThtaHk3S1pjek5DQzlrWE9nX3o1OVdmNl93WGZ1dzh4UjFMS0ZweGlzNWpUUzhHUkpHT0Q2WFhHclYyUlVoUG9wak1Md0Zmb24xWVpjdlVZRVJBMmw4SVR6WU1RVF85akZn?oc=5",
-      "publishedAt": "2026-11-03T17:26:12Z",
-      "topic": "Fiscal"
-    },
-    {
-      "id": "fd014d2c323d",
-      "title": "Ibovespa Cai Antes do Copom com Incertezas sobre Juros e Política Fiscal",
-      "source": "Forbes Brasil",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQazlERmd6enY1aUJqc19sc3J6d0V6V3ZJUjZfN0hSVnNYRVJXdEh1N3N2ZWhDWGdUZUU4N0xFM1V4b1Z5RmZoMnloYnJUdjYxN2RqWWRua1BZVGVJYmVHQko1dlpZQlhVRnhPb2RnbG5ZWm1SUnMwYVFSY1FsZHlzR2xUX2QtRVp0bWcxZ190MFhvclNNeGNiMkNzZ2lJNzJTMTJwQ3JCOE5oRXl5RnNHakV3bVd3VVk?oc=5",
-      "publishedAt": "2026-11-03T17:08:29Z",
+      "id": "047564ddc6c1",
+      "title": "Impacto de juros na dívida deveria entrar em análises do Copom, diz economista da FGV",
+      "source": "InfoMoney",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPM2ZtTnVKVWF0bm40R3Q0Nko3Ql9OYjBnbUl4eFI0cTJnWlJMY2JFWnJ6NHRpT09UR3ZfM201VVRybjBBU3JzaUROdEd0ejN6blA1QXNBMEVyQ2pkV1JQTkJtQ1dFYTFkUUh4M2FwU1VIYWhzQW41VXMxMktaZ0pWbGgzQjk3SllVUm1FXzUzdk9WeVhhY0FBdzE1UTNXU0JCdllLWDIyQ01oQ3UxWS1fb9IBtgFBVV95cUxPRzZpeGJiLVUyc0R3ZWNGU05ETHUyZ21lX25qMHRIdlJKekZSbUJNZWlJTnpNSVFwcEJvZzJ1QmUtMzZDLTlVNFJka2N3aHJhU1NBazR3UV83MEF1TXFKbGhkMkhvNWQxNjRTT0oxM21GUkkzaDhYQ2F1b0Y5WGtXUVZTM0hRV3hUNHRWWWlpYkNEa08xZ0N0WENZTmVTRHBDZzJlWkhkOTctYVhuQnc5eWVJekowdw?oc=5",
+      "publishedAt": "2026-11-04T17:01:03Z",
       "topic": "Juros"
     },
     {
-      "id": "eace7eeed943",
-      "title": "XP vê pausa no corte de juros até o fim de 2027, com cenário negativo para a inflação",
+      "id": "be424707e12e",
+      "title": "O que o Brasil perde sem ajuste fiscal – e por que Funchal defende discuti-lo agora",
       "source": "InfoMoney",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPR3I5cGtrUTQxdHlZTnJrNEdKZ1Z5dTBHem5iNWRDZDRCS0NJM1M5cGxCTnVKQU9kU05YUnpJMWc3TkNJODV5MlhUSjRVQjQ5dExKbFBnMDBEeVFJRlFQS3MwSThfZUU3cDNaaUR0NEVJejYtczlmaWRLR1RKb29fN3JSONIBiAFBVV95cUxOMDZYcXI3ZHZWVTJBSm11TVN2d282eDBmZ0VhV0RKdVFpVmFZOFNQdlRYV1VITkwzeDFCU1NmdGlMWGdLZ2E3MWRIWFZVQUxubjlnSENhUV9mVldfVmxxYjB3Yk8tbXkzcExEZnBsaFg0Zlc1VVVLMmxPZ0JHSmVqZ0oxLVJUQ2tB?oc=5",
-      "publishedAt": "2026-11-03T17:03:20Z",
-      "topic": "Inflação"
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNdW84YVJvaUI0amRsY0NNRW1pcllvYUhUUk5Fb3NpOHZCcGpTUVpZYzc0dE01Vng0MVUwVzNnb0NQek1wVWZJX2hCa1c0aWlGWEtGYlVUcVZZR05VS3VVY0Y4Qi1KY1FLS056ckZ2Z01wYnUtMFA1WGwwUFVsT1lTLWtHc285MHBpSW4wbUthbkPSAZYBQVVfeXFMUDZZMXV0ek0xUl9GcHVReE9DazhrcVpWZVZlTElhRG5sY0ZGVXNXU1dWb1lzMTViS0NWRXRlY2lmOC10dm9kV0luVmozTWpPRGVWSmFuclo1T3hiUXVKaXVZSlV0Tk03aXBTcnlYcVVCSjN4SnJrdzA1MFNSMDJpSW1wRksteTlUa1pXNzYwREpjRW1yaFNR?oc=5",
+      "publishedAt": "2026-11-04T16:52:46Z",
+      "topic": "Fiscal"
     },
     {
-      "id": "5db22a4c084e",
-      "title": "“Novo normal”",
-      "source": "CNN Brasil",
-      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQWjZ5TTFCTW9wa2VBLTRhTXREVG8xY3lDdmJabHd1VmdPUk9JRXd3d0dSUXk0NF90aEp0NzJrTkFBTjhENWhTcFdPNk9JRndQVXh1Q3BPbko2SVlpb0hESTZzMzE2VEtBZXE4REJNby1TZWZxYmpfVkZWdzl2RDFMTWo5M3BEdkJO?oc=5",
-      "publishedAt": "2026-11-03T17:00:16Z",
-      "topic": "Câmbio"
-    },
-    {
-      "id": "b5371668cb77",
-      "title": "Mercado fica dividido com a decisão do Federal Reserve de manter juros",
-      "source": "CNN Brasil",
-      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOYXMyQkhVelN2Ty1GR0tUY2V1SWJ5WEFYa0F1dWQ5aHVPZjhETUJJQ3dOQnlsV2k2aUtxZXZhbmFTaW5YWHQzVDg5b01zR0htNzg4VlZCU2ctS2lqMXFEb29PR3dxTFMyb05KZDRsSExpN1dTVHp1cmRKSXMteXMySUh2VjNYV2pWWDZhVHB1QW5SVWtZampleWpheTNoeUJMeWFhZUh5Nlp1UHBxYnZmOXl1LVc5dXpJdXZ1eDZ1eUlrZG1TNTVjckdB?oc=5",
-      "publishedAt": "2026-11-03T16:38:45Z",
-      "topic": "Inflação"
-    },
-    {
-      "id": "f629a5f8ae7d",
-      "title": "Ibovespa Hoje Ao Vivo: Bolsa cai com Focus e preocupação fiscal; PETR4 recua 4%",
+      "id": "0f207243a983",
+      "title": "Estrangeiros trouxeram R$ 8,2 bi para a Bolsa em outubro",
       "source": "InfoMoney",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQRWZFQnhPdC1TNmFwQUowOHo3Y19ueVdEdk1Eem9nZ1NlQ25VNjRTR2VCRG5sWl9raG03MGdreUhjT3c3eUlCelRaT3E2OTBFRERNRG4yUTNWWGJVRXZKeHZNa01vOWxRaTVBUWV3emhodUdDMWpmWTVUYjRqc3dWODQ3VFRFZ3dINlVURnhyaw?oc=5",
-      "publishedAt": "2026-11-03T16:33:25Z",
-      "topic": "Câmbio"
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQYVoxRmgzWUd1Tms1eElQbEwyWUhwZGJCOUxlQjFZRWpXcllfTWJXSG1kMFF6Nmh5Uy1PQTJydFIxMU95c3phNWZvcmhvZm5MWW82MFVlVENoUUNvN29mT0xwZnBUM3lxWnczNUxwSGdNb0pJWjVaaTdGajJMeEFQcjJlSVUzTTJvVjlJbmVkckRIZHBmcEo2NtIBngFBVV95cUxOdll1dGo3ZTBkZHZWS052NGhPSW0zck9PSFhQQmlQa0c4eUN1VGxQS2pySlU0ZllMRUhwZkJkUWJaa0E4RFlUTXZxLVNFX3ZLWTV2SGlua3lBZ1JIc3hNN2NyaU5zb1ZKMjczb3FVWDZqSHliUFBwbjFqMVZNLW9fUnlXR0Nsa3dWaTJLdVZKa2JmenJjNVNuNTdqU3pzdw?oc=5",
+      "publishedAt": "2026-11-04T16:51:03Z",
+      "topic": "Mercado"
     },
     {
-      "id": "9094f219e886",
-      "title": "Tesouro Direto hoje: taxas disparam e IPCA+ supera 8%",
+      "id": "98a286c3b33f",
+      "title": "Governo prepara ajuste fiscal gradual e promete preservar compromissos de campanha",
+      "source": "Sincovaga Notícias",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNRmdiM3hFVGxFaG1idmdPMUlqek5XVWZhRnpfRHF1OVdPOS1aZjZJa0hiWDB1Wk41c0tEWlRfSkU1UjBEaC0xakZwanoyVDdfd2FfQlZRUHV5YXdtaEVoSmRGdEE3QkNpZ2NlWDg0bXlQYnVmMVRqZnJvOHJJc1dmd1pqVVRTUngtZlNhdnV1WklkN2dOTGRNT2ItUUtRVEJSTDI0eC05eENSUlI5TFpiQzUxeEZBSmVPdTFraA?oc=5",
+      "publishedAt": "2026-11-04T16:33:00Z",
+      "topic": "Fiscal"
+    },
+    {
+      "id": "c4aea452345f",
+      "title": "Ibovespa sobe e dólar vira à espera do Copom; bolsas em NY disparam",
       "source": "Valor Investe",
-      "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPV3VBYU5JTWdpckdPR1pWWnRuTjQyLUg2Ym9ZYWdMdndaUWJGUm94SnJlTDNfQV9YdlV1Y25Qei0zYmxDNkNreGtEd2xCVno3WjRCNVE1dzdocXlROWhvUTRISEdqZm5JZzlzNzRBNFJxTjFlV1FFWUFFOE04WFdlVzVVWllhcnB4WVR2a2JYSWFKV0RXVkhIakFwLU5jQ2xXYVV5SjNvZFNWb0VDYy1NSkF5OUdJcmluYXl2VVFvaFNsV1BTNUdZMlVvUjJwbFQ5S2RsdHJuOS1YaTR3b052ZExmUTZuU3lOVGJoYkVR0gH8AUFVX3lxTE9HYkh5TXJ3Y1NiZW4wNlFraE80b2ZURlpiZFBnSzRwbzN5bmhGdzRZd0VVblhZdEhGTkdqWGIxdlJtVFByZVl6ZUk3MF9ZU3FmYWN5aURUdEY2Y2dwU0FxV1N1Sl9oa2ZoYjlZbWZfYWR3ZnJ1bHBQMmVNcWpmM01pUXNZT25jcVJEd2lPNS1WUERMcnh3a0dhLWhGX1VvaEJ4bHZEaUpUSGR5bExkUV9UbXA5RUlLQkJQeDNRUW9UZzc1VEJHVEpGZDQwQVVMaFhfWDlfSVRkX183cFJ4TF9kdWlJV01IdXY0c1F4NDB0SzlDX2VJbGtTaUZJbg?oc=5",
-      "publishedAt": "2026-11-03T16:27:53Z",
-      "topic": "Inflação"
-    },
-    {
-      "id": "bf2d44a2938a",
-      "title": "Dólar sobe hoje e ronda R$ 5,50 com temor sobre política econômica de Lula 4",
-      "source": "Valor Econômico",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOeHVvQjU0Y3lWUjQxTlFwcXY0WDRSX1h4bkpJOEsyWW5yLUVCWWVfYktBRk9vZWtLc1BlTUJHVzMwV2NJeE9Yd0hLT0tQQ1N2SnNVa2czdmo4eDBQRXZsal9qanE3cTc4ZDR4NnRzYzlKYzBKbmFSbWxvM0EwWXlkajh6TlZpVmJUUTh1ZFZrN3hQOGZmbVpOVFZlUXJKMnd3aVpDMTFPYS1IaVJ6d0dscWVPWGlNLWFmQXhON2tKb9IBzgFBVV95cUxNX04xN0syemx4eTB6MXZXYm9qdHVtbHdzQXdvcHY5b1RaaEU2eGtybFV5N1g4dGdQaWtQbEJmOUVTQ3JwS2g4UFk2dEFjSldWR1NSaVI3Qmptc1JmcWt4WDl3a1NGOXNLWHBOTVdIcDA4NDQyLUdtcHNGSWRWQTJrY3IwQUlza0hfT1BjbV9ZQ1lVUjVHRHBFNW9udzBaTHdoeGNZczR5WUJmY0U2QmllaHdubTZTVmZlVjZkcEN3Zl9RU2l5SXVFUlVicUdKdw?oc=5",
-      "publishedAt": "2026-11-03T16:22:55Z",
-      "topic": "Câmbio"
-    },
-    {
-      "id": "9b93a8bf2064",
-      "title": "Tesouro Direto suspende operações após IPCA+ superar 8%",
-      "source": "Estadão",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNcGFZU2doT0JRaHRZcDJiN1Y4ZDh1THp6akROQl9WNlBLUGpFN01LMHYxRjExdW81eDM1WHdSaDJGU0tnTGxKTE9zOXNvdTJoclo4MjY4Y2stWDJSSjlJMFZaZjMtcEQ2Q1NyTndZUElYSE51YVZ2ZEJobWx5VVFNOTUyTmdKY0JoNy1HX3Q1bC01LUw1OUJ4NXlrZmRWZVJOSTUxNmczSl9iMVBNd1pLT2tfZmd5cnBvMUtod1VuSExWU1JIblHSAcsBQVVfeXFMT0JZZm9ROG1vWk9VZDBuOG1NckoyUVZhc2JhZkhmdTBlanNSWmduVGNoVC1GYVd2TGJEdDZqRGpHMnlxdTQ5OUx4WG9EeVBERkQ0SXMxZ2dSTEM0a1E4RHlwenNoaFh1NFFZaW00QTdIUklpNXZzOXh0MG1rSjIxMTdYZEpVTkhwa0pBRlJQMGxtQURnVi1tUVVrSno5V2poS3dLOEl5d21iMnNfQ2h1SDVSY2ZMbGpvazNzYlhlNFJXMWUzeGRRY0xsQ0U?oc=5",
-      "publishedAt": "2026-11-03T16:20:03Z",
+      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPbU5ZTTBvR1JzM29saE9abUxETVhrRW1lc1BRZjVwLU13S3l1aThCVHJrbVhGWXJtdTRZTHM5WlBmVjVndnoza0JldkhEZHZnRGVldHdtekJEN09ydFdCR1ZRNTdxTm9mRkkyUlUxZEtJTURvM0JtS2o3ZlJUWmJnYmRicjRxaTNjYlN5UjlxNjNjX2l3aDFzRExZSE01VFBZNGpCNXZ6QnpuQWl0Z2R2NUtCTVMzWFpfTHNicDFzMExraUE2emxxbFRLY05wX0lXM0lSSHdwc9IB5gFBVV95cUxOUmF5OFlKNzd1MHk0aXhCdWtrTTcyMC02WHg3RWo3Z2Z5S3NnZWQ0Q19sR3ZySDV6LXVaR19tY3dVb2N6QkpMb3Z0N2VEUGhCdi1HQnBtZUNEb1ltX3o3OGNnY0pzODRQenNQS3dNSTVnVElpNWY4ZHJLb1lndFBHTXNGTHplZmN5b3huRDBDWHIySHVVR0ZhTklNdGF4M2xra2QxMUxJVUpzWUtyVXhpYy1SMkJiZGNpWHI1M0JsY0EyYXVhUjJNZlVmcldFX1NUbmk0TEVKdFVwUXFHNzkzeTVjWVFVUQ?oc=5",
+      "publishedAt": "2026-11-04T16:08:45Z",
       "topic": "Juros"
     },
     {
-      "id": "28fb25cd626d",
-      "title": "Selic a 7,5%: entenda a proposta fiscal e monetária de Lara Resende",
-      "source": "ISTOÉ DINHEIRO",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5pYUpkUjJ4aEhQanNnY0tRVjFQWjNNZ2lnUWlyVTlQNE5aUTk5cXI4S2hnSzk5Q2dmQ01xYVpwMVZ1OXkzWjVKSzBXTno4cUZrT1YxVzItVVlvcDZ6QkpBaG1XY0xrbGtnc2xFbkNBNk5saVhsM1QxRkRKbDhIZw?oc=5",
-      "publishedAt": "2026-11-03T16:14:53Z",
+      "id": "e298d82cac3f",
+      "title": "O ajuste que falta ao Brasil, por Vinicius Lummertz",
+      "source": "Imagem da Ilha",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxONWZOU0VjdXJnWS1IQnNIUWx0Z0Jid0FTT2VJMlRXdkdRbEQ0WUlJeVhFX3dRanZ1ZUVPM2tWT2FsVXhuZHV2OTJrc0RIVDNrN2ZONlNjbFZDcnFtTDRzbU5qVVUzc0gxMnRsUmNfd1N1SWJnWmtvU3BkUGRsVGVJSHk1anhuSjVyTWF5clpNNnljb0VHVVVCOTZlNkZ2M1NMLTlDT19n?oc=5",
+      "publishedAt": "2026-11-04T16:03:55Z",
       "topic": "Fiscal"
+    },
+    {
+      "id": "872f1a694aed",
+      "title": "Ibovespa Hoje Ao Vivo: Bolsa sobe e tenta quebrar sequência de 6 quedas",
+      "source": "InfoMoney",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNRUJYTTI5Nl9DYmk0a2YwR2VhRU1MZ25TenFpMlplSU5TdmxfdkhDNGxReHp5X2xjVEJ4cVRGOS1CY0J4SlZhRzlVY1JkdzhBZTZaa0NYeGNmUzhkMHQ2M0dCZzBaVjV1UmJQYy12b2NwdGxwZ3AtY0xzYnVfN3VJdzNLUlgxVHlOU3lDTVRrbw?oc=5",
+      "publishedAt": "2026-11-04T15:56:00Z",
+      "topic": "Câmbio"
+    },
+    {
+      "id": "ea8ffc20d259",
+      "title": "Mercado chega à semana do Copom com expectativa por fim do corte de juros",
+      "source": "CNN Brasil",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQYVJsajR2QVc3dUVYTTE4MnU0Y3F0d1pOdEVRSmdESmEzZ2pseU14YVZHbkFTZXhzWVpkRkgzTXJhUUJpdHBsTE5DWWtDM1JYUE9nQW12dUZGa25HVm1yNDlfMkI5RU1jb0phVTdXOXE3N2plbTdSMW9IVHVwcldqTW11NFl2WlBuUE54WTBVRG56RzJqNUJ6SkFSWHNpbWpjU2tDcHFTcnh5UVpCZE9YUmhrR3pBRGNaTFJMQ0dHTnZjMWV1N3BtREgxUmQ?oc=5",
+      "publishedAt": "2026-11-04T15:53:34Z",
+      "topic": "Juros"
+    },
+    {
+      "id": "141fd67e7f84",
+      "title": "Lara Resende e o ajuste fiscal pelos juros: a proposta que divide o governo e assusta o mercado",
+      "source": "CBN Paraíba",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOQmJYSUtFZVllNTRmcjZ2aUxNcTZqRTVxTmFJRVpTSVRYbGdUcGNja0RXVVhOSXh1UllIczNKeDl0VWdEQ2htUTRnOUJQb1ZjZ1pmR0M0cHRGYUhRU1FhVGp3R0hRSVVmcUJ6Um1FN19NWDZoaVJELWF3SHJ0SUE4X1dob0pSbktJYllOUXNNVXA5dzFaTC0zb3VROU0wbDRZeTU1QzFxWmdDbU5sV1BPU2hXcWV4LUdKR3ZrMWItZjhQZTRYcDRQcw?oc=5",
+      "publishedAt": "2026-11-04T15:44:29Z",
+      "topic": "Fiscal"
+    },
+    {
+      "id": "d592a21bbf77",
+      "title": "Gestores desmontam 'kit Brasil' e apostam no dólar antes do Copom; maioria agora vê Selic estável",
+      "source": "Money Times",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQNklrV3ZtLVQ5VTgtMXlEU09MSjU5bHZLV1hKWkpwVFJad3FZN2pTTDJ1XzFWbUQ3R3NIZkNMcWRHWWdRYXdlQk0tdHN1MFlOMGsyUmNzMm5jQWV6R29ESlIwUml3Ym50Y0xKNjhKek5ja1pQMVh5N1BqaW55dkpKRk0zLVpvdFVMa2wtVXMyQmo1WEdpekktZElvZ255UQ?oc=5",
+      "publishedAt": "2026-11-04T15:44:00Z",
+      "topic": "Câmbio"
+    },
+    {
+      "id": "610bb6f9fac6",
+      "title": "Copom decide rumo dos juros sob pressão do dólar, inflação fora da meta e colegiado desfalcado",
+      "source": "RCN 67",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQdUwtNHhDSFdYQWc0TU9uMTVRQk84WFFwM3dBVDNpQi1HOVVkWGV6U3JNb2dsQVY4Ync1eXJvX21ZdlUwS3NBZXkzN3ZZRy1QaHBjbi1SMjVkbzRodkxCSGtfY2l4NTl4RWlTdzgxc2xnbUtXQW1rYnMxR000MHBOUUxhNkxXMGVZQmtBbGZDUktRZ2lfMWFJUEVuU3JjMXZYRTg3TTB0X3U5ZjBpcHNGMmhzUzZYOGJTdXVLQjU5UWRPRTVzYVpMMUo5Szk?oc=5",
+      "publishedAt": "2026-11-04T15:43:56Z",
+      "topic": "Câmbio"
+    },
+    {
+      "id": "3e1267fae55c",
+      "title": "Tempo real: Ibovespa avança na esteira de NY e à espera do Copom; dólar passa a subir com cautela fiscal",
+      "source": "Money Times",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPM0lJdlBLNklMRm0zemlscUdWSU1SbTlHTGJsbVUzWURKVEsweTJCTWpJN3VVMW9hdTVDcHYydzJleGZQeF9IZUhzdTh3dHh5T2FNQ3B4MXVnQmc5cEVkMVhYTVJ4NmpDNXF6bzNiMUxiOXJUd2MxUmg0NWh5UU9lcWRR?oc=5",
+      "publishedAt": "2026-11-04T15:43:42Z",
+      "topic": "Câmbio"
+    },
+    {
+      "id": "0591a0e9932f",
+      "title": "Diante das incertezas, pausa nos cortes da Selic é necessária, diz FecomercioSP",
+      "source": "Panrotas",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPZUg1azdmUHhRX0FMZGxjcG14NjI3NnVxSDhOa25pT09nMGhjcWg2RUtBUExSRHRtNkJXbnVmTmZqLTZzT3kxMkduOHpmYVNzRXBObzVhaVFHSHZWeVNBR25BX3BtMUhCVEhNODFJYUlYVDBQa2Vtdm00cVZDeFZVYlNRSHV1V1NCdWNXcUlOMTV3UWNiVERMMEM2bkFaVGxNVUs1TFUzSkp0aFBJcUlUM3UyRTJiY2Nzd1JQU3QxWkU0VVNtX3F6ME8xSlZIY192bUhoUkhnZXV0MjVIR1F5VzUzU1c2Y21E?oc=5",
+      "publishedAt": "2026-11-04T15:42:00Z",
+      "topic": "Juros"
+    },
+    {
+      "id": "fca5fd24d5c5",
+      "title": "Por que Ibovespa sobe forte após vitória dos democratas nos EUA?",
+      "source": "InfoMoney",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxORTRFMTVYcExJYXlaY1l1N2Z0V3NncktIbnBBS21NdnVzT2tnRmJRaE5Kc1lZb3BBOXF0YWZrM0hNLW95S3BINXF2NlFQWWJ0Z3BqTEswVjBVUEFROHg1NldCeTBlN3AzbkZ3ZkxsRkZ4b1BQelMzc3VtbWxjTXFfYWo3ajdLQnJBazgtam5WWXdaT3NRTUQ2Z204eHlnU0pwQ2U4eFVobVBDbFVWYTViUQ?oc=5",
+      "publishedAt": "2026-11-04T15:30:19Z",
+      "topic": "Mercado"
+    },
+    {
+      "id": "805ae629528b",
+      "title": "Dólar hoje: siga ao vivo o valor da cotação",
+      "source": "GZH",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPbGZDN0NXazFBUXlfZS15Nlowcm9WMVNsMk05OFJhb2Rrd0lrd3k5eWtMNjd0NkxtNjNrNmgxVHhmQWtSTkk4SlJTNnlXTGJ2VTg0UTJHLTBQLVRoUkZEd05pZ3QtNGd3UzdUOEVGOGdCemZTdnlidUN3QUdhUWMwSUNtdnpfZXI0bk5UdHIxXzBjQ2JwOWhoOE1xWVktNjFnd0g0ODNtRHo0ZVZYSEhlazlXN2h0NlVac2NRUTVad1BkUTdhZ0E?oc=5",
+      "publishedAt": "2026-11-04T15:22:30Z",
+      "topic": "Câmbio"
+    },
+    {
+      "id": "d13dc0c5d4ab",
+      "title": "Inflação anual na zona do euro alcança 4% em outubro, maior nível em 3 anos",
+      "source": "UOL Economia",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxONFJ3TGk3TFFYa2NZN0Y0N2d6ajhFR3ZNSkJ4eXBRZ0dPaXl0aDBUU1JRTDROblV5d3NkWHl6b1NKb01ZUktpNnhyTUNPM281UEZLa3NQLVJBZ0l5dGRKcktMeG5paE5iSkJpMURHSlV0dkc3N0VxVmlteS1PUm5zQkw1cTdrQ1J4RmNsV2dIb0FVMHptaXR3eE90OHNESlRxa2xPQ2xKbmdFbnY4ZGJPalRaZzN0b2p2RnYwdHR5dw?oc=5",
+      "publishedAt": "2026-11-04T15:21:34Z",
+      "topic": "Inflação"
+    },
+    {
+      "id": "5e4097a5f147",
+      "title": "Governo federal prepara ajuste fiscal gradual para equilibrar contas",
+      "source": "A Crítica",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPWTd1WjBsMW1nV2x3aGUtSGRoNGNaZUlrTFh6aUhvZDl2TkZkdm1wc0p3ZkVlSnF1ejE3YThIb2hPSC1oQ1NCR09fVWR4aWZGejNmNEdrXzNXcXVEV2lJalJBeFE0T1BBVjZtQTJFekZZbDY2aFRRVjZZYlB4Yl9OaWhMa2N4VXJobHljX1lfN3V2Sl9ZX3RCWHN5Q3c0U2JQZk9HR0pn?oc=5",
+      "publishedAt": "2026-11-04T15:20:48Z",
+      "topic": "Fiscal"
+    },
+    {
+      "id": "c1d02c6a81ce",
+      "title": "Dólar recua para R$ 5,46 após eleições nos EUA e antes de decisão do Copom",
+      "source": "Brasilturis",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOOG1fOHZmX0tacmd1NWd3cDRmYVZjR2JVREdtX1Z3YTFyUTRiREF4V0l2MGZqR2lzUlFxMExEVzhrcGpHT1V5WE5YMHRSM1h1UE1uOGxIX1V6Z3E2S2tsNWVuQk13b0xUR0Rtb3dZcnctZnBuVFpyN2Z4aGpJWm5BQjMtbmdBNG96aXRNUEl2Vnp5VURDZzBMaW5ZRFI1T2lhX1JtWlkzalhOQVoydlUxNg?oc=5",
+      "publishedAt": "2026-11-04T15:10:58Z",
+      "topic": "Câmbio"
+    },
+    {
+      "id": "6ac8cc49f471",
+      "title": "Vamos salta mais de 6% e lidera ganhos do Ibovespa hoje; veja maiores altas e baixas",
+      "source": "Estadão",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOS1hzdi1oVFRLeVg0STNTaUF5N2ljM2FLMmRudDN3ZURUZ29XaDNER01EU0pqQzdHUG9sbHRFTzRvSkY3a1V3ZW4zZTlJWUNGLWNWa0NINEgzY2dlUkc4eDV5a0ZFUmFBQ2QybHlINTRUdm5aWVVnLXB2S1RVdE5aWUFvbjJYMFhnOWhVQmtuT25uVUhydV95U0xEakMzVWVMZVhHaW1vWEQ4dFN1OTRFWk5fTENsWUdpR25PNnNpa0M0OU9oakk0UDFNUzdzUmFkemdZUFAtX1XSAd4BQVVfeXFMTXoxaDNBYnJrMW1UMjhSLTRtekxEVU16SThoY01wNllLbVdlRUJwdzdKcFpjempmVGF1aG1GWUtIdlktOVVkZzlOQ24zcjB3WUE3UVlRRHY4aWtPaUJjdFNFQWg4ck1tR0ZxNWtCTkltTUJ4WU4wcExNSVRHWWt1UHpIX2lSYmRqRDNPc1hRc3JfNVZQenFkUHFXOGxlS1dzSGsxcEUxMzd6WXVHTWJObk51SFpCaHVzNkUydDNDQm8tMGZyZS12UmlqUkYwdWw4TGlVc3BGX3dQVjF0SzVR?oc=5",
+      "publishedAt": "2026-11-04T15:01:00Z",
+      "topic": "Mercado"
+    },
+    {
+      "id": "1e8e0537522b",
+      "title": "ETFs de renda fixa ou de Ibovespa: confira o desempenho no ano e perspectivas",
+      "source": "Bora Investir",
+      "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOWTZZSXBQLTlQT1FIZXZfX0twbUVFODYzSjBjWGdxQmsybUIwak96bDVTWmtWVUtqVnR4Q1JGajBDek5KX3lsNFBURnUyTzVZODk3TkFXalp3Z3dBcXAwQ09IbGJsX3F6VENMSnFXYkJSS19RRXgtYTl5WkxjOGxEQXpBX0kyRUlmUlJBLURmV1VHWGhiN2RGWENvb011LURvLUdrSTVBTFJSc3lzVmNFT2NFVWk3SlNCYkctMmpXUkZHanVFVzYtU0QwRDNCbl9OY2V3ZWV2LXFYYUFtSWZyOWJCdC1zQQ?oc=5",
+      "publishedAt": "2026-11-04T14:50:00Z",
+      "topic": "Mercado"
+    },
+    {
+      "id": "985c2fd8dc4f",
+      "title": "Ibovespa sobe após seis quedas com eleições nos EUA e Copom no radar",
+      "source": "VEJA",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQSUhLelBtcjI1YXFVdHQ5SkNsaTJ0WUVJeGt2Z2I5eFBQNHozdEVDQnVCUG1Jc1ZfVEZnMmxuSkZQeWU2eWV5YlA5MVd4RmNueFNNYmN0R2xJS1RQRHJRSFhVREpXb20yVnMxU0hHVGNKTU02ZzRkYzJaQWpGdFdYRC1PWVVKOWd6UkNubEVSNGVNVzNDdkZ6X20xTEpkaWdkNFYyLTdBMA?oc=5",
+      "publishedAt": "2026-11-04T14:46:23Z",
+      "topic": "Juros"
+    },
+    {
+      "id": "771384dfa8df",
+      "title": "Ibovespa sobe e bolsas da China saltam mais de 2% após eleições nos EUA; Copom concentra atenção",
+      "source": "Portal do Agronegócio",
+      "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxQaDRVaWIxRU9RSVAtdC16OE82cEpQdXAtRDBfeGMxajAxZGtNVnVacWJmVVBveFZISW9wMFUtVkxBaGxjTmVneUp1NTh3RnNFYTc1a3JmR1lLSmlMYm0wMEQ3VnJ4UUVLLS1wQWNLMTk5N2dQM3BjbnJKWUd2YnJ1ODdzNHl0NmhSTF84N2U4ekp3eDI5U3NCb2VCeExMcjhWSG1OLV9HYWQ3dDV2cWkzbmNEVF81VUhONno4dHg4RUw1ZWdIYXJERS11ZTNoNzMzZG91NHAxXzZTcURFdG5GYzdpanlWT3EwcFNYaFItN2VEMGVFY2VRTDVESWJRR28?oc=5",
+      "publishedAt": "2026-11-04T14:36:00Z",
+      "topic": "Mercado"
+    },
+    {
+      "id": "a67361c08e66",
+      "title": "Inflação de 85% na Turquia vira alerta em debate sobre juros no governo Lula",
+      "source": "VEJA",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNbTRnNEVYV3puSWt4RUR4UmxkRzFNMnhsakM1MmJybHFoYWVQTlhVXzdpV0xOR21vSDJQSXMwRE1zZy1PX3lzZXEzZUp0WlU2VmhHVnBYSnliMkRJVEM4d1h4ZGVsRmJEbWw3bUpOZXQxT1dDM2tEaEFsckpoNzV1Ni1WRDBjaVZSNWdOUUw5TVIzanRXTUQzRUVhRkljVjlHTU1FZU1JektqYnpYd2k3X1A4M1FNa1dhVXh5U1FZUVdId0k?oc=5",
+      "publishedAt": "2026-11-04T13:30:58Z",
+      "topic": "Inflação"
+    },
+    {
+      "id": "41d51e652d4a",
+      "title": "Tesouro Direto hoje: juros têm alívio, mas pagam até 15,38%",
+      "source": "Valor Investe",
+      "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQNk5URGtWdUlzRUY1YnBocUpQN2ZMdlllWGtXbGw4d2N1Vm9OT3BTX2tqZnlZNzROSWtwQnJCemlLZ1VGWl9McW5uYjBqT25rNWxjc09iZnJlTGZzcDRmRy1hTGFQSGFwUGdKdzdYRmtDQ0c2bzdqYWMtZ1l4MHlLQVhQRUE5amQweU9QbEZ1R1hZR2N5NlFQcTdCOENzY2xsNjN3Ri1QRmhhNy1RcExFdlh2SGM2V2tjTDBBSVJ0c0dzbnNIcTNIX3lYaXhsZFpGenMxZ3VfMFdTSm9mS0lXOTdxNHZmTTdyeHNrYU1R0gH8AUFVX3lxTE9yWFdaWmhISlo5WUJJVXo4ZmRzZjN3dnBhUy1jaFNlVTYxSEd4MlVsbjd5eG45SVZRZlpYWXVvMkdJNjBGaDBHa0lpaXdTQmp3YUxibXNpalVnaVVFXzRyMTlpeE9wQng5TVBrNy1LZHFlRlBvbFh1YlgtY09YMVJ2MHlKUFIzRWdIRktYWVU2Mm5RQVJINU1kbHRlYmtoUWhmY3diSGFlMmRMclVVQWhWUmpQU0lyaDZwSnVWa1RfdTZCQWJsa2tOaTk1ODJMRzlNanJOeTZFRHdmVjhzc2I1UkZPaWtLaFZiMFdtazVTX0tpNXBIa1lId2lyZA?oc=5",
+      "publishedAt": "2026-11-04T12:56:19Z",
+      "topic": "Inflação"
+    },
+    {
+      "id": "d4eedd551ab9",
+      "title": "Aumento de juros pelo Banco Central Europeu parece quase certo após inflação atingir maior nível em três anos",
+      "source": "Money Times",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQX3hBNjFEQzUyVHBDYUxpbUNCMDc5MkxTVHpZajQyVzBxOGNPMFpVMlZucUtGc0c5NmtNZllJYVdBLW1MWklzUzdwOWM1b0hNd05mdEtfd01yVjF1QmZKWUNtbGg5TE5SNFFFZm1uV3g2eFNJMmdFVXFtdnZhYmMwNXFJQTFYZjUtck1qbmJBX2J1czlWSl9Lc3MyNTZreldnWHNIWDJhOHRoY3lqZzVmSUtBT3hobHQxQ1o4bEJSeFJfSzdGeUE?oc=5",
+      "publishedAt": "2026-11-04T12:53:00Z",
+      "topic": "Inflação"
+    },
+    {
+      "id": "840565246631",
+      "title": "Taxas do Tesouro Direto recuam seguindo exterior após “midterms” e antes do Copom",
+      "source": "InfoMoney",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOQmJnMXBlNWJCX3czX3B1eFlzQ2xMbjB6YU1CT1VKTjRRMDltLWxlVFhWSGFxRG4yeWRHcFpJRzRmcXJhd3B2RmIzWW5od185enVoU0kzWVk1YVZESE9mckR4RS1sUmpHSmtmU3lRcTFONGkyNTV5S2dUSEh6RVdpNF96NFNvbVNMN3Q5UGJlbFHSAZYBQVVfeXFMUHZ1azgwQzZfYTdQOFo0T2hNVGZhR0Z1b0hmT3FBMElyWFNTcUcxM3pzVnZYWmdDQzdBRWo5M1pDYzBkTzNVUnN5NWJmZW1mM2JoaFdiWVNuXy1JN09CWUpRbWZpVUtCaDFkTTVOaFEtSWx5LWNuV3JSLW1OQ21hMWFuaW1rZU9KY3BObGk1NzRFdEJ3UmtR?oc=5",
+      "publishedAt": "2026-11-04T12:52:59Z",
+      "topic": "Inflação"
+    },
+    {
+      "id": "02686067e796",
+      "title": "Tesouro Direto hoje: juros recuam e IPCA+ volta abaixo de 8% antes do Copom",
+      "source": "InvestNews",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPWEpOd3lYUjFoa0treE5ZYjdqaDYyaGY4dFM1ZDBxMks1OUYxQ01HYUprOW1IdUFmVkpKUkRYenlKSTJtYW1MVEEyS01IeGJSeUZocmQxdDJSUXdCd2YyMDRWVWlRQUk0UmwydjFWa2xoSElVOUJHMTNzemgtZnpqSnVmSjRkUzczTWkteU54SGFTbmhyZkRVczRPSnJfNEo0MDkxTUVn0gGrAUFVX3lxTE50Uk1sYzZzWGM2Q0JlbnZySEF5emVpMjRHVnZtRDY4YXdfMUJvOHc4SkhhakJnaVhTTkNLRTNIRmp3QjhKYkpwbUFVakFuaXlMbTNuYk1YemE1bEpILWM5MnpsX2txTjZhV3ViTVZsVS1ldU9IdU9HVmlrUEpVODhuRkxnT1ltQWZsZld0WlJGQmRuNWNkNlZ5T29Nd0tlRXJzbWUzOGMyczRKYw?oc=5",
+      "publishedAt": "2026-11-04T12:50:07Z",
+      "topic": "Inflação"
     },
     {
       "id": "25419a778e81",
@@ -7567,277 +7705,149 @@
       "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9oX3Z5WlJsSTdVTGoyQ2pQS1JlVGIyRHFDazhsb2p0aXRMLXhrNEVkemtUU0RCTWN5ZGg0MGNwT2tNRnprX1B5U0wxMVYyVzdRM05WQUVkYjM1TkNuY09hOXNEOW4yU25nRXdRZWlDOWpURHlmc1JaeXZFNA?oc=5",
       "publishedAt": "2026-11-03T16:08:56Z",
       "topic": "Mercado"
-    },
-    {
-      "id": "97658f69affe",
-      "title": "Boletim UOL em 8: a proibição das bets, a promessa de Trump e a inflação",
-      "source": "UOL Notícias",
-      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNc1dlZHFVY2FJTjhTYUxBMDlQTnBHZ2h6ckNvZ2s5djZiVlo3UzdOV0xPT3FYZzFpN1IyQXItMXcwTTZvUlZSRFctSWRPZ3NvbEF1YU9XTm9ZcjNGeFp4c3hQSmxhZDQxZF9TZmJ2UEVFWGJEcGZTVmxoSUZRQU5UWlcyRFhqOU1KWHBnc1poY2dEYTR2T3E4UTBlYWllbGFIdjE4dFQ3cWRSR0dhU2p5VlgxdXJ0Rkk0UzlTX3AteTZRNTVkakFJSG9TbWIwWDR6VGdKV0t3?oc=5",
-      "publishedAt": "2026-11-03T16:04:49Z",
-      "topic": "Inflação"
-    },
-    {
-      "id": "162b879e93be",
-      "title": "Mercado passa a prever último corte da Selic em novembro e estabilidade até junho de 2027",
-      "source": "Canal Rural",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQUllVQVY2VHNrSGRCbzRSWFgyenNSSi0xNUsyNFVJeGpIZDhobDBOQ1FKZE41dU1ONWIteDR2bThNbC1VQXEwT2hQRHJoYnlZWE5FRUFYZENzd2w0TmQxcVg4VEtwdlo2dmI2b1JkZldPN0Jua1pOV2tScEd6Z1EwYzFKa1ZHWXNsSFpnanh6d19vNGpSUkZWYTZZUm5PaEMxVXFURWdNQnpKUHVoTW5aVFgxekxidUNZUTQxZG5jT2laVXlDZTVYdw?oc=5",
-      "publishedAt": "2026-11-03T16:01:58Z",
-      "topic": "Juros"
-    },
-    {
-      "id": "972df533c521",
-      "title": "Focus: medianas indicam corte final da Selic em novembro e retomada do ciclo em junho de 2027",
-      "source": "UOL Economia",
-      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOVTluZW5wUEVMT2dNOGlERHlqQTR1MHoyWWVscDRlRG02Z1JwbDJLWWY1dVJOeVB2akNNOEp1U0NFS2pVb2tLbVJBVkUxbkJCVkhrWjNESlJQOVlyMXd2aVZlY21YUDh4M3B4V2FRTlpDdEV3Vk1KSEpFTmNQSzM1VnVqVzRtYzd4eEpHSW9HQ1YtelBUODcyQkdraU5wemtEM2Q0dmgtakx3WUdPcmtpUDNjb0hoamtoWGRJZlNOUkRuclhDRGxhNDBCamVOSWhKT0lPQVptTl9zbm14VzlLZHV2eGRtYW93RnI3Z3c2REwwRW8?oc=5",
-      "publishedAt": "2026-11-03T15:55:00Z",
-      "topic": "Juros"
-    },
-    {
-      "id": "141d4e937527",
-      "title": "Projeções do Boletim Focus apontam freio na economia após eleições: juros, dólar e inflação sobem",
-      "source": "RCN 67",
-      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNcFBfaURWLW8xVWdaSDVndElBQUhUUEFpZGhueDNKOGlzVmtQTzh5YVpWazZ2MmVrdXBjQXVyOUxyYzM2ek9OZXlXeVR6SnAwWDVvSEJHekg1Y2YyZzlUbE5QTHJkNDIwU1YtLTQtaGRiOG5tdGVpdFd4VV9ZMnVMQjdDb0I2OFpLRXBCWkZXUVh2OVVxNjM4UU1fMGVFVnNaVExzaVBDaHNaSjJOOGVWdTdYVV91bEoxV2JVRHJ1WWFKMDl5YTkwTmRGNWJkNU0?oc=5",
-      "publishedAt": "2026-11-03T15:53:29Z",
-      "topic": "Câmbio"
-    },
-    {
-      "id": "ed699c0373d5",
-      "title": "Primeiro Focus pós-eleição eleva projeções de inflação, Selic e dólar para 2026",
-      "source": "Movimento Econômico",
-      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNT1lveU5iQWxFX1d1blRSNkg3UTVsWFBJTFBLczR3ZXhmVjZMV3I2WlR1ZWY1dGhEQ09hQ2pWYWhYbkFKVVA1UGhjai1fZG9BOWZnUVlVS2hiaFFGc3Q2OXV3dENBVlJlcFRhcFZnMVY0ck9ONUIwdkhZd3dxYmJvRmdSeFNuY2lYRHpkamJPcXBhRkwxOHVJT1k5YWJCUXFmTkhWNEFHYl9MejVrNC1wWTNGNlVYREZmVUxiTmdKdmdkN09VTDBxbERCcGNCdw?oc=5",
-      "publishedAt": "2026-11-03T15:53:25Z",
-      "topic": "Inflação"
-    },
-    {
-      "id": "a475e063b648",
-      "title": "Ibovespa cai 2% com temores sobre juros e inflação",
-      "source": "SBT News",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNNFEwdGNwbWZsQ2syWmhWNTJjWEZzM3lWWVQzQ2lBd21LNlo5Q2E0RE5mUEVfRTlzT0hoZUhWYURhSFRxVjJVZUhTMWRSZUJYNVJpSmNsaFZLengwSi1BekhCRS1kcWdGQm4zYkZJcTlIN013NEtNT2pNX3RvclI1LWI4TUUwR2tDSldDSTlKZGF4R3d1OXNGZQ?oc=5",
-      "publishedAt": "2026-11-03T15:52:12Z",
-      "topic": "Inflação"
-    },
-    {
-      "id": "5380e926e3c4",
-      "title": "Governo prepara ajuste fiscal gradual que 'respeita compromissos de campanha', diz Durigan",
-      "source": "ICL Notícias",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5HNFE0U3FSVjBDTFota2pyUk1Tb1Axb1BIUGJ4WDd3aXdDMWpSS3ZIQngtM2x6MGR6R25NWGlPV2NsV0lvMTRtNUd2TURJNEtRdUtQSHVjenJaUXV1eFpFaUtXMjhJdGN3eDFhNElCcnQ3STZ6c2p2WXJ3LXRvY28?oc=5",
-      "publishedAt": "2026-11-03T15:49:02Z",
-      "topic": "Fiscal"
-    },
-    {
-      "id": "d23c1c4cf1dd",
-      "title": "Ibovespa e dólar hoje: bolsa cai com tombo da Petrobras e piora do Focus",
-      "source": "Valor Investe",
-      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQUnVETnRNU3Q0TXp5MzMtNmNLdmFKNGFyci1CRXBvUldIV1hWWjBEejBDNDdmVUcwVFpGcUUyczMtRjNmZ2NiRFhremQ1SFF5Vml6a3RRbWM3SEl1UnVNZWpSYnJuaHExb3dGdWJtRUdRTDFRd18wT2daQmkwTUwxcDh1bXBLdlZFZ2RlekwwVDhEMWhKaFNmREp0Uk81ellsQnFaWlBGbnNRdWdTRUJrV2k1NlNBZm9QUnV2ZFNBOHpYcjltU2k3WENfYmRvelRqWmtkdVN6NjJoS2pG0gHrAUFVX3lxTE9icDNTRElhcmM3TGZMSG5LT1o3NlB5T3JmdGd0eGZCa3d5eGVHYzZUTXRjWnVvNHBlaUhqRTVGUWVVX2Z3YU1zYkdzQkJmWEVRZ3pKYlVWZDlnd3AtaFBZWkRIRWphWjI1ZTkyYkdFU2V1M1cxa01VSmFYME4zeDA0ekxsSDk4cWktcGk1cHljaWdwYXBUSjlySWFuOGl1VmtvbFpJSkdHUUtIV1R2akJCdWdpY01YZXhLVV96elR0bHpVQTRUU3g1UV9YcFJKUXB2b1I1RjAxbjlVdE1MU0lXZnhnMF9jcUJGOUU?oc=5",
-      "publishedAt": "2026-11-03T15:49:02Z",
-      "topic": "Mercado"
-    },
-    {
-      "id": "7817a6ce4de1",
-      "title": "Mercado eleva projeções de Selic, inflação e dólar para 2026",
-      "source": "CartaCapital",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNaEZKRzFlVnpSRm11X3UtRUEzblhNNlBlT0pvWnJ6SWpqdFNyQmFQVDdLVzVMaWRucEhVbWRfRUVoMXI1MHkzakl4QlFaUGhJY1NnTWpZWW80V1lJY2k2X3c5OG5USnNReHAwNnEybGR5S3VhcDYwLU9TNTRTVmlyUEw1SlZBTnBFSDVsSFNpeldROUVtMG1uR0FQa0phZEhNbWZv?oc=5",
-      "publishedAt": "2026-11-03T15:42:00Z",
-      "topic": "Juros"
-    },
-    {
-      "id": "b9a442fef9bb",
-      "title": "Ibovespa cai mais de 1% com tombo da Petrobras na véspera de decisão do Copom",
-      "source": "Estadão",
-      "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPXzZUV2tWVUVpdGdsSFI2R0NCd0VibFVmZzg4cDIycUZLZ0Mwb0lnamdJYmxsTUk4c285R242cTVTbjU2UnAxckdmNXgzSThMQTVVMF91T0MxTTBuekdzMXFqWno3aHMtdDJSa002dTNWR0FjNDQtZXpHM2lrOUd4SWdFRGFYMXN5UE9qM2dWcTBlRkItMUFVMVM1akJWQUMwa1p6RFVFTDliYTdaN0Z6RVJyM2FPV18zSFVqMFdEeGsxdlAtc19zU210b29zRFRqUFRqdVZXQy1yV0lidFV6NTFjR2NVQ3ppcHJhX2ZB0gHzAUFVX3lxTE1lNmszMUZvMnJ0Z29tUEh5dmFRRWRaSklGUTJ6ZjdhcXhXNWctYmlITzBWOWhBWVRndlpWcVJ2ekphNzZGcUtQUlVqVEsxb2R5b1c1S2ZsVGxKQlB2cVh4NS1BcnJrRDdaNUNLT21oamowRGVTNUlTV1FXZ3hSRHpnTUpWbWs4MmQ2SV9YRmk4dHdjT3BkZ2JoTUIyY3ZCUkZNQkZfOVZuSUhybnRNWV9JdGZxdTdDaGR0SmloVUdGaHJTLUg3bWFsM0VQdnhpckVEYnd2RHh6OExPVnBiYVZhOUlJZGRSUF8tbktUNE80TUQ3bw?oc=5",
-      "publishedAt": "2026-11-03T15:39:56Z",
-      "topic": "Mercado"
-    },
-    {
-      "id": "e00470a37309",
-      "title": "Durigan diz que governo discute ajuste fiscal gradual e que não há motivo para temer medidas",
-      "source": "CBN",
-      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOSFdJWmRtbDQ1c21TSnJxWDhaRktjMUItMEpNXzUwV05nZUIycGQ4QmtDS2Q0VTNzbE1lN3haRi1nNDlqemJxdzFURGpzaHctQUt3MlBMZ3RSRTRkX0Vxa0VCX0hvVW1NTGE2VHhkVkRkYUh5UFFrdjNGX0dPMVFvTkRuOGxlMnFBUTA0MzI3cWlqNFZRZmRLTjZJNzlLOUM4dVlLRFAtZ01QZnVLbENiQVFCM19EYXp3c3I2VTgxMTFDZDczQkdKalVIbklnWlQ0Unc3VV9mdGRXbkFobzZoX3d30gHwAUFVX3lxTFB0azJjZE5GbVVfMHZucHhPS0V1cDFDZzdzYmt4RHN6YVA0Vjh3U2tVZ0g5aFlsWElfMnlQRUJIdXh4eDJEMXFTYndqUzFvbFNBbXFiNl9vTVdXRmFMYXY0OFotbktRcDlDNmNlV3pQQ19HblZxY0c5NFV3UnZWWmpoQ3A0TV9PdGVtYlRjczZmTWJGcklxNVRXQlEtRTVtWVR0MElDNWJ5b2wtOHFUXzZWd1pQdHBiOVBlaUpiZG9rTDFOX3lHYklHU0ZSSE9LVVFMWklQckJIaWFzWmFxeC1BNDVtRnF3bl9MVWV3QlY1aA?oc=5",
-      "publishedAt": "2026-11-03T15:35:36Z",
-      "topic": "Fiscal"
-    },
-    {
-      "id": "5eb6185bf81c",
-      "title": "Ibovespa entrou em bear market? Qual a hora certa de comprar na Bolsa",
-      "source": "Exame",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNZ3RLNWRERGs5WnBaRDZ6RER2OUJxVU5kTUxxa05McFN3U2Z2U28yeHVGQlZUc01Zc1JkQTBydUNIbjJDNlI5QTZHdmZ4eG5VdlBYeVh4SnE1UTVjYlhOaHAtTUw1TGNRVGY2SkxzSEZMaXNtWkhwaDBTOVRVLUJvMFpWYzlvdDd0RmRIOXRXdDFRMHhPTW1TOTZ2UGc4MFh4eF9vaDR3?oc=5",
-      "publishedAt": "2026-11-03T15:29:15Z",
-      "topic": "Mercado"
-    },
-    {
-      "id": "5f1abc6d4de7",
-      "title": "XP rebaixa Bolsa para neutra e vê renda fixa tão atraente quanto ações",
-      "source": "UOL Economia",
-      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPamttRU9jbnlkVmpPcEV5WG9hVFNrY0F5V1Nydld0cDZhVDNVSkE3MzJnenJGZDBVY3hxNHp0Vms5S1pYbmlPZzhhUlZxREdzWWc1YUNsQ2s2d25hZjhWMFk4WVlHVkpNN3h5d29fNVhLc2hHZ3JIc2lkNjctZktsSmNpbFcyaUtFTjBCT1lnME55MmFJbV9BTnpMeGIzTmo1Z0dyUmE4ZHFIUUR4ZmQ3VnJWTVBPMVMwcTVsM0M1NjJBdWJjcjNSb0tCaw?oc=5",
-      "publishedAt": "2026-11-03T15:22:11Z",
-      "topic": "Mercado"
-    },
-    {
-      "id": "789f9e68a165",
-      "title": "Ibovespa cai quase 2% com risco fiscal e Copom no radar",
-      "source": "VEJA",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNei1ObmNaQmZWc29ZRW85R1U3cHNEMkM0Um51UnBHTnkydXZERkFZM0d2Y3VHQTh2cU0yN29xTlkxMUxNMW8tTXBTQ2lIaG9pbllyTlpRcm1seUQwX0c4NWhWcjBkajg0TDBQNWY1LUoxd1ZYZkphaGdqM1BVelR4UzhHTUFjNF84LWJzd0Q0YmxkcmFu?oc=5",
-      "publishedAt": "2026-11-03T15:04:10Z",
-      "topic": "Mercado"
-    },
-    {
-      "id": "0052b88bd11d",
-      "title": "Dólar encosta em R$ 5,50 e Bolsa cai à espera de decisão do BC sobre juros",
-      "source": "UOL Economia",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQQkFQOExMRVdSbHBsTkdNT3E4YVBUdy0tTEgxaFZiQ3NVeHRGY0YxM3BmNzBQLUFpTGZnUFNRSEdpdFdpLVJTN2lkblFPLTYzMGlWUS0wZTFWbEhMNUhxbjJ5Slp5VGtHazZHUmo2VXlSTFdaZE5JLW0tYTF1OG9KMkFzb3RVQVBDcE5FZEE3QTcwc212dnRxTUQ2c0NWaV9jRnpHWTNPa2s?oc=5",
-      "publishedAt": "2026-11-03T14:37:07Z",
-      "topic": "Câmbio"
-    },
-    {
-      "id": "60df0ef4d5d1",
-      "title": "Dólar hoje supera R$ 5,50 e mercado monitora riscos",
-      "source": "CenárioMT",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQWnM2Q2dkQzg4RWJpNTdoY0V4cS04aUp6RVFUODV5aXBGT1NXTjJDQUdGaTJic0RySml2QUt4TUpDM0pJd3hCLXEwT2g1cTdKaGJCTWFwWk16SVViOWVSVGYwVVZTSUNOOVRQM3RnbTdhaExWN3NxUGQ3OEE5eVFlWlhYQkZvcndYZHRmWg?oc=5",
-      "publishedAt": "2026-11-03T13:47:26Z",
-      "topic": "Câmbio"
     }
   ],
   "impostometro": {
-    "value": 3417909085633.014,
+    "value": 3429163870333.492,
     "incrementPerSecond": 130263.71181108795,
-    "updatedAt": "2026-11-03T17:49:20Z"
+    "updatedAt": "2026-11-04T17:58:54Z"
   },
   "sources": {
     "bcb-13762": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:47Z"
+      "updatedAt": "2026-11-04T17:58:28Z"
     },
     "bcb-13761": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:48Z"
+      "updatedAt": "2026-11-04T17:58:28Z"
     },
     "bcb-3698": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:49Z"
+      "updatedAt": "2026-11-04T17:58:29Z"
     },
     "bcb-433": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:49Z"
+      "updatedAt": "2026-11-04T17:58:30Z"
     },
     "bcb-13522": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:50Z"
+      "updatedAt": "2026-11-04T17:58:31Z"
     },
     "bcb-432": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:52Z"
+      "updatedAt": "2026-11-04T17:58:31Z"
     },
     "bcb-13961": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:54Z"
+      "updatedAt": "2026-11-04T17:58:32Z"
     },
     "bcb-4616": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:55Z"
+      "updatedAt": "2026-11-04T17:58:33Z"
     },
     "bcb-4606": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:56Z"
+      "updatedAt": "2026-11-04T17:58:34Z"
     },
     "bcb-1788": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:48:58Z"
+      "updatedAt": "2026-11-04T17:58:35Z"
     },
     "bcb-4380": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:01Z"
+      "updatedAt": "2026-11-04T17:58:36Z"
     },
     "bcb-5793": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:01Z"
+      "updatedAt": "2026-11-04T17:58:37Z"
     },
     "bcb-5727": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:03Z"
+      "updatedAt": "2026-11-04T17:58:37Z"
     },
     "bcb-7326": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:04Z"
+      "updatedAt": "2026-11-04T17:58:38Z"
     },
     "rfb-revenue": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:06Z"
+      "updatedAt": "2026-11-04T17:58:40Z"
     },
     "yahoo-EWZ": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:07Z"
+      "updatedAt": "2026-11-04T17:58:41Z"
     },
     "yahoo-BVSP": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:07Z"
+      "updatedAt": "2026-11-04T17:58:41Z"
     },
     "yahoo-BTC-USD": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:07Z"
+      "updatedAt": "2026-11-04T17:58:41Z"
     },
     "bcb-1": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:08Z"
+      "updatedAt": "2026-11-04T17:58:43Z"
     },
     "focus-ipca": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:10Z"
+      "updatedAt": "2026-11-04T17:58:43Z"
     },
     "focus-pib-total": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:11Z"
+      "updatedAt": "2026-11-04T17:58:45Z"
     },
     "b3-DI1F27": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:12Z"
+      "updatedAt": "2026-11-04T17:58:45Z"
     },
     "b3-DI1F28": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:12Z"
+      "updatedAt": "2026-11-04T17:58:46Z"
     },
     "b3-DI1F29": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:13Z"
+      "updatedAt": "2026-11-04T17:58:47Z"
     },
     "b3-DI1F30": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:14Z"
+      "updatedAt": "2026-11-04T17:58:48Z"
     },
     "b3-DI1F31": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:14Z"
+      "updatedAt": "2026-11-04T17:58:49Z"
     },
     "b3-DI1F32": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:15Z"
+      "updatedAt": "2026-11-04T17:58:49Z"
     },
     "b3-DI1F33": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:16Z"
+      "updatedAt": "2026-11-04T17:58:50Z"
     },
     "b3-DI1F34": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:16Z"
+      "updatedAt": "2026-11-04T17:58:51Z"
     },
     "b3-DI1F35": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:17Z"
+      "updatedAt": "2026-11-04T17:58:52Z"
     },
     "b3-IBOV": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:19Z"
+      "updatedAt": "2026-11-04T17:58:53Z"
     },
     "janjometro": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:19Z"
+      "updatedAt": "2026-11-04T17:58:53Z"
     },
     "impostometro": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:20Z"
+      "updatedAt": "2026-11-04T17:58:54Z"
     },
     "news": {
       "status": "ok",
-      "updatedAt": "2026-11-03T17:49:22Z"
+      "updatedAt": "2026-11-04T17:58:57Z"
     }
   }
 }
