@@ -1,16 +1,16 @@
 {
   "key": "focus-ipca",
-  "updatedAt": "2026-11-22T17:47:52Z",
+  "updatedAt": "2026-11-23T22:02:03Z",
   "value": [
     {
       "date": "2026",
       "label": "2026",
-      "value": 5.1082
+      "value": 5.1505
     },
     {
       "date": "2027",
       "label": "2027",
-      "value": 5.0
+      "value": 5.1214
     },
     {
       "date": "2028",
@@ -25,7 +25,7 @@
     {
       "date": "2030",
       "label": "2030",
-      "value": 3.935
+      "value": 3.95
     }
   ]
 }

@@ -1,21 +1,21 @@
 {
   "key": "focus-pib-total",
-  "updatedAt": "2026-11-22T17:47:53Z",
+  "updatedAt": "2026-11-23T22:02:05Z",
   "value": [
     {
       "date": "2026",
       "label": "2026",
-      "value": 1.7215
+      "value": 1.7018
     },
     {
       "date": "2027",
       "label": "2027",
-      "value": 1.0224
+      "value": 0.9995
     },
     {
       "date": "2028",
       "label": "2028",
-      "value": 1.8
+      "value": 1.7071
     },
     {
       "date": "2029",
